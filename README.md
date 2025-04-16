@@ -1,44 +1,35 @@
-# Rohit Kamineni — Portfolio Website
+# 🚀 Rohit Kamineni — Portfolio Website
 
-Welcome to the personal portfolio website of **Rohit Kamineni** — a Data Engineer, Data Scientist, and Business Analyst with a passion for building real-time data platforms, ML pipelines, and data products that deliver impact at scale.
-
-This website was built using **React (via Vite)** and **Tailwind CSS**, and is designed to be fast, clean, responsive, and visually minimal. It mirrors a portfolio design Rohit curated with attention to performance, storytelling, and professional polish.
-
----
-
-## 🔗 Live Demo
-
-[https://your-deployed-link.com](https://your-deployed-link.com) <!-- Replace with actual link once deployed -->
+This is the personal portfolio of **Rohit Kamineni**, a Data Engineer, Analyst, and Scientist.  
+Built using **React**, **Tailwind CSS**, and deployed via **GitHub Pages** using a CI/CD pipeline.
 
 ---
 
-## 🧱 Tech Stack
+## 📍 Live Website
 
-- **Frontend Framework**: [React](https://reactjs.org/) (powered by [Vite](https://vitejs.dev/))
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Icons**: [Heroicons](https://heroicons.com/)
-- **Build Tool**: Vite
-- **Deployment**: GitHub Pages / Vercel / Netlify (coming soon)
+🌐 [Click Here to go the Website](https://kamineni-rohit.github.io/rohit-kamineni-website/)
 
 ---
 
-## ✨ Features
+## 🚧 Development Status
 
-- Responsive layout across devices
-- Sticky navigation
-- Hero introduction section
-- Project showcase
-- Resume and contact sections (coming soon)
-- Clean animations and hover transitions
+![CI/CD](https://github.com/kamineni-rohit/rohit-kamineni-website/actions/workflows/deploy.yml/badge.svg)
 
 ---
 
-## 🚀 Getting Started
+## 🛠 Tech Stack
 
-To run the project locally:
+- ⚛️ React + Vite
+- 🎨 Tailwind CSS (v3)
+- 🚀 GitHub Actions (CI/CD)
+- ☁️ GitHub Pages (Deployment)
+
+---
+
+## 📦 Local Setup
 
 ```bash
-git clone https://github.com/your-username/rohit-kamineni-website.git
+git clone https://github.com/kamineni-rohit/rohit-kamineni-website.git
 cd rohit-kamineni-website
 npm install
 npm run dev
