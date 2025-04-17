@@ -1,22 +1,50 @@
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FiChevronDown } from "react-icons/fi";
+
 const Hero = () => {
+  const scrollToAbout = () => {
+    document.getElementById("about").scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <section
-      id="hero"
-      className="min-h-screen flex flex-col justify-center items-start px-6 md:px-24 bg-gray-50 pt-24"
-    >
-      <p className="text-accent font-semibold text-lg">Hi, my name is</p>
-      <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 mt-2">
+    <section className="min-h-screen flex flex-col justify-center items-center text-center px-4 bg-white relative">
+      <h1 className="text-5xl md:text-6xl font-bold tracking-wide text-accent">
         Rohit Kamineni
       </h1>
-      <h2 className="text-xl sm:text-2xl text-gray-600 mt-4 max-w-xl leading-relaxed">
-        I build data platforms, pipelines, and machine learning solutions that drive real-world impact.
-      </h2>
-      <a
-        href="#projects"
-        className="mt-8 inline-block bg-accent text-white font-medium px-6 py-3 rounded-md hover:bg-blue-700 transition"
+
+      <p className="mt-4 max-w-2xl text-lg text-gray-700 leading-relaxed">
+        👋 Data Engineer | Analyst | Scientist — I specialize in building
+        real-time pipelines, analytical dashboards, and scalable ML systems that
+        drive business transformation.
+      </p>
+
+      <div className="flex space-x-6 mt-6 text-2xl text-gray-600">
+        <a href="https://github.com/kamineni-rohit" target="_blank" rel="noreferrer">
+          <FaGithub />
+        </a>
+        <a href="https://linkedin.com/in/rohit-kamineni" target="_blank" rel="noreferrer">
+          <FaLinkedin />
+        </a>
+        <a href="#" target="_blank" rel="noreferrer">
+          <FaTwitter />
+        </a>
+      </div>
+
+      <div className="flex space-x-4 mt-8">
+        <button className="px-6 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-white transition rounded">
+          Resume
+        </button>
+        <button className="px-6 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-white transition rounded">
+          Contact
+        </button>
+      </div>
+
+      <div
+        className="absolute bottom-10 text-accent text-4xl cursor-pointer animate-bounce"
+        onClick={scrollToAbout}
       >
-        See My Work
-      </a>
+        <FiChevronDown />
+      </div>
     </section>
   );
 };
