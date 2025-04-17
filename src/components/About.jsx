@@ -1,36 +1,31 @@
 import profileImage from "../assets/IMG-20241206-WA0012.jpg";
+import { FiChevronDown } from "react-icons/fi";
 
 const About = () => {
     return (
         <section
             id="about"
-            className="bg-gray-50 py-16 px-6 md:px-20 flex justify-center"
+            className="min-h-screen bg-gray-50 py-24 px-6 md:px-20 flex justify-center relative"
         >
             <div className="w-full max-w-6xl flex flex-col md:flex-row gap-10">
-                {/* Left: Text */}
-                <div className="flex-1">
-                    <h2 className="text-3xl font-bold mb-4">Hi, I'm Rohit.</h2>
-                    <p className="text-gray-700 text-lg mb-6">
-                        I’m a versatile Data Engineer, Analyst, and Scientist with a strong
-                        track record of building end-to-end data solutions — from ingestion
-                        pipelines and transformation workflows to advanced ML model
-                        deployments and intuitive BI dashboards.
-                        <br />
-                        <br />
-                        With experience across GCP, AWS, and Kubernetes, I bridge
-                        engineering reliability with analytical depth and statistical rigor
-                        to solve business problems at scale.
-                    </p>
-                </div>
+                {/* Left: Text + Timeline below */}
+                <div className="flex-1 flex flex-col gap-12">
+                    <div>
+                        <h2 className="text-3xl font-bold mb-4">Hi, I'm Rohit.</h2>
+                        <p className="text-gray-700 text-lg mb-6">
+                            I’m a versatile Data Engineer, Analyst, and Scientist with a strong
+                            track record of building end-to-end data solutions — from ingestion
+                            pipelines and transformation workflows to advanced ML model
+                            deployments and intuitive BI dashboards.
+                            <br />
+                            <br />
+                            With experience across GCP, AWS, and Kubernetes, I bridge
+                            engineering reliability with analytical depth and statistical rigor
+                            to solve business problems at scale.
+                        </p>
+                    </div>
 
-                {/* Right: Image + Timeline */}
-                <div className="flex-1 flex flex-col items-center gap-10">
-                    <img
-                        src={profileImage}
-                        alt="Rohit Kamineni"
-                        className="w-72 h-72 object-cover rounded-xl shadow-md"
-                    />
-
+                    {/* Timeline */}
                     <div className="w-full space-y-8">
                         <div className="relative pl-6 border-l-4 border-accent">
                             <div className="mb-4">
@@ -71,6 +66,25 @@ const About = () => {
                         </div>
                     </div>
                 </div>
+
+                {/* Right: Bigger image */}
+                <div className="flex justify-center items-start">
+                    <img
+                        src={profileImage}
+                        alt="Rohit Kamineni"
+                        className="w-96 h-96 object-cover rounded-2xl shadow-lg"
+                    />
+                </div>
+            </div>
+
+            {/* Down Arrow to scroll to projects */}
+            <div
+                className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-accent text-4xl cursor-pointer animate-bounce"
+                onClick={() =>
+                    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
+                }
+            >
+                <FiChevronDown />
             </div>
         </section>
     );
