@@ -62,7 +62,7 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="min-h-screen bg-gray-50 py-24 px-6 md:px-24 relative flex flex-col items-center"
+      className="min-h-screen bg-white py-24 px-6 md:px-24 relative flex flex-col items-center"
     >
       <h2 className="text-3xl font-bold text-accent mb-2 text-center">
         Projects Portfolio
