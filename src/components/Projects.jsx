@@ -62,13 +62,13 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="min-h-screen bg-gray-50 py-24 px-6 md:px-24 relative flex flex-col items-center"
+      className="min-h-screen bg-white py-24 px-6 md:px-24 relative flex flex-col items-center"
     >
       <h2 className="text-3xl font-bold text-accent mb-2 text-center">
         Projects Portfolio
       </h2>
       <p className="text-gray-700 text-center mb-8">
-        A glimpse of the projects I’ve been working on
+        <i>A glimpse of the projects I’ve been working on</i>
       </p>
 
       <div className="flex flex-wrap justify-center gap-4 mb-10">
@@ -106,7 +106,7 @@ const Projects = () => {
       <div
         className="absolute bottom-10 text-accent text-4xl cursor-pointer animate-bounce"
         onClick={() =>
-          document.getElementById("resume")?.scrollIntoView({ behavior: "smooth" })
+          document.getElementById("education")?.scrollIntoView({ behavior: "smooth" })
         }
       >
         <FiChevronDown />
