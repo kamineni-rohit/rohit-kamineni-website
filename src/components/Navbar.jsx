@@ -12,7 +12,9 @@ const sectionIds = [
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const clickedSectionRef = useRef(null);
+  const dropdownRef = useRef(null);
 
   // Scroll-based section detection
   useEffect(() => {
@@ -21,16 +23,13 @@ const Navbar = () => {
         .getElementById("hero-text")
         ?.getBoundingClientRect().bottom;
 
-      // Navbar background transition
       setIsScrolled(heroBottom <= 120);
 
-      // Stop section highlighting at top (hero)
       if (heroBottom && heroBottom > 120) {
         setActiveSection("");
         return;
       }
 
-      // Override with click until next scroll
       if (clickedSectionRef.current) return;
 
       const sections = sectionIds
@@ -57,31 +56,27 @@ const Navbar = () => {
         return;
       }
 
-      // Contact takes priority when visible (e.g. at bottom)
       const contact = sections.find((s) => s.id === "contact");
       if (contact) {
         setActiveSection("contact");
         return;
       }
 
-      // Resume fallback only when contact is not visible
       const resume = sections.find((s) => s.id === "resume");
       if (resume && !contact) {
         setActiveSection("resume");
         return;
       }
 
-      // Otherwise highlight the highest visible section
       const sorted = sections.sort((a, b) => a.rect.top - b.rect.top);
       setActiveSection(sorted[0].id);
     };
 
-    handleScroll(); // On load
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Reset override on scroll
   useEffect(() => {
     const handleReset = () => {
       clickedSectionRef.current = null;
@@ -92,9 +87,37 @@ const Navbar = () => {
 
   const handleNavClick = (id) => {
     clickedSectionRef.current = id;
-    setActiveSection(id); // Force immediate highlight for contact fix
+    setActiveSection(id);
+    setIsOpen(false);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
+    };
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
+
+  // Lock scroll when mobile dropdown is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+  }, [isOpen]);
 
   return (
     <nav
@@ -109,6 +132,8 @@ const Navbar = () => {
         >
           Home
         </a>
+
+        {/* Desktop Nav */}
         <div className="space-x-6 font-medium text-gray-700 text-sm hidden md:flex">
           {sectionIds.map((id) => (
             <button
@@ -121,7 +146,6 @@ const Navbar = () => {
               }`}
             >
               <span>{id}</span>
-              {/* Hover underline animation only */}
               <span
                 className={`absolute left-0 -bottom-1 h-0.5 bg-accent transition-all duration-300 ease-in-out group-hover:w-full ${
                   activeSection === id ? "w-0" : "w-0"
@@ -130,7 +154,57 @@ const Navbar = () => {
             </button>
           ))}
         </div>
+
+        {/* Mobile toggle */}
+        <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d={
+                isOpen
+                  ? "M6 18L18 6M6 6l12 12"
+                  : "M4 6h16M4 12h16M4 18h16"
+              }
+            />
+          </svg>
+        </button>
       </div>
+
+      {/* Mobile dropdown */}
+      {isOpen && (
+        <div
+          ref={dropdownRef}
+          className="md:hidden bg-white shadow-md px-6 pb-4 pt-2 space-y-2"
+        >
+          {sectionIds.map((id) => (
+            <button
+              key={id}
+              onClick={() => handleNavClick(id)}
+              className={`block w-full text-left capitalize transition duration-300 group ${
+                activeSection === id
+                  ? "text-accent font-bold"
+                  : "text-gray-700 hover:text-accent"
+              }`}
+            >
+              <span className="relative">
+                {id}
+                <span
+                  className={`absolute left-0 -bottom-1 h-0.5 bg-accent transition-all duration-300 ease-in-out group-hover:w-full ${
+                    activeSection === id ? "w-0" : "w-0"
+                  }`}
+                />
+              </span>
+            </button>
+          ))}
+        </div>
+      )}
     </nav>
   );
 };
