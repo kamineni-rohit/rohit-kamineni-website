@@ -68,7 +68,7 @@ const Projects = () => {
         Projects Portfolio
       </h2>
       <p className="text-gray-700 text-center mb-8">
-        A glimpse of the projects I’ve been working on
+        <i>A glimpse of the projects I’ve been working on</i>
       </p>
 
       <div className="flex flex-wrap justify-center gap-4 mb-10">
@@ -106,7 +106,7 @@ const Projects = () => {
       <div
         className="absolute bottom-10 text-accent text-4xl cursor-pointer animate-bounce"
         onClick={() =>
-          document.getElementById("resume")?.scrollIntoView({ behavior: "smooth" })
+          document.getElementById("education")?.scrollIntoView({ behavior: "smooth" })
         }
       >
         <FiChevronDown />
