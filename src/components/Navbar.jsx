@@ -57,15 +57,21 @@ const Navbar = () => {
         return;
       }
 
-      // Resume > Contact when scrolling up
+      // Contact takes priority when visible (e.g. at bottom)
       const contact = sections.find((s) => s.id === "contact");
+      if (contact) {
+        setActiveSection("contact");
+        return;
+      }
+
+      // Resume fallback only when contact is not visible
       const resume = sections.find((s) => s.id === "resume");
       if (resume && !contact) {
         setActiveSection("resume");
         return;
       }
 
-      // Otherwise highlight the highest visible section (except contact override)
+      // Otherwise highlight the highest visible section
       const sorted = sections.sort((a, b) => a.rect.top - b.rect.top);
       setActiveSection(sorted[0].id);
     };
@@ -75,12 +81,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (id) => {
-    clickedSectionRef.current = id;
-    setActiveSection(id);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
-
+  // Reset override on scroll
   useEffect(() => {
     const handleReset = () => {
       clickedSectionRef.current = null;
@@ -88,6 +89,12 @@ const Navbar = () => {
     window.addEventListener("scroll", handleReset);
     return () => window.removeEventListener("scroll", handleReset);
   }, []);
+
+  const handleNavClick = (id) => {
+    clickedSectionRef.current = id;
+    setActiveSection(id); // Force immediate highlight for contact fix
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <nav
