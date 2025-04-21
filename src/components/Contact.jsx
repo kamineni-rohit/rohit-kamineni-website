@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FiMail, FiMapPin, FiLinkedin, FiUserPlus } from "react-icons/fi";
+import { FaEnvelope, FaLinkedin, FaMapMarkerAlt, FaUserPlus } from "react-icons/fa";
 import ContactFormModal from "./ContactFormModal";
 
 const Contact = () => {
@@ -18,7 +18,7 @@ const Contact = () => {
 
       <div className="space-y-3 text-gray-700 text-md mb-6">
         <p className="flex justify-center items-center gap-2">
-          <FiMail className="text-accent" />{" "}
+          <FaEnvelope className="text-accent" />
           <a
             href="mailto:kaminenirohit1@gmail.com"
             className="text-accent hover:underline"
@@ -27,7 +27,7 @@ const Contact = () => {
           </a>
         </p>
         <p className="flex justify-center items-center gap-2">
-          <FiLinkedin className="text-accent" />{" "}
+          <FaLinkedin className="text-accent" />
           <a
             href="https://www.linkedin.com/in/rohit-kamineni"
             target="_blank"
@@ -38,7 +38,8 @@ const Contact = () => {
           </a>
         </p>
         <p className="flex justify-center items-center gap-2">
-          <FiMapPin className="text-accent" /> Hartford, CT
+          <FaMapMarkerAlt className="text-accent" />
+          Hartford, CT
         </p>
       </div>
 
@@ -46,7 +47,7 @@ const Contact = () => {
         onClick={() => setShowForm(true)}
         className="inline-flex items-center gap-2 px-6 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-white transition rounded"
       >
-        <FiUserPlus /> Leave Your Info
+        <FaUserPlus /> Leave Your Info
       </button>
 
       {showForm && <ContactFormModal onClose={() => setShowForm(false)} />}
