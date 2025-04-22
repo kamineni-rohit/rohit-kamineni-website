@@ -1,14 +1,21 @@
+import { useState } from "react";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { FiChevronDown } from "react-icons/fi";
+import ContactFormModal from "./ContactFormModal";
 
 const Hero = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const scrollToProjects = () => {
+    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   const scrollToAbout = () => {
-    document.getElementById("about").scrollIntoView({ behavior: "smooth" });
+    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <section className="min-h-screen flex flex-col justify-center items-center text-center px-4 bg-white relative">
-      {/* Everything wrapped in #hero-text for navbar scroll transition targeting */}
       <div id="hero-text" className="flex flex-col items-center">
         <h1 className="text-5xl md:text-6xl font-bold tracking-wide text-accent">
           Rohit Kamineni
@@ -33,11 +40,17 @@ const Hero = () => {
         </div>
 
         <div className="flex space-x-4 mt-8">
-          <button className="px-6 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-white transition rounded">
-            Protfolio
+          <button
+            onClick={scrollToProjects}
+            className="px-6 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-white transition rounded"
+          >
+            Portfolio
           </button>
-          <button className="px-6 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-white transition rounded">
-            CV
+          <button
+            onClick={() => setShowModal(true)}
+            className="px-6 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-white transition rounded"
+          >
+            Reach Out to Me
           </button>
         </div>
       </div>
@@ -48,6 +61,8 @@ const Hero = () => {
       >
         <FiChevronDown />
       </div>
+
+      {showModal && <ContactFormModal onClose={() => setShowModal(false)} />}
     </section>
   );
 };

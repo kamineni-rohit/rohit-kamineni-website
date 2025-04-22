@@ -16,18 +16,18 @@ const Navbar = () => {
   const clickedSectionRef = useRef(null);
   const dropdownRef = useRef(null);
 
-  // Scroll-based section detection
+  // Scroll-based logic
   useEffect(() => {
     const handleScroll = () => {
-      const heroBottom = document
-        .getElementById("hero-text")
-        ?.getBoundingClientRect().bottom;
-
-      setIsScrolled(heroBottom <= 120);
-
-      if (heroBottom && heroBottom > 120) {
-        setActiveSection("");
-        return;
+      const heroText = document.getElementById("hero-text");
+      if (heroText) {
+        const rect = heroText.getBoundingClientRect();
+        // Trigger background transition just *before* the title hits the nav
+        setIsScrolled(rect.top <= 140);
+        if (rect.top > 140) {
+          setActiveSection("");
+          return;
+        }
       }
 
       if (clickedSectionRef.current) return;
@@ -78,11 +78,11 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    const handleReset = () => {
+    const resetClick = () => {
       clickedSectionRef.current = null;
     };
-    window.addEventListener("scroll", handleReset);
-    return () => window.removeEventListener("scroll", handleReset);
+    window.addEventListener("scroll", resetClick);
+    return () => window.removeEventListener("scroll", resetClick);
   }, []);
 
   const handleNavClick = (id) => {
@@ -92,7 +92,6 @@ const Navbar = () => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // Close dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -110,7 +109,6 @@ const Navbar = () => {
     };
   }, [isOpen]);
 
-  // Lock scroll when mobile dropdown is open
   useEffect(() => {
     if (isOpen) {
       document.body.classList.add("overflow-hidden");
