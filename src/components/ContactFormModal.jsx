@@ -22,12 +22,10 @@ const ContactFormModal = ({ onClose }) => {
   const validate = () => {
     const errs = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
     if (!formData.first.trim()) errs.first = true;
     if (!formData.last.trim()) errs.last = true;
     if (!emailRegex.test(formData.email)) errs.email = true;
     if (!formData.reason.trim()) errs.reason = true;
-
     return errs;
   };
 
@@ -49,39 +47,39 @@ const ContactFormModal = ({ onClose }) => {
   };
 
   useEffect(() => {
-    const handleOutsideClick = (e) => {
+    const handleClickOutside = (e) => {
       if (modalRef.current && !modalRef.current.contains(e.target)) {
         onClose();
       }
     };
     document.body.style.overflow = "hidden";
-    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.body.style.overflow = "unset";
-      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [onClose]);
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-40 z-50 flex items-center justify-center px-4 transition-all">
+    <div className="fixed inset-0 bg-black bg-opacity-40 z-50 flex items-center justify-center px-4">
       <div
         ref={modalRef}
-        className="bg-white rounded-xl shadow-lg w-full max-w-xl p-6 relative animate-fade-in"
+        className="bg-white rounded-xl shadow-lg w-full max-w-xl p-6 relative animate-fade-in-slow scale-95 sm:scale-100 transition-all"
       >
         {!showThankYou ? (
           <>
             <button
               onClick={onClose}
-              className="absolute top-4 right-6 text-gray-400 text-2xl hover:text-gray-700 transition"
+              className="absolute top-4 right-6 text-gray-400 hover:text-gray-700 text-2xl transition"
               aria-label="Close modal"
             >
               &times;
             </button>
-            <div className="flex justify-center mb-6">
-              <h3 className="text-2xl font-bold text-accent text-center">Leave Your Info</h3>
+            <div className="text-center mb-6">
+              <h3 className="text-2xl font-bold text-accent">Leave Your Info</h3>
             </div>
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <input
                   type="text"
                   placeholder="First Name*"
@@ -112,10 +110,9 @@ const ContactFormModal = ({ onClose }) => {
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               />
 
-              {/* Custom Listbox Dropdown */}
               <Listbox
                 value={formData.reason}
-                onChange={(value) => setFormData({ ...formData, reason: value })}
+                onChange={(val) => setFormData({ ...formData, reason: val })}
               >
                 <div className="relative">
                   <Listbox.Button
