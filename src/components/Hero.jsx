@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { FiChevronDown } from "react-icons/fi";
 import ContactFormModal from "./ContactFormModal";
+import ParticlesBackground from "./ParticlesBackground";
 
 const Hero = () => {
   const [showModal, setShowModal] = useState(false);
@@ -15,8 +16,15 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center text-center px-4 bg-white relative">
-      <div id="hero-text" className="flex flex-col items-center">
+    <section className="relative w-full h-screen overflow-hidden flex flex-col justify-center items-center text-center px-4">
+      {/* Optional: If you want a white background behind the particles, uncomment below */}
+      {/* <div className="absolute inset-0 bg-white z-0"></div> */}
+
+      {/* Particles Background (z-10) */}
+      <ParticlesBackground />
+
+      {/* Foreground Content (z-20) */}
+      <div id="hero-text" className="relative z-20 flex flex-col items-center">
         <h1 className="text-5xl md:text-6xl font-bold tracking-wide text-accent">
           Rohit Kamineni
         </h1>
@@ -55,8 +63,9 @@ const Hero = () => {
         </div>
       </div>
 
+      {/* Down Arrow (z-20) */}
       <div
-        className="absolute bottom-10 text-accent text-4xl cursor-pointer animate-bounce"
+        className="absolute bottom-10 text-accent text-4xl cursor-pointer animate-bounce z-20"
         onClick={scrollToAbout}
       >
         <FiChevronDown />
