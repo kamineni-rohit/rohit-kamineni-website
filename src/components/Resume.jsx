@@ -14,7 +14,7 @@ const Resume = () => {
   return (
     <section id="resume" className="bg-white py-20 px-6 md:px-24 text-center relative">
       <h2 className="text-3xl font-bold text-accent mb-6">Resume</h2>
-      <p className="text-lg text-gray-700 mb-6 max-w-2xl mx-auto">
+      <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
         Download my resume to see a detailed breakdown of my experience in data engineering,
         analytics, and machine learning across cloud environments.
       </p>

@@ -21,11 +21,11 @@ const Hero = () => {
         </p>
 
         <div className="flex space-x-6 mt-6 text-2xl text-gray-600">
-          <a href="https://github.com/kamineni-rohit" target="_blank" rel="noreferrer">
-            <FaGithub />
-          </a>
           <a href="https://linkedin.com/in/rohit-kamineni" target="_blank" rel="noreferrer">
             <FaLinkedin />
+          </a>
+          <a href="https://github.com/kamineni-rohit" target="_blank" rel="noreferrer">
+            <FaGithub />
           </a>
           <a href="#" target="_blank" rel="noreferrer">
             <FaTwitter />
@@ -34,10 +34,10 @@ const Hero = () => {
 
         <div className="flex space-x-4 mt-8">
           <button className="px-6 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-white transition rounded">
-            Resume
+            Protfolio
           </button>
           <button className="px-6 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-white transition rounded">
-            Contact
+            CV
           </button>
         </div>
       </div>
