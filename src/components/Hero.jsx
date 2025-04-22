@@ -17,19 +17,14 @@ const Hero = () => {
 
   return (
     <section className="relative w-full h-screen overflow-hidden flex flex-col justify-center items-center text-center px-4">
-      {/* Optional: If you want a white background behind the particles, uncomment below */}
-      {/* <div className="absolute inset-0 bg-white z-0"></div> */}
-
-      {/* Particles Background (z-10) */}
       <ParticlesBackground />
 
-      {/* Foreground Content (z-20) */}
       <div id="hero-text" className="relative z-20 flex flex-col items-center">
-        <h1 className="text-5xl md:text-6xl font-bold tracking-wide text-accent">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-wide text-accent">
           Rohit Kamineni
         </h1>
 
-        <p className="mt-4 max-w-2xl text-lg text-gray-700 leading-relaxed">
+        <p className="mt-4 max-w-xl sm:max-w-2xl text-base sm:text-lg text-gray-700 leading-relaxed">
           👋 Data Engineer | Analyst | Scientist — I specialize in building
           real-time pipelines, analytical dashboards, and scalable ML systems that
           drive business transformation.
@@ -47,7 +42,7 @@ const Hero = () => {
           </a>
         </div>
 
-        <div className="flex space-x-4 mt-8">
+        <div className="flex flex-col sm:flex-row sm:space-x-4 mt-8 space-y-4 sm:space-y-0">
           <button
             onClick={scrollToProjects}
             className="px-6 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-white transition rounded"
@@ -63,7 +58,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Down Arrow (z-20) */}
       <div
         className="absolute bottom-10 text-accent text-4xl cursor-pointer animate-bounce z-20"
         onClick={scrollToAbout}

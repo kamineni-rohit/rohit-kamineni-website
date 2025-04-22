@@ -23,15 +23,27 @@ const ParticlesBackground = () => {
           fullScreen: { enable: false },
           background: { color: "transparent" },
           fpsLimit: 120,
+          interactivity: {
+            events: {
+              onHover: { enable: true, mode: "repulse" },
+              resize: true,
+            },
+            modes: {
+              repulse: {
+                distance: 100,
+                duration: 0.4,
+              },
+            },
+          },
           particles: {
-            number: { value: 360, density: { enable: true, value_area: 800 } },
-            color: { value: "#d1d5db" },
+            number: { value: 240, density: { enable: true, area: 800 } },
+            color: { value: "#cbd5e1" }, // lighter gray
             links: {
               enable: true,
-              distance: 130,
-              color: "#d1d5db",
-              opacity: 0.4,
-              width: 1,
+              distance: 125,
+              color: "#cbd5e1",
+              opacity: 0.6, // slightly more visible
+              width: 1.2,
             },
             move: {
               enable: true,
@@ -40,8 +52,8 @@ const ParticlesBackground = () => {
               outModes: "bounce",
             },
             shape: { type: "circle" },
-            size: { value: { min: 1, max: 3 } },
-            opacity: { value: 0.6 },
+            size: { value: { min: 1.5, max: 3.5 } },
+            opacity: { value: 1 },
           },
           detectRetina: true,
         }}
