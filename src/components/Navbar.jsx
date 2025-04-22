@@ -16,18 +16,16 @@ const Navbar = () => {
   const clickedSectionRef = useRef(null);
   const dropdownRef = useRef(null);
 
-  // Scroll-based section detection
   useEffect(() => {
     const handleScroll = () => {
-      const heroBottom = document
-        .getElementById("hero-text")
-        ?.getBoundingClientRect().bottom;
-
-      setIsScrolled(heroBottom <= 120);
-
-      if (heroBottom && heroBottom > 120) {
-        setActiveSection("");
-        return;
+      const heroText = document.getElementById("hero-text");
+      if (heroText) {
+        const rect = heroText.getBoundingClientRect();
+        setIsScrolled(rect.top <= 140);
+        if (rect.top > 140) {
+          setActiveSection("");
+          return;
+        }
       }
 
       if (clickedSectionRef.current) return;
@@ -37,16 +35,10 @@ const Navbar = () => {
           const el = document.getElementById(id);
           const rect = el?.getBoundingClientRect();
           if (!rect) return null;
-
           const height = window.innerHeight;
           const visibleHeight = Math.min(rect.bottom, height) - Math.max(rect.top, 0);
           const ratio = visibleHeight / rect.height;
-
-          return {
-            id,
-            rect,
-            visibleRatio: ratio,
-          };
+          return { id, rect, visibleRatio: ratio };
         })
         .filter(Boolean)
         .filter((s) => s.visibleRatio > 0.3);
@@ -78,11 +70,9 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    const handleReset = () => {
-      clickedSectionRef.current = null;
-    };
-    window.addEventListener("scroll", handleReset);
-    return () => window.removeEventListener("scroll", handleReset);
+    const resetClick = () => (clickedSectionRef.current = null);
+    window.addEventListener("scroll", resetClick);
+    return () => window.removeEventListener("scroll", resetClick);
   }, []);
 
   const handleNavClick = (id) => {
@@ -92,44 +82,30 @@ const Navbar = () => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // Close dropdown on outside click
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target)
-      ) {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setIsOpen(false);
       }
     };
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    if (isOpen) document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
-  // Lock scroll when mobile dropdown is open
   useEffect(() => {
-    if (isOpen) {
-      document.body.classList.add("overflow-hidden");
-    } else {
-      document.body.classList.remove("overflow-hidden");
-    }
+    document.body.classList.toggle("overflow-hidden", isOpen);
   }, [isOpen]);
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-colors duration-300 ${
-        isScrolled ? "bg-white shadow-md" : "bg-transparent"
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        isScrolled
+          ? "bg-white bg-opacity-90 shadow-md backdrop-blur"
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <a
-          href="#"
-          className="text-accent font-bold text-xl hover:opacity-80 transition"
-        >
+        <a href="#" className="text-accent font-bold text-xl hover:opacity-80 transition">
           Home
         </a>
 
@@ -140,16 +116,12 @@ const Navbar = () => {
               key={id}
               onClick={() => handleNavClick(id)}
               className={`relative capitalize transition duration-300 group ${
-                activeSection === id
-                  ? "text-accent font-bold"
-                  : "hover:text-accent"
+                activeSection === id ? "text-accent font-bold" : "hover:text-accent"
               }`}
             >
               <span>{id}</span>
               <span
-                className={`absolute left-0 -bottom-1 h-0.5 bg-accent transition-all duration-300 ease-in-out group-hover:w-full ${
-                  activeSection === id ? "w-0" : "w-0"
-                }`}
+                className={`absolute left-0 -bottom-1 h-0.5 bg-accent transition-all duration-400 ease-in-out group-hover:w-full w-0`}
               />
             </button>
           ))}
@@ -157,50 +129,23 @@ const Navbar = () => {
 
         {/* Mobile toggle */}
         <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d={
-                isOpen
-                  ? "M6 18L18 6M6 6l12 12"
-                  : "M4 6h16M4 12h16M4 18h16"
-              }
-            />
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
           </svg>
         </button>
       </div>
 
-      {/* Mobile dropdown */}
       {isOpen && (
-        <div
-          ref={dropdownRef}
-          className="md:hidden bg-white shadow-md px-6 pb-4 pt-2 space-y-2"
-        >
+        <div ref={dropdownRef} className="md:hidden bg-white shadow-md px-6 pb-4 pt-2 space-y-2">
           {sectionIds.map((id) => (
             <button
               key={id}
               onClick={() => handleNavClick(id)}
               className={`block w-full text-left capitalize transition duration-300 group ${
-                activeSection === id
-                  ? "text-accent font-bold"
-                  : "text-gray-700 hover:text-accent"
+                activeSection === id ? "text-accent font-bold" : "text-gray-700 hover:text-accent"
               }`}
             >
-              <span className="relative">
-                {id}
-                <span
-                  className={`absolute left-0 -bottom-1 h-0.5 bg-accent transition-all duration-300 ease-in-out group-hover:w-full ${
-                    activeSection === id ? "w-0" : "w-0"
-                  }`}
-                />
-              </span>
+              <span className="relative">{id}</span>
             </button>
           ))}
         </div>

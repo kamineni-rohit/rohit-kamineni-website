@@ -1,20 +1,30 @@
+import { useState } from "react";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { FiChevronDown } from "react-icons/fi";
+import ContactFormModal from "./ContactFormModal";
+import ParticlesBackground from "./ParticlesBackground";
 
 const Hero = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const scrollToProjects = () => {
+    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   const scrollToAbout = () => {
-    document.getElementById("about").scrollIntoView({ behavior: "smooth" });
+    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center text-center px-4 bg-white relative">
-      {/* Everything wrapped in #hero-text for navbar scroll transition targeting */}
-      <div id="hero-text" className="flex flex-col items-center">
-        <h1 className="text-5xl md:text-6xl font-bold tracking-wide text-accent">
+    <section className="relative w-full h-screen overflow-hidden flex flex-col justify-center items-center text-center px-4">
+      <ParticlesBackground />
+
+      <div id="hero-text" className="relative z-20 flex flex-col items-center">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-wide text-accent">
           Rohit Kamineni
         </h1>
 
-        <p className="mt-4 max-w-2xl text-lg text-gray-700 leading-relaxed">
+        <p className="mt-4 max-w-xl sm:max-w-2xl text-base sm:text-lg text-gray-700 leading-relaxed">
           👋 Data Engineer | Analyst | Scientist — I specialize in building
           real-time pipelines, analytical dashboards, and scalable ML systems that
           drive business transformation.
@@ -32,22 +42,30 @@ const Hero = () => {
           </a>
         </div>
 
-        <div className="flex space-x-4 mt-8">
-          <button className="px-6 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-white transition rounded">
-            Protfolio
+        <div className="flex flex-col sm:flex-row sm:space-x-4 mt-8 space-y-4 sm:space-y-0">
+          <button
+            onClick={scrollToProjects}
+            className="px-6 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-white transition rounded"
+          >
+            Portfolio
           </button>
-          <button className="px-6 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-white transition rounded">
-            CV
+          <button
+            onClick={() => setShowModal(true)}
+            className="px-6 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-white transition rounded"
+          >
+            Reach Out to Me
           </button>
         </div>
       </div>
 
       <div
-        className="absolute bottom-10 text-accent text-4xl cursor-pointer animate-bounce"
+        className="absolute bottom-10 text-accent text-4xl cursor-pointer animate-bounce z-20"
         onClick={scrollToAbout}
       >
         <FiChevronDown />
       </div>
+
+      {showModal && <ContactFormModal onClose={() => setShowModal(false)} />}
     </section>
   );
 };
