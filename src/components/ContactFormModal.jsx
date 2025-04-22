@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from "react";
+import { Listbox } from "@headlessui/react";
+import { HiChevronDown } from "react-icons/hi";
 import emailjs from "emailjs-com";
+
+const reasons = ["Job Opportunity", "Collaboration", "Just Saying Hi"];
 
 const ContactFormModal = ({ onClose }) => {
   const [formData, setFormData] = useState({
@@ -59,16 +63,16 @@ const ContactFormModal = ({ onClose }) => {
   }, [onClose]);
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-40 z-50 flex items-center justify-center px-4 transition-opacity duration-300">
+    <div className="fixed inset-0 bg-black bg-opacity-40 z-50 flex items-center justify-center px-4 transition-all">
       <div
         ref={modalRef}
-        className="bg-white rounded-xl shadow-lg w-full max-w-xl p-6 relative animate-fade-in touch-manipulation"
+        className="bg-white rounded-xl shadow-lg w-full max-w-xl p-6 relative animate-fade-in"
       >
         {!showThankYou ? (
           <>
             <button
               onClick={onClose}
-              className="absolute top-4 right-6 text-gray-600 text-2xl font-thin"
+              className="absolute top-4 right-6 text-gray-400 text-2xl hover:text-gray-700 transition"
               aria-label="Close modal"
             >
               &times;
@@ -108,20 +112,39 @@ const ContactFormModal = ({ onClose }) => {
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               />
 
-              <select
+              {/* Custom Listbox Dropdown */}
+              <Listbox
                 value={formData.reason}
-                onChange={(e) => setFormData({ ...formData, reason: e.target.value })}
-                className={`w-full border rounded-md px-4 py-2 text-gray-700 ${
-                  errors.reason ? "border-red-500" : "border-gray-300"
-                } ${formData.reason ? "text-black" : "text-gray-400"}`}
+                onChange={(value) => setFormData({ ...formData, reason: value })}
               >
-                <option value="" disabled hidden>
-                  Why are you contacting?*
-                </option>
-                <option value="Job Opportunity">Job Opportunity</option>
-                <option value="Collaboration">Collaboration</option>
-                <option value="Just Saying Hi">Just Saying Hi</option>
-              </select>
+                <div className="relative">
+                  <Listbox.Button
+                    className={`w-full text-left border rounded-md px-4 py-2 ${
+                      formData.reason ? "text-black" : "text-gray-400"
+                    } ${errors.reason ? "border-red-500" : "border-gray-300"}`}
+                  >
+                    {formData.reason || "Why are you contacting?*"}
+                    <span className="absolute right-4 top-1/2 transform -translate-y-1/2">
+                      <HiChevronDown />
+                    </span>
+                  </Listbox.Button>
+                  <Listbox.Options className="absolute mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg z-10">
+                    {reasons.map((option) => (
+                      <Listbox.Option
+                        key={option}
+                        value={option}
+                        className={({ active }) =>
+                          `px-4 py-2 cursor-pointer ${
+                            active ? "bg-blue-50 text-accent" : "text-gray-800"
+                          }`
+                        }
+                      >
+                        {option}
+                      </Listbox.Option>
+                    ))}
+                  </Listbox.Options>
+                </div>
+              </Listbox>
 
               <input
                 type="text"
