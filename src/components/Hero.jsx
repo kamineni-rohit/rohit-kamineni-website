@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { SiKaggle, SiMedium } from "react-icons/si";
 import { FiChevronDown } from "react-icons/fi";
 import ContactFormModal from "./ContactFormModal";
 import ParticlesBackground from "./ParticlesBackground";
@@ -31,14 +32,37 @@ const Hero = () => {
         </p>
 
         <div className="flex space-x-6 mt-6 text-2xl text-gray-600">
-          <a href="https://linkedin.com/in/rohit-kamineni" target="_blank" rel="noreferrer">
+          <a
+            href="https://linkedin.com/in/rohit-kamineni"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-[#0077B5]" // LinkedIn blue
+          >
             <FaLinkedin />
           </a>
-          <a href="https://github.com/kamineni-rohit" target="_blank" rel="noreferrer">
+          <a
+            href="https://github.com/kamineni-rohit"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-black"
+          >
             <FaGithub />
           </a>
-          <a href="#" target="_blank" rel="noreferrer">
-            <FaTwitter />
+          <a
+            href="https://medium.com/@kaminenirohit1"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-[#00ab6c]" // Medium green
+          >
+            <SiMedium />
+          </a>
+          <a
+            href="https://www.kaggle.com/rohitkamineni"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-[#20beff]" // Kaggle blue
+          >
+            <SiKaggle />
           </a>
         </div>
 
