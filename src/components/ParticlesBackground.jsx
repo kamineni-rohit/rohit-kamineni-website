@@ -42,7 +42,7 @@ const ParticlesBackground = () => {
               enable: true,
               distance: 125,
               color: "#cbd5e1",
-              opacity: 0.6, // slightly more visible
+              opacity: 0.8, // slightly more visible
               width: 1.2,
             },
             move: {
@@ -52,7 +52,7 @@ const ParticlesBackground = () => {
               outModes: "bounce",
             },
             shape: { type: "circle" },
-            size: { value: { min: 1.5, max: 3.5 } },
+            size: { value: { min: 1.6, max: 3.6 } },
             opacity: { value: 1 },
           },
           detectRetina: true,
