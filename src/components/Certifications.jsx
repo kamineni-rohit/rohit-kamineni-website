@@ -2,6 +2,8 @@ import { useState } from "react";
 import CertificationsModal from "./CertificationsModal";
 import udemyLogo from "../assets/udemy.png";
 import courseraLogo from "../assets/coursera.png";
+import SectionBackground from "./SectionBackground";
+import polygonBg from "../assets/PolygonLuminary.svg";
 
 const Certifications = () => {
   const [showModal, setShowModal] = useState(false);
@@ -28,7 +30,9 @@ const Certifications = () => {
       id="certifications"
       className="relative py-24 px-6 md:px-24 text-center bg-white overflow-hidden"
     >
-      <div className="relative z-10 max-w-5xl mx-auto">
+      <SectionBackground imageSrc={polygonBg} opacity={0.08} />
+
+      <div className="relative z-5 max-w-5xl mx-auto">
         <h2 className="text-3xl font-bold text-accent mb-4">Certifications</h2>
         <p className="text-gray-600 italic mb-8">
           These are some of my most relevant certifications.

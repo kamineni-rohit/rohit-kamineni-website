@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
+import SectionBackground from "./SectionBackground";
+import iconGridBg from "../assets/Hexagon.svg";
 
 const projectCategories = [
   "All Projects",
@@ -62,8 +64,10 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="min-h-screen bg-white py-24 px-6 md:px-24 relative flex flex-col items-center"
+      className="min-h-screen bg-white py-24 px-6 md:px-24 relative flex flex-col items-center overflow-hidden"
     >
+      <SectionBackground imageSrc={iconGridBg} opacity={0.09} />
+
       <h2 className="text-3xl font-bold text-accent mb-2 text-center">
         Projects Portfolio
       </h2>
@@ -71,7 +75,7 @@ const Projects = () => {
         <i>A glimpse of the projects I’ve been working on</i>
       </p>
 
-      <div className="flex flex-wrap justify-center gap-4 mb-10">
+      <div className="flex flex-wrap justify-center gap-4 mb-10 z-10">
         {projectCategories.map((cat) => (
           <button
             key={cat}
@@ -87,7 +91,7 @@ const Projects = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl w-full z-10">
         {filteredProjects.map((project, index) => (
           <div
             key={index}
@@ -103,13 +107,15 @@ const Projects = () => {
         ))}
       </div>
 
-      <div
-        className="absolute bottom-10 text-accent text-4xl cursor-pointer animate-bounce"
-        onClick={() =>
-          document.getElementById("education")?.scrollIntoView({ behavior: "smooth" })
-        }
-      >
-        <FiChevronDown />
+      <div className="absolute bottom-10 left-0 w-full flex justify-center z-20">
+        <div
+          className="text-accent text-4xl cursor-pointer animate-bounce"
+          onClick={() =>
+            document.getElementById("education")?.scrollIntoView({ behavior: "smooth" })
+          }
+        >
+          <FiChevronDown />
+        </div>
       </div>
     </section>
   );
