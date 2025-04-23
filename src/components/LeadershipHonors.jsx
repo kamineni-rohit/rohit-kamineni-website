@@ -5,7 +5,7 @@ const LeadershipHonors = () => {
   return (
     <section
       id="leadership-honors"
-      className="relative bg-gray-100 py-24 px-6 md:px-24 text-center overflow-hidden"
+      className="relative bg-gray-50 py-24 px-6 md:px-24 text-center overflow-hidden"
     >
       {/* SVG background with top/bottom fade */}
       <div
