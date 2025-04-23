@@ -2,7 +2,7 @@ import { useState } from "react";
 import CertificationsModal from "./CertificationsModal";
 import udemyLogo from "../assets/udemy.png";
 import courseraLogo from "../assets/coursera.png";
-import polygonBg from "../assets/PolygonLuminary.svg"; // Import your background SVG
+import polygonBg from "../assets/PolygonLuminary.svg";
 
 const Certifications = () => {
   const [showModal, setShowModal] = useState(false);
@@ -29,17 +29,24 @@ const Certifications = () => {
       id="certifications"
       className="relative py-24 px-6 md:px-24 text-center bg-white overflow-hidden"
     >
-      {/* SVG Overlay */}
+      {/* Subtle polygon background with top/bottom fade */}
       <div
-        className="absolute inset-0 z-0 opacity-10 pointer-events-none"
-        aria-hidden="true"
+        className="absolute inset-0 z-0 pointer-events-none"
         style={{
-          backgroundImage: `url(${polygonBg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          filter: "grayscale(1)",
+          opacity: 0.08,
+          WebkitMaskImage:
+            "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
+          maskImage:
+            "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
         }}
-      />
+      >
+        <img
+          src={polygonBg}
+          alt=""
+          className="w-full h-full object-cover"
+          draggable={false}
+        />
+      </div>
 
       <div className="relative z-10 max-w-5xl mx-auto">
         <h2 className="text-3xl font-bold text-accent mb-4">Certifications</h2>

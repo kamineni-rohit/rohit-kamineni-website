@@ -7,10 +7,16 @@ const LeadershipHonors = () => {
       id="leadership-honors"
       className="relative bg-gray-100 py-24 px-6 md:px-24 text-center overflow-hidden"
     >
-      {/* Custom inlined SVG background */}
+      {/* SVG background with top/bottom fade */}
       <div
-        className="absolute inset-0 z-0 pointer-events-none opacity-30"
-        aria-hidden="true"
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          opacity: 0.4,
+          WebkitMaskImage:
+            "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
+          maskImage:
+            "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
+        }}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -19,21 +25,20 @@ const LeadershipHonors = () => {
           className="w-full h-full"
         >
           <g fill="none">
-            <rect width="1440" height="560" x="0" y="0" fill="#f9fafb" />
-            <circle r="93.335" cx="1.76" cy="85.7" stroke="#365aa3" strokeOpacity="0.15" strokeWidth="2" />
-            <circle r="93.335" cx="430.05" cy="414.57" stroke="#365aa3" strokeOpacity="0.15" strokeWidth="2" />
-            <circle r="153.91" cx="984.72" cy="158.76" stroke="#365aa3" strokeOpacity="0.15" strokeWidth="2" />
-            <circle r="64.55" cx="1080.47" cy="94.69" stroke="#365aa3" strokeOpacity="0.15" strokeWidth="2" />
-            <circle r="85.795" cx="632.43" cy="324.87" stroke="#365aa3" strokeOpacity="0.15" strokeWidth="2" />
-            <circle r="57.235" cx="117.16" cy="500.53" stroke="#365aa3" strokeOpacity="0.15" strokeWidth="2" />
-            <circle r="171.155" cx="607.34" cy="345.95" stroke="#365aa3" strokeOpacity="0.15" strokeWidth="2" />
-            <circle r="164.555" cx="798.89" cy="69.01" stroke="#365aa3" strokeOpacity="0.15" strokeWidth="2" />
-            <circle r="75.06" cx="1123.01" cy="250.88" stroke="#365aa3" strokeOpacity="0.15" strokeWidth="2" />
-            <circle r="147.85" cx="935.35" cy="217.53" stroke="#365aa3" strokeOpacity="0.15" strokeWidth="2" />
-            <circle r="113.085" cx="184.99" cy="290.31" stroke="#365aa3" strokeOpacity="0.15" strokeWidth="2" />
-            <circle r="84.12" cx="242.22" cy="28.84" stroke="#365aa3" strokeOpacity="0.15" strokeWidth="2" />
-            <circle r="80.83" cx="372.89" cy="216.72" stroke="#365aa3" strokeOpacity="0.15" strokeWidth="2" />
-            <circle r="121.22" cx="1383.46" cy="75.34" stroke="#365aa3" strokeOpacity="0.15" strokeWidth="2" />
+            <circle r="93.335" cx="1.76" cy="85.7" stroke="#999" strokeOpacity="0.2" strokeWidth="2" />
+            <circle r="93.335" cx="430.05" cy="414.57" stroke="#999" strokeOpacity="0.2" strokeWidth="2" />
+            <circle r="153.91" cx="984.72" cy="158.76" stroke="#999" strokeOpacity="0.2" strokeWidth="2" />
+            <circle r="64.55" cx="1080.47" cy="94.69" stroke="#999" strokeOpacity="0.2" strokeWidth="2" />
+            <circle r="85.795" cx="632.43" cy="324.87" stroke="#999" strokeOpacity="0.2" strokeWidth="2" />
+            <circle r="57.235" cx="117.16" cy="500.53" stroke="#999" strokeOpacity="0.2" strokeWidth="2" />
+            <circle r="171.155" cx="607.34" cy="345.95" stroke="#999" strokeOpacity="0.2" strokeWidth="2" />
+            <circle r="164.555" cx="798.89" cy="69.01" stroke="#999" strokeOpacity="0.2" strokeWidth="2" />
+            <circle r="75.06" cx="1123.01" cy="250.88" stroke="#999" strokeOpacity="0.2" strokeWidth="2" />
+            <circle r="147.85" cx="935.35" cy="217.53" stroke="#999" strokeOpacity="0.2" strokeWidth="2" />
+            <circle r="113.085" cx="184.99" cy="290.31" stroke="#999" strokeOpacity="0.2" strokeWidth="2" />
+            <circle r="84.12" cx="242.22" cy="28.84" stroke="#999" strokeOpacity="0.2" strokeWidth="2" />
+            <circle r="80.83" cx="372.89" cy="216.72" stroke="#999" strokeOpacity="0.2" strokeWidth="2" />
+            <circle r="121.22" cx="1383.46" cy="75.34" stroke="#999" strokeOpacity="0.2" strokeWidth="2" />
           </g>
         </svg>
       </div>
