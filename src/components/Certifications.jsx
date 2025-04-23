@@ -7,10 +7,7 @@ const Certifications = () => {
   const [showModal, setShowModal] = useState(false);
 
   const udemyCerts = [
-    {
-      title: "Google Cloud Professional Data Engineer – GCP",
-      link: "https://www.udemy.com/certificate/UC-2d40aeb3-7272-4aa2-b84c-bc4f47c8e070/",
-    },
+    { title: "Google Cloud Professional Data Engineer – GCP", link: "" },
     { title: "MLOps with AWS", link: "" },
     { title: "Data Science using Python", link: "" },
   ];
@@ -19,6 +16,10 @@ const Certifications = () => {
     {
       title: "Deep Learning Specialization",
       link: "https://www.coursera.org/account/accomplishments/specialization/FEA55B563E4G",
+    },
+    {
+      title: "Machine Learning Operations (MLOps)",
+      link: "https://www.coursera.org/account/accomplishments/verify/XKM58LZ44LS3",
     },
   ];
 
@@ -33,9 +34,9 @@ const Certifications = () => {
           These are some of my most relevant certifications.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 items-start justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 items-start justify-center text-left">
           {/* UDEMY */}
-          <div className="text-left">
+          <div className="pl-6">
             <a
               href="https://www.udemy.com/user/rohit-kamineni-2/"
               target="_blank"
@@ -45,15 +46,15 @@ const Certifications = () => {
               <img src={udemyLogo} alt="Udemy" className="h-8 w-auto" />
               <span className="font-semibold text-gray-800 text-lg">Udemy</span>
             </a>
-            <ul className="list-disc pl-6 text-gray-700 space-y-2">
+            <ul className="list-disc pl-10 text-black space-y-2 mt-4">
               {udemyCerts.map((cert, index) => (
-                <li key={index}>
+                <li key={index} className="leading-snug">
                   {cert.link ? (
                     <a
                       href={cert.link}
                       target="_blank"
                       rel="noreferrer"
-                      className="hover:underline text-blue-700"
+                      className="hover:text-blue-700 transition"
                     >
                       {cert.title}
                     </a>
@@ -66,7 +67,7 @@ const Certifications = () => {
           </div>
 
           {/* COURSERA */}
-          <div className="text-left">
+          <div className="pl-6">
             <a
               href="https://www.coursera.org/"
               target="_blank"
@@ -76,15 +77,15 @@ const Certifications = () => {
               <img src={courseraLogo} alt="Coursera" className="h-8 w-auto" />
               <span className="font-semibold text-gray-800 text-lg">Coursera</span>
             </a>
-            <ul className="list-disc pl-6 text-gray-700 space-y-2">
+            <ul className="list-disc pl-7 text-black space-y-2 mt-4">
               {courseraCerts.map((cert, index) => (
-                <li key={index}>
+                <li key={index} className="leading-snug">
                   {cert.link ? (
                     <a
                       href={cert.link}
                       target="_blank"
                       rel="noreferrer"
-                      className="hover:underline text-blue-700"
+                      className="hover:text-blue-700 transition"
                     >
                       {cert.title}
                     </a>
@@ -98,7 +99,7 @@ const Certifications = () => {
         </div>
 
         {/* Modal Trigger */}
-        <div className="mt-10">
+        <div className="mt-11">
           <button
             onClick={() => setShowModal(true)}
             className="bg-accent text-white px-6 py-2 rounded hover:opacity-90 transition"
