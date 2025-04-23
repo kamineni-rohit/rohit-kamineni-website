@@ -3,14 +3,14 @@ import { FiMail, FiMapPin } from "react-icons/fi";
 import { FaLinkedin } from "react-icons/fa";
 import ContactFormModal from "./ContactFormModal";
 import SectionBackground from "./SectionBackground";
-import hexagonBg from "../assets/Hexagon.svg";
+import hexagonBg from "../assets/IconGrid.svg";
 
 const Contact = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <section id="contact" className="bg-gray-50 py-20 px-6 md:px-24 text-center relative overflow-hidden">
-      <SectionBackground imageSrc={hexagonBg} opacity={0.09} />
+      <SectionBackground imageSrc={hexagonBg} opacity={0.08} />
 
       <div className="relative z-5">
         <h2 className="text-3xl font-bold text-accent mb-6">Contact</h2>
