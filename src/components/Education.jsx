@@ -5,7 +5,7 @@ const Education = () => {
   return (
     <section
       id="education"
-      className="bg-gray-50 py-24 px-6 md:px-24 text-center"
+      className="bg-gray-100 py-24 px-6 md:px-24 text-center"
     >
       <h2 className="text-3xl font-bold text-accent mb-6">Education</h2>
 

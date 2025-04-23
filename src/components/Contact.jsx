@@ -7,7 +7,7 @@ const Contact = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <section id="contact" className="bg-gray-50 py-20 px-6 md:px-24 text-center relative">
+    <section id="contact" className="bg-gray-100 py-20 px-6 md:px-24 text-center relative">
       <h2 className="text-3xl font-bold text-accent mb-6">Contact</h2>
       <p className="text-lg text-gray-700 mb-6 max-w-2xl mx-auto">
         I'm always open to opportunities, collaborations, or just a friendly chat. Feel free to reach out!

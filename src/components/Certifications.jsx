@@ -2,6 +2,7 @@ import { useState } from "react";
 import CertificationsModal from "./CertificationsModal";
 import udemyLogo from "../assets/udemy.png";
 import courseraLogo from "../assets/coursera.png";
+import polygonBg from "../assets/PolygonLuminary.svg"; // Import your background SVG
 
 const Certifications = () => {
   const [showModal, setShowModal] = useState(false);
@@ -28,6 +29,18 @@ const Certifications = () => {
       id="certifications"
       className="relative py-24 px-6 md:px-24 text-center bg-white overflow-hidden"
     >
+      {/* SVG Overlay */}
+      <div
+        className="absolute inset-0 z-0 opacity-10 pointer-events-none"
+        aria-hidden="true"
+        style={{
+          backgroundImage: `url(${polygonBg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          filter: "grayscale(1)",
+        }}
+      />
+
       <div className="relative z-10 max-w-5xl mx-auto">
         <h2 className="text-3xl font-bold text-accent mb-4">Certifications</h2>
         <p className="text-gray-600 italic mb-8">

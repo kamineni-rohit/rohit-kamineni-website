@@ -5,11 +5,11 @@ const LeadershipHonors = () => {
   return (
     <section
       id="leadership-honors"
-      className="relative bg-gray-50 py-24 px-6 md:px-24 text-center overflow-hidden"
+      className="relative bg-gray-100 py-24 px-6 md:px-24 text-center overflow-hidden"
     >
       {/* Custom inlined SVG background */}
       <div
-        className="absolute inset-0 z-0 pointer-events-none opacity-50"
+        className="absolute inset-0 z-0 pointer-events-none opacity-30"
         aria-hidden="true"
       >
         <svg
@@ -89,7 +89,7 @@ const LeadershipHonors = () => {
                 <div>
                   <h4 className="font-semibold">Internship Mentor – ZopSmart</h4>
                   <p>
-                    Guided 20+ interns across two cohorts, with an 80% conversion rate.
+                    Guided 20+ interns across two cohorts, with over an 80% conversion rate.
                   </p>
                 </div>
               </li>
