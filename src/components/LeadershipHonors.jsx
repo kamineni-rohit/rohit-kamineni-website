@@ -24,7 +24,7 @@ const LeadershipHonors = () => {
             </div>
             <ul className="space-y-4 pl-2">
               <li className="flex items-start gap-3">
-                <FaPeopleCarry className="text-accent mt-1" />
+                <FaPeopleCarry className="text-gray-700 mt-1" />
                 <div>
                   <h4 className="font-semibold">
                     Coordinator – Student Aid Fund
@@ -35,7 +35,7 @@ const LeadershipHonors = () => {
                 </div>
               </li>
               <li className="flex items-start gap-3">
-                <FaTrophy className="text-accent mt-1" />
+                <FaTrophy className="text-gray-700 mt-1" />
                 <div>
                   <h4 className="font-semibold">Captain – College Snooker Team</h4>
                   <p>
@@ -54,7 +54,7 @@ const LeadershipHonors = () => {
             </div>
             <ul className="space-y-4 pl-2">
               <li className="flex items-start gap-3">
-                <FaLightbulb className="text-accent mt-1" />
+                <FaLightbulb className="text-gray-700 mt-1" />
                 <div>
                   <h4 className="font-semibold">Pivot Polaris</h4>
                   <p>
@@ -63,7 +63,7 @@ const LeadershipHonors = () => {
                 </div>
               </li>
               <li className="flex items-start gap-3">
-                <FaChalkboardTeacher className="text-accent mt-1" />
+                <FaChalkboardTeacher className="text-gray-700 mt-1" />
                 <div>
                   <h4 className="font-semibold">Internship Mentor</h4>
                   <p>
