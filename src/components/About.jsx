@@ -32,7 +32,7 @@ const About = () => {
                         <div className="relative pl-6 border-l-4 border-accent">
                             <div className="mb-4">
                                 <div className="text-accent font-semibold">2019 – 2023</div>
-                                <div className="text-lg font-bold">Data Engineer – Kroger</div>
+                                <div className="text-lg font-bold">Data Engineer</div>
                                 <div className="text-sm italic text-gray-600 mb-1">
                                     Kroger Technology & Digital
                                 </div>
@@ -44,9 +44,9 @@ const About = () => {
 
                             <div className="mb-4">
                                 <div className="text-accent font-semibold">2019</div>
-                                <div className="text-lg font-bold">SDE – Kroger</div>
+                                <div className="text-lg font-bold">SDE – CX Web Products & Search</div>
                                 <div className="text-sm italic text-gray-600 mb-1">
-                                    CX Web Products & Search
+                                Kroger Technology & Digital
                                 </div>
                                 <p className="text-gray-700">
                                     Built Products BFF for 15M+ daily requests; migrated APIs to a
@@ -56,9 +56,9 @@ const About = () => {
 
                             <div>
                                 <div className="text-accent font-semibold">2019</div>
-                                <div className="text-lg font-bold">Data Engineer – Tcube</div>
+                                <div className="text-lg font-bold">Data Engineer</div>
                                 <div className="text-sm italic text-gray-600 mb-1">
-                                    Hyderabad
+                                    Tcube
                                 </div>
                                 <p className="text-gray-700">
                                     Designed Python/SQL pipelines for logistics data and enabled
