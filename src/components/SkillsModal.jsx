@@ -29,9 +29,7 @@ const skillCategories = {
 
 // Maps a skill name to a possible icon source (static or generated)
 const getIconUrl = (skill) => {
-  // Normalize for matching
   const sanitized = skill.toLowerCase().replace(/[^a-z0-9]/gi, '');
-  // Map for common skills using skillicons.dev or Devicon where possible
   const known = {
     python: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
     java: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
@@ -45,17 +43,17 @@ const getIconUrl = (skill) => {
     aws: "https://skillicons.dev/icons?i=aws",
     azure: "https://skillicons.dev/icons?i=azure",
     gcp: "https://skillicons.dev/icons?i=gcp",
-    "googlecloudplatformgcp": "https://skillicons.dev/icons?i=gcp",
+    googlecloudplatformgcp: "https://skillicons.dev/icons?i=gcp",
     kubernetes: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg",
     cicd: "https://skillicons.dev/icons?i=githubactions",
     apachespark: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg",
     hadoop: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hadoop/hadoop-original.svg",
     databricks: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/databricks/databricks-original.svg",
-    bigquery: "https://skillicons.dev/icons?i=bigquery",
-    airflow: "https://iconduck.com/icons/27002/airflow.svg", // Open-source Airflow icon[6]
+    bigquery: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
+    airflow: "https://iconduck.com/icons/27002/airflow.svg",
     gluecatalog: "https://skillicons.dev/icons?i=aws",
-    fivetran: "https://iconscout.com/icons/fivetran", // Use IconScout for Fivetran[4]
-    integrateio: "https://ui-avatars.com/api/?name=Integrate.io&background=1d6fba&color=fff&bold=true&format=png&size=32",
+    fivetran: "https://seeklogo.com/images/F/fivetran-logo-6F4C933A9F-seeklogo.com.png",
+    integrateio: "https://www.integrate.io/images/icons/integrate-logo.svg",
     sqlwarehouse: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
     mysql: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
     postgresql: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
@@ -71,48 +69,24 @@ const getIconUrl = (skill) => {
     modeldeployment: "https://skillicons.dev/icons?i=python",
     anomalydetection: "https://skillicons.dev/icons?i=python",
     tableau: "https://cdn.worldvectorlogo.com/logos/tableau-software.svg",
-    looker: "https://iconscout.com/icons/looker", // Use IconScout for Looker[4]
-    powerbi: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/powerbi/powerbi-original.svg",
+    looker: "https://cdn-icons-png.flaticon.com/512/5968/5968333.png",
+    powerbi: "https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg",
     exceladvanced: "https://skillicons.dev/icons?i=excel",
-    sasminer: "https://ui-avatars.com/api/?name=SAS+Miner&background=1d6fba&color=fff&bold=true&format=png&size=32",
+    sasminer: "https://cdn.worldvectorlogo.com/logos/sas-2.svg",
     dbt: "https://skillicons.dev/icons?i=dbt",
     googlesheets: "https://skillicons.dev/icons?i=googlecloud",
     icims: "https://ui-avatars.com/api/?name=iCIMS&background=1d6fba&color=fff&bold=true&format=png&size=32",
-    salesforce: "https://skillicons.dev/icons?i=salesforce",
+    salesforce: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/salesforce/salesforce-original.svg",
     slack: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg",
     jira: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg"
   };
 
-  // Try to use skillicons.dev for supported skills (fallback for many)
-  const skilliconsList = [
-    "python", "java", "sql", "go", "bash", "javascript", "docker", "git", "github",
-    "aws", "azure", "gcp", "kubernetes", "githubactions", "bigquery", "dbt", "excel", "salesforce"
-  ];
-  if (skilliconsList.includes(sanitized)) {
-    return `https://skillicons.dev/icons?i=${sanitized}`;
-  }
-
-  // Use known icons if mapped
   if (known[sanitized]) return known[sanitized];
 
-  // Try Devicon fallback for common techs
-  const deviconFallback = [
-    "python", "java", "mysql", "go", "javascript", "docker", "git", "github", "aws", "azure", "gcp",
-    "kubernetes", "hadoop", "postgresql", "mongodb", "redis", "elasticsearch", "slack", "jira"
-  ];
-  if (deviconFallback.includes(sanitized)) {
-    return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${sanitized}/${sanitized}-original.svg`;
-  }
-
-  // Try IconScout for niche techs (Databricks, Fivetran, Looker)
-  if (["databricks", "fivetran", "looker"].includes(sanitized)) {
-    return `https://iconscout.com/icons/${sanitized}`;
-  }
-
-  // Fallback: avatar icon with skill initials
   return `https://ui-avatars.com/api/?name=${encodeURIComponent(skill)}&background=1d6fba&color=fff&bold=true&format=png&size=32`;
 };
 
+// Fallback icon for unknown skills
 const SkillsModal = ({ onClose }) => {
   const modalRef = useRef();
   const transitions = useTransition(true, {
