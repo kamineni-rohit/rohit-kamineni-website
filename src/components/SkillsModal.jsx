@@ -4,16 +4,16 @@ import { useTransition, animated } from "@react-spring/web";
 
 const skillCategories = {
   "Programming & Scripting": [
-    "Python", "Java", "SQL", "Shell Scripting"
+    "Python", "Java", "SQL", "GoLang", "Shell Scripting", "JavaScript"
   ],
   "Cloud Platforms & DevOps": [
-    "Google Cloud Platform (GCP)", "AWS", "Kubernetes", "CI/CD", "Docker", "GitHub", "Git"
+    "Google Cloud Platform (GCP)", "AWS", "Azure", "Kubernetes", "CI/CD", "Docker", "GitHub", "Git"
   ],
   "Big Data & ETL": [
     "Apache Spark", "Hadoop", "Databricks", "BigQuery", "Airflow", "Glue Catalog", "Fivetran", "Integrate.io"
   ],
   "Databases & Storage": [
-    "SQL Warehouse", "MySQL", "PostgreSQL", "Google Cloud Storage (GCS)"
+    "SQL Warehouse", "MySQL", "PostgreSQL", "Google Cloud Storage (GCS)", "Amazon S3", "MongoDB", "Redis", "Elasticsearch", "MySQL Workbench", "MongoDB"
   ],
   "Machine Learning & MLOps": [
     "Vertex AI", "Scikit-learn", "ML Pipelines", "Model Deployment", "Anomaly Detection"
@@ -22,7 +22,7 @@ const skillCategories = {
     "Tableau", "Looker", "Power BI"
   ],
   "Analytics & Tools": [
-    "Excel (Advanced)", "SAS Miner", "dbt", "Google Sheets", "iCIMS", "Salesforce", "ICIMS", "Slack", "JIRA"
+    "Excel (Advanced)", "SAS Miner", "dbt", "Google Sheets", "iCIMS", "Salesforce", "Slack", "JIRA"
   ]
 };
 
