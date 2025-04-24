@@ -37,15 +37,15 @@ const About = () => {
               {/* Timeline Column */}
               <div className="flex flex-col items-center relative h-full">
                 {/* Dot 1 */}
-                <span className="w-3 h-3 rounded-full bg-accent z-10" />
+                <span className="w-3 h-3 rounded-full bg-accent mb z-10" />
                 {/* Line 1 */}
-                <div className="flex-1 w-1 bg-accent mt-1.5 mb-1.5" />
+                <div className="flex-1 w-1 bg-accent mt-1.5 mb-3.5" />
                 {/* Dot 2 */}
-                <span className="w-3 h-3 rounded-full bg-accent z-10" />
+                <span className="w-3 h-3 rounded-full bg-accent mb-2 z-10" />
                 {/* Line 2 */}
-                <div className="flex-1 w-1 bg-accent mt-1.5 mb-1.5" />
+                <div className="flex-1 w-1 bg-accent mt-1.5 mb-3.5" />
                 {/* Dot 3 */}
-                <span className="w-3 h-3 rounded-full bg-accent z-10" />
+                <span className="w-3 h-3 rounded-full bg-accent mb-2 z-10" />
                 {/* Line 3 */}
                 <div className="flex-1 w-1 bg-accent mt-1.5 mb-1.5" />
                 {/* Dot 4 */}
