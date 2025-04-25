@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 // eslint-disable-next-line no-unused-vars
 import { useTransition, animated } from "@react-spring/web";
 import {
@@ -34,6 +34,20 @@ const KnowMoreModal = ({ onClose }) => {
     leave: { opacity: 0, transform: "scale(0.95)" },
     config: { duration: 200 }
   });
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (modalRef.current && !modalRef.current.contains(e.target)) {
+        onClose();
+      }
+    };
+     document.body.style.overflow = 'hidden'; // Lock scroll
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.body.style.overflow = 'unset'; // Unlock scroll
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [onClose]);
 
   const professionalSummary = `Hey! I'm Rohit Kamineni — part data engineer, part problem-solver, part “how-can-we-make-this-better” kind of guy.  
 I’m the kind of person who gets excited about clean architecture and clean code (equally). Beyond code, I’m a mentor, an educator, and a huge believer in tech for good. Whether I’m building, presenting, or mentoring, my goal stays the same: make an impact, and make it easy for others to do the same. Oh, and I’m always down for a deep dive into market structure or a quick round of chess in between SQL queries 😄
