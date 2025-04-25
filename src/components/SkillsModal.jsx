@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 // eslint-disable-next-line no-unused-vars
 import { useTransition, animated } from "@react-spring/web";
 
@@ -48,12 +48,12 @@ const getIconUrl = (skill) => {
     cicd: "https://skillicons.dev/icons?i=githubactions",
     apachespark: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg",
     hadoop: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hadoop/hadoop-original.svg",
-    databricks: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/databricks/databricks-original.svg",
+    databricks: "https://www.databricks.com/wp-content/uploads/2020/04/databricks-logo-small.png", // Updated
     bigquery: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
     airflow: "https://iconduck.com/icons/27002/airflow.svg",
     gluecatalog: "https://skillicons.dev/icons?i=aws",
-    fivetran: "https://seeklogo.com/images/F/fivetran-logo-6F4C933A9F-seeklogo.com.png",
-    integrateio: "https://www.integrate.io/images/icons/integrate-logo.svg",
+    fivetran: "https://www.fivetran.com/images/fivetran-logo-blue.svg", // Updated
+    integrateio: "https://www.integrate.io/hubfs/website-assets/Integrate.io%20Logo%20Color.svg", // Updated
     sqlwarehouse: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
     mysql: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
     postgresql: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
@@ -63,7 +63,7 @@ const getIconUrl = (skill) => {
     redis: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
     elasticsearch: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/elasticsearch/elasticsearch-original.svg",
     mysqlworkbench: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
-    vertexai: "https://ui-avatars.com/api/?name=Vertex+AI&background=1d6fba&color=fff&bold=true&format=png&size=32",
+    vertexai: "https://cloud.google.com/vertex-ai/images/vertex-ai-logo.svg", // Updated
     scikitlearn: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
     mlpipelines: "https://skillicons.dev/icons?i=python",
     modeldeployment: "https://skillicons.dev/icons?i=python",
@@ -71,9 +71,9 @@ const getIconUrl = (skill) => {
     tableau: "https://cdn.worldvectorlogo.com/logos/tableau-software.svg",
     looker: "https://cdn-icons-png.flaticon.com/512/5968/5968333.png",
     powerbi: "https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg",
-    exceladvanced: "https://skillicons.dev/icons?i=excel",
+    exceladvanced: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Microsoft_Office_Excel_%282019%29.svg/1200px-Microsoft_Office_Excel_%282019%29.svg.png", //Updated
     sasminer: "https://cdn.worldvectorlogo.com/logos/sas-2.svg",
-    dbt: "https://skillicons.dev/icons?i=dbt",
+    dbt: "https://avatars.githubusercontent.com/u/55843770?s=200&v=4", //Updated
     googlesheets: "https://skillicons.dev/icons?i=googlecloud",
     icims: "https://ui-avatars.com/api/?name=iCIMS&background=1d6fba&color=fff&bold=true&format=png&size=32",
     salesforce: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/salesforce/salesforce-original.svg",
