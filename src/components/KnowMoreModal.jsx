@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+// eslint-disable-next-line no-unused-vars
 import { useTransition, animated } from "@react-spring/web";
 import {
   FaInstagram,
@@ -12,16 +13,15 @@ import {
   FaDice,
   FaPlane,
   FaFilm,
-  FaGamepad,
   FaCode,
   FaUsers,
-  FaTrophy,
+  FaCar,
+  FaBaseballBatBall
 } from "react-icons/fa6";
-import { MdPool, MdHiking } from "react-icons/md";
+import { MdHiking } from "react-icons/md";
 import { RiRunFill } from 'react-icons/ri';
-//import { SiPoolTable } from 'react-icons/si'; // Removed SiPoolTable
-import { GiGamepad } from 'react-icons/gi'; // Using GiGamePad as alternative
-import nirmaanLogo from "../assets/nirmaan-logo.png";
+import nirmaanLogo from "../assets/nirmaan-logo.png"; // Ensure this path is correct
+import snookerImg from "../assets/snooker.png"; // Import the snooker image
 
 const KnowMoreModal = ({ onClose }) => {
   const modalRef = useRef();
@@ -29,7 +29,7 @@ const KnowMoreModal = ({ onClose }) => {
     from: { opacity: 0, transform: "scale(0.95)" },
     enter: { opacity: 1, transform: "scale(1)" },
     leave: { opacity: 0, transform: "scale(0.95)" },
-    config: { tension: 220, friction: 20 },
+    config: { duration: 200 }, // Consistent with ExperienceModal.jsx
   });
 
   useEffect(() => {
@@ -38,99 +38,95 @@ const KnowMoreModal = ({ onClose }) => {
         onClose();
       }
     };
-    document.body.classList.add('overflow-hidden');
+    document.body.style.overflow = "hidden";
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.body.classList.remove('overflow-hidden');
+      document.body.style.overflow = "unset";
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [onClose]);
 
   const professionalSummary = `
-Hey there, I'm Rohit Kamineni! I'm that data enthusiast who gets a kick out of turning complex information into compelling stories and building things that make a real difference. My journey has taken me through architecting data systems, diving deep into machine learning, and leading teams to deliver some seriously cool stuff across various industries. I'm all about tackling challenging projects and I'm always up for learning something new.
-
-But beyond the tech, what really drives me is empowering others and building bridges. Whether it's mentoring a student, volunteering in my community, or collaborating with a team to solve a tricky problem, I'm all about using my skills to create opportunities and build connections. I believe in the power of technology to connect people and make the world a better place, and I'm always looking for new ways to contribute to that vision. So, if you're passionate about innovation, collaboration, and making a real impact, let's connect!
+Hey, I'm Rohit Kamineni, a Data Engineer passionate about building data solutions.
+I architect scalable data and machine learning systems with a focus on automation and real-time analytics.
+My goal is to empower decision-making and drive positive change.
+I'm driven by turning complex information into compelling stories and building impactful solutions.
 `;
 
   const highlights = [
-    "React enthusiast & lifelong learner",
+    "Data Engineer with 4+ years of experience",
+    "Data enthusiast & lifelong learner",
+    "Passionate about building scalable data and machine learning solutions",
+    "Experienced in cloud-native enterprise environments (GCP, Databricks, Airflow, Vertex AI)",
+    "Strong focus on automation, real-time analytics, and data-driven decision-making",
+    "Proven ability to transform business processes",
+    "Loves collaborating with diverse teams on challenging projects",
+    "Dedicated to making education and technology accessible to everyone",
     "Enjoys hackathons and building with friends",
-    "Loves a good coffee chat",
-    "Passionate about distributed systems and cloud technologies",
-    "Experienced in leading cross-functional teams",
-    "Strong advocate for data-driven decision making",
-    "Dedicated to continuous learning and growth",
-    "Enjoys sharing knowledge and mentoring others",
-    "Proven ability to translate complex data challenges into scalable solutions",
-    "Focused on delivering solutions that are both technically sound and business-aware",
+    "Always up for a good coffee chat",
   ];
 
   const moreInfo = {
     "Languages I Speak": [
       "English – Native or bilingual",
-      "Hindi – Full professional",
       "Telugu – Native or bilingual",
-      "Tamil – Limited working",
+      "Hindi – Full professional",
+      "Tamil – Limited working"
     ],
     "Volunteering & Impact": [
       <>
-        <img src={nirmaanLogo} alt="Nirmaan Logo" className="inline w-6 h-6 mr-2 align-middle" />
-        Led STEM programs for students in orphanages via Nirmaan Organization, sparking curiosity, building confidence, and making science fun.
+        <img
+          src={nirmaanLogo}
+          alt="Nirmaan Logo"
+          className="inline w-12 h-12 mr-4 align-middle"
+        />
+        From 2010 to 2012, I led STEM programs for students in orphanages through the Nirmaan Organization.  This involved designing and delivering interactive sessions aimed at sparking curiosity, building confidence, and making science fun and accessible.
       </>,
     ],
     "What Drives Me": [
       "I believe everyone deserves a fair shot at education and tech opportunities.",
-      "I'm all about collaborating with people from all backgrounds, especially when the stakes are high and the mission matters.",
-      "I'm driven by the desire to use technology to solve real-world problems and create positive change.",
-    ],
+      "I'm all about collaborating with people from all backgrounds—especially when the stakes are high and the mission matters.",
+      "I'm driven by the desire to use technology to solve real-world problems and create positive change."
+    ]
   };
 
   const hobbies = [
-    { label: "Formula 1", icon: <FaGamepad /> },
-    { label: "Cue Sports", icon: <GiGamepad /> }, // Changed to GiGamePad
-    { label: "Cricket", icon: <FaGamepad /> },
-    { label: "Chess", icon: <FaChessKnight /> },
-    { label: "Cooking", icon: <FaUtensils /> },
-    { label: "Travel", icon: <FaPlane /> },
-    { label: "Music", icon: <FaMusic /> },
-    { label: "Movies", icon: <FaFilm /> },
-    { label: "Hiking", icon: <MdHiking /> },
-    { label: "Cats", icon: <FaCat /> },
-    { label: "Dogs", icon: <FaDog /> },
-    { label: "Tech", icon: <FaCode /> },
-    { label: "Board Games", icon: <FaDice /> },
-    { label: "Fitness", icon: <RiRunFill /> },
-    { label: "Learning", icon: <FaUsers/>},
-    { label: "Winning", icon: <FaTrophy/>}
+    { label: "Formula 1", icon: <FaCar />, color: "#1d6fba" },
+    { label: "Cue Sports", icon: <img src={snookerImg} alt="Snooker" style={{ width: '24px', height: '24px' }} />, color: "#1d6fba" },
+    { label: "Cricket", icon: <FaBaseballBatBall />, color: "#1d6fba" },
+    { label: "Chess", icon: <FaChessKnight />, color: "#1d6fba" },
+    { label: "Cooking", icon: <FaUtensils />, color: "#1d6fba" },
+    { label: "Travel", icon: <FaPlane />, color: "#1d6fba" },
+    { label: "Music", icon: <FaMusic />, color: "#1d6fba" },
+    { label: "Movies", icon: <FaFilm />, color: "#1d6fba" },
+    { label: "Hiking", icon: <MdHiking />, color: "#1d6fba" },
+    { label: "Cats", icon: <FaCat />, color: "#1d6fba" },
+    { label: "Dogs", icon: <FaDog />, color: "#1d6fba" },
+    { label: "Tech", icon: <FaCode />, color: "#1d6fba" },
+    { label: "Board Games", icon: <FaDice />, color: "#1d6fba" },
+    { label: "Fitness", icon: <RiRunFill />, color: "#1d6fba" },
+    { label: "Learning", icon: <FaUsers />, color: "#1d6fba" },
   ];
-
-  const renderIcon = (icon, defaultClass = "text-lg text-accent") => {
-        if (!icon) return null;
-        if (React.isValidElement(icon)) {
-            return React.cloneElement(icon, { className: `${defaultClass} ${icon.props.className || ''}` });
-        }
-        return null;
-    };
 
   const socials = [
     {
       icon: <FaInstagram />,
       url: "https://www.instagram.com/rohit_kamineni/",
       label: "Instagram",
-      brand: "#E4405F",
+      brand: "#E4405F"
     },
     {
       icon: <FaFacebook />,
       url: "https://www.facebook.com/rohit.kamineni.01/",
       label: "Facebook",
-      brand: "#1877F3",
+      brand: "#1877F3"
     },
     {
       icon: <FaXTwitter />,
       url: "https://x.com/rohit_kamineni",
       label: "X",
-      brand: "#000000",
-    },
+      brand: "#000000"
+    }
   ];
 
   return (
@@ -153,54 +149,98 @@ But beyond the tech, what really drives me is empowering others and building bri
               Know More About Me
             </h3>
 
-            {/* Summary */}
+            {/* Professional Summary */}
             <section className="mb-6">
-              <h4 className="font-semibold text-gray-800 mb-2 text-lg">Professional Summary</h4>
-              <p className="text-gray-700 text-base leading-relaxed">{professionalSummary}</p>
+              <h4 className="font-semibold text-gray-800 mb-2 text-lg">
+                Professional Summary
+              </h4>
+              <p className="text-gray-700 text-base leading-relaxed">
+                {professionalSummary}
+              </p>
             </section>
 
-            {/* Highlights */}
+            {/* Volunteering & Impact */}
             <section className="mb-6">
-              <h4 className="font-semibold text-gray-800 mb-2 text-lg">Highlights</h4>
-              <ul className="flex flex-wrap gap-2">
-                {highlights.map((item, i) => (
-                  <li key={i} className="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm">{item}</li>
+              <h4 className="font-semibold text-gray-800 mb-2 text-lg">
+                Volunteering & Impact
+              </h4>
+              <div className="flex items-start gap-4">
+                <img
+                  src={nirmaanLogo}
+                  alt="Nirmaan Logo"
+                  className="w-16 h-16 mt-1"
+                />
+                <p className="text-gray-700 text-base leading-relaxed">
+                  From 2010 to 2012, I led STEM programs for students in orphanages through the Nirmaan Organization. This involved designing and delivering interactive sessions aimed at sparking curiosity, building confidence, and making science fun and accessible.
+                </p>
+              </div>
+            </section>
+
+            {/* Hobbies and Interests */}
+            <section className="mb-6">
+              <h4 className="font-semibold text-gray-800 mb-2 text-lg">
+                Hobbies & Interests
+              </h4>
+              <ul className="flex flex-wrap gap-3 text-sm">
+                {hobbies.map((hobby, i) => (
+                  <li
+                    key={i}
+                    className="flex items-center gap-2 px-3 py-1 rounded-full bg-gray-50 hover:bg-gray-100 transition text-gray-700"
+                    style={{ color: hobby.color }}
+                  >
+                    {hobby.icon}
+                    {hobby.label}
+                  </li>
                 ))}
               </ul>
             </section>
 
-            {/* More Info Sections */}
-            <div className="space-y-6">
-              {Object.entries(moreInfo).map(([title, items], idx) => (
-                <div key={idx}>
-                  <h4 className="font-semibold text-gray-800 mb-2">{title}</h4>
-                  <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
-                    {items.map((item, i) => (
-                      <li key={i}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+            {/* What Drives Me */}
+            <section className="mb-6">
+              <h4 className="font-semibold text-gray-800 mb-2 text-lg">
+                What Drives Me
+              </h4>
+              <ul className="list-disc pl-5 text-gray-700 text-sm space-y-2">
+                {moreInfo["What Drives Me"].map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </section>
 
-              {/* Hobbies */}
-              <div>
-                <h4 className="font-semibold text-gray-800 mb-2">Hobbies & Interests</h4>
-                <ul className="flex flex-wrap gap-3 text-sm">
-                  {hobbies.map((hobby, i) => (
-                    <li
-                      key={i}
-                      className="flex items-center gap-2 border px-3 py-1 rounded-full bg-gray-50 hover:bg-gray-100 transition text-gray-700"
-                    >
-                      {renderIcon(hobby.icon)}
-                      {hobby.label}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+            {/* Languages I Speak */}
+            <section className="mb-6">
+              <h4 className="font-semibold text-gray-800 mb-2 text-lg">
+                Languages I Speak
+              </h4>
+              <ul className="list-disc pl-5 text-gray-700 text-sm space-y-2">
+                {moreInfo["Languages I Speak"].map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </section>
 
-            {/* Socials */}
+            {/* Highlights */}
+            <section className="mb-6">
+              <h4 className="font-semibold text-gray-800 mb-2 text-lg">
+                Highlights
+              </h4>
+              <ul className="flex flex-wrap gap-2">
+                {highlights.map((item, i) => (
+                  <li
+                    key={i}
+                    className="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            {/* Social Icons */}
             <div className="text-center mt-10 flex justify-center gap-6">
+              <p className="text-gray-700 italic">
+                Connect with me on my socials!
+              </p>
               {socials.map(({ icon, url, label, brand }, idx) => (
                 <a
                   key={idx}
@@ -209,15 +249,21 @@ But beyond the tech, what really drives me is empowering others and building bri
                   rel="noopener noreferrer"
                   aria-label={label}
                   className="transition transform hover:scale-110"
-                  style={{ color: "#b0b0b0" }}
-                  onMouseEnter={(e) => { e.currentTarget.style.color = brand; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.color = "#b0b0b0"; }}
+                  style={{
+                    color: "#b0b0b0",
+                    transition: "color 0.2s",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = brand;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = "#b0b0b0";
+                  }}
                 >
                   <span className="text-3xl">{icon}</span>
                 </a>
               ))}
             </div>
-
             <div className="text-center mt-8">
               <button
                 onClick={onClose}
@@ -235,4 +281,3 @@ But beyond the tech, what really drives me is empowering others and building bri
 };
 
 export default KnowMoreModal;
-

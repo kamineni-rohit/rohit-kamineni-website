@@ -207,6 +207,7 @@ const ExperienceModal = ({ onClose }) => {
           </animated.div>
         ) : null
       )}
+      <div className="fixed inset-0 -z-10 backdrop-blur-sm" onClick={onClose} />
     </div>
   );
 };
