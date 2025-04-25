@@ -9,6 +9,7 @@ const projectCategories = [
   "Analytics",
   "Data Science",
   "Data Visualizations",
+  "In Progress"
 ];
 
 const projectsData = [
@@ -52,13 +53,26 @@ const projectsData = [
     desc: "Designed normalized schema + ERD for search/feedback; reduced retrieval time by 30%.",
     categories: ["All Projects", "Data Engineering", "Data Visualizations"],
   },
+  // 🚧 In Progress (EXCLUDED from 'All Projects')
+  {
+    title: "Stochastic Optimization for Trading",
+    desc: "15-minute S&P 500 interval strategy using stochastic methods. In progress.",
+    categories: ["In Progress", "Data Science"],
+  },
+  {
+    title: "Market Jump Predictor",
+    desc: "Building classifier models on CRSP tick data. Experimental phase.",
+    categories: ["In Progress", "Data Science"],
+  }
 ];
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState("All Projects");
 
   const filteredProjects = projectsData.filter((project) =>
-    project.categories.includes(activeCategory)
+    activeCategory === "All Projects"
+      ? project.categories.includes("All Projects")
+      : project.categories.includes(activeCategory)
   );
 
   return (
@@ -68,29 +82,37 @@ const Projects = () => {
     >
       <SectionBackground imageSrc={hexagonBg} opacity={0.09} />
 
-      <h2 className="text-3xl font-bold text-accent mb-2 text-center">
-        Projects Portfolio
-      </h2>
-      <p className="text-gray-700 text-center mb-8">
-        <i>A glimpse of the projects I’ve been working on</i>
+      <h2 className="text-3xl font-bold text-accent mb-4 text-center">Projects Portfolio</h2>
+      <p className="text-gray-700 text-center mb-7 italic">
+        A glimpse of the projects I’ve been working on
       </p>
 
-      <div className="flex flex-wrap justify-center gap-4 mb-10 z-10">
-        {projectCategories.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setActiveCategory(cat)}
-            className={`px-4 py-2 rounded-full border ${
-              activeCategory === cat
-                ? "bg-accent text-white"
-                : "bg-white text-gray-800"
-            } hover:bg-accent hover:text-white transition`}
-          >
-            {cat}
-          </button>
-        ))}
+      {/* Theme-Styled Category Picker */}
+      <div className="relative z-10 mb-12 w-full flex justify-center">
+        <div className="flex flex-wrap justify-center gap-3 px-4 py-2 bg-white border border-accent/30 rounded-full shadow-md backdrop-blur-sm">
+          {projectCategories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`relative px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ease-in-out
+          ${activeCategory === cat
+                  ? "text-white bg-accent shadow-md scale-105"
+                  : "text-accent hover:bg-accent/10 hover:scale-105"
+                }`}
+            >
+              {cat}
+              {activeCategory === cat && (
+                <span
+                  className="absolute inset-0 rounded-full ring-2 ring-white ring-opacity-50 animate-pulse"
+                  aria-hidden="true"
+                />
+              )}
+            </button>
+          ))}
+        </div>
       </div>
 
+      {/* Project Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl w-full z-10">
         {filteredProjects.map((project, index) => (
           <div
@@ -107,11 +129,14 @@ const Projects = () => {
         ))}
       </div>
 
+      {/* Chevron Navigation */}
       <div className="absolute bottom-10 left-0 w-full flex justify-center z-20">
         <div
           className="text-accent text-4xl cursor-pointer animate-bounce"
           onClick={() =>
-            document.getElementById("education")?.scrollIntoView({ behavior: "smooth" })
+            document
+              .getElementById("education")
+              ?.scrollIntoView({ behavior: "smooth" })
           }
         >
           <FiChevronDown />
