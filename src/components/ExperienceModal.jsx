@@ -77,6 +77,7 @@ const experience = [
       </>
     ),
     consultingOrg: "ZopSmart", // Add a new field for the consulting org
+    consultingOrgLink: "https://www.linkedin.com/company/zopsmart/posts/?feedView=all",
     link: "https://www.linkedin.com/company/kroger-technology-and-digital/",
     title: "Data Engineer",
     date: "Aug 2019 – Jun 2023",
@@ -100,6 +101,7 @@ const experience = [
     ),
     consultingOrg: "ZopSmart", // Add a new field for the consulting org
     link: "https://www.linkedin.com/company/kroger-technology-and-digital/",
+    consultingOrgLink: "https://www.linkedin.com/company/zopsmart/posts/?feedView=all",
     title: "Software Development Engineer",
     date: "Aug 2019 – Dec 2019",
     location: "Bangalore, India",
@@ -191,11 +193,13 @@ const ExperienceModal = ({ onClose }) => {
                       <img src={exp.logo} alt={exp.org} className="w-10 h-10 object-contain bg-white rounded" />
                     </a>
                     {exp.consultingOrg && (
-                      <img
-                        src={zopSmartLogo}
-                        alt={exp.consultingOrg}
-                        className="w-8 h-8 object-contain mt-1 bg-white rounded"
-                      />
+                      <a href={exp.consultingOrgLink} target="_blank" rel="noreferrer" className="block mt-1">
+                        <img
+                          src={zopSmartLogo}
+                          alt={exp.consultingOrg}
+                          className="w-8 h-8 object-contain bg-white rounded"
+                        />
+                      </a>
                     )}
                   </div>
                   <div className="space-y-1">

@@ -179,7 +179,7 @@ I’ve thrived in cloud-native enterprise environments and love bridging the tec
                   className="w-16 h-16 mt-1"
                 />
                 <p className="text-gray-700 text-base leading-relaxed">
-                  From 2010 to 2012, I led STEM programs for students in orphanages through the Nirmaan Organization. This involved designing and delivering interactive sessions aimed at sparking curiosity, building confidence, and making science fun and accessible.
+                  From 2016 to 2018, I led STEM programs for students in orphanages through the Nirmaan Organization. This involved designing and delivering interactive sessions aimed at sparking curiosity, building confidence, and making science fun and accessible.
                 </p>
               </div>
             </section>
