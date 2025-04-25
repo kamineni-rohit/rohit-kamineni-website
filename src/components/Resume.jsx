@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FiEye, FiDownload } from "react-icons/fi";
+import { FiX, FiEye, FiDownload } from "react-icons/fi";
 import SectionBackground from "./SectionBackground";
 import circuitBg from "../assets/backgrounds/CircuitPrimary.svg";
 
@@ -43,6 +43,38 @@ const Resume = () => {
             Download Resume
           </a>
         </div>
+
+        {showPreview && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-70"
+            onClick={() => setShowPreview(false)}
+          >
+            <button
+              className="fixed top-6 right-6 z-[60] text-white bg-gray-800 p-2 rounded-full hover:bg-red-600 transition"
+              onClick={() => setShowPreview(false)}
+              title="Close"
+            >
+              <FiX size={20} />
+            </button>
+
+            <div
+              className="relative max-w-6xl w-full h-[90vh] rounded-lg overflow-hidden shadow-xl bg-white"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div
+                className="w-full h-full overflow-y-scroll snap-y snap-mandatory"
+                style={{ scrollBehavior: "smooth" }}
+              >
+                <iframe
+                  src={RESUME_PATH}
+                  title="Resume Preview"
+                  className="w-full h-full snap-start"
+                  style={{ backgroundColor: "white" }}
+                />
+              </div>
+            </div>
+          </div>
+        )}
         <div className="mt-12 text-center text-gray-500 text-sm">
           <p>
             <b>Note:</b> The resume is in PDF format. Click the button above to
