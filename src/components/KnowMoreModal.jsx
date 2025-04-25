@@ -35,8 +35,7 @@ const KnowMoreModal = ({ onClose }) => {
     config: { duration: 200 }
   });
 
-  const professionalSummary = `
-Hey! I'm Rohit Kamineni — part data engineer, part problem-solver, part “how-can-we-make-this-better” kind of guy.  
+  const professionalSummary = `Hey! I'm Rohit Kamineni — part data engineer, part problem-solver, part “how-can-we-make-this-better” kind of guy.  
 I’m the kind of person who gets excited about clean architecture and clean code (equally). Beyond code, I’m a mentor, an educator, and a huge believer in tech for good. Whether I’m building, presenting, or mentoring, my goal stays the same: make an impact, and make it easy for others to do the same. Oh, and I’m always down for a deep dive into market structure or a quick round of chess in between SQL queries 😄
 
 Over the past 4+ years, I’ve led data engineering efforts at Kroger, architecting production-grade data lakes on GCP, deploying MLOps frameworks on Vertex AI, and building real-time analytics pipelines using Airflow, Kafka, BigQuery, and dbt. My work has driven wins in personalization, scalability, and decision intelligence — from automated loyalty model retraining to empowering 50+ managers with dashboards they actually use.
@@ -145,11 +144,11 @@ I’ve thrived in cloud-native enterprise environments and love bridging the tec
             </h3>
 
             {/* Professional Summary */}
-            <section className="mb-6 whitespace-pre-line">
+            <section className="mb-6">
               <h4 className="font-semibold text-gray-800 mb-2 text-lg">
                 Professional Summary
               </h4>
-              <p className="text-gray-700 text-base leading-relaxed">
+              <p className="text-gray-700 text-base whitespace-pre-line leading-relaxed">
                 {professionalSummary}
               </p>
             </section>
