@@ -23,8 +23,8 @@ import {
 } from "react-icons/fa6";
 import { MdHiking } from "react-icons/md";
 import { RiRunFill } from 'react-icons/ri';
-import nirmaanLogo from "../assets/nirmaan-logo.png";
-import snookerImg from "../assets/snooker.png";
+import nirmaanLogo from "../assets/logos/nirmaan-logo.png";
+import snookerImg from "../assets/icons/snooker.png";
 
 const KnowMoreModal = ({ onClose }) => {
   const modalRef = useRef();

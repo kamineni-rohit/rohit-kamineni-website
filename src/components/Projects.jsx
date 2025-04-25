@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
 import SectionBackground from "./SectionBackground";
-import iconGridBg from "../assets/Hexagon.svg";
+import iconGridBg from "../assets/backgrounds/Hexagon.svg";
 
 const projectCategories = [
   "All Projects",

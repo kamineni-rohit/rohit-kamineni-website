@@ -3,7 +3,7 @@ import { FiMail, FiMapPin, FiEdit } from "react-icons/fi"; // Import FiEdit for 
 import { FaLinkedin } from "react-icons/fa";
 import ContactFormModal from "./ContactFormModal";
 import SectionBackground from "./SectionBackground";
-import hexagonBg from "../assets/IconGrid.svg";
+import hexagonBg from "../assets/backgrounds/IconGrid.svg";
 
 const Contact = () => {
   const [showModal, setShowModal] = useState(false);

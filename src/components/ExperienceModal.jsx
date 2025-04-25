@@ -1,14 +1,14 @@
 import { useEffect, useRef } from "react";
 // eslint-disable-next-line no-unused-vars
 import { useTransition, animated } from "@react-spring/web";
-import krogerLogo from "../assets/kroger-logo.png";
-import tcubeLogo from "../assets/tcube-logo.png";
-import uconnLogo from "../assets/uconn-health-logo.png";
-import cumiLogo from "../assets/cumi-logo.png";
-import anandaLogo from "../assets/ananda-logo.png";
-import jerseystemLogo from "../assets/jerseystem-logo.png";
-import uconnDiningLogo from "../assets/uconn-dining-logo.png";
-import zopSmartLogo from "../assets/zopsmart-logo1.png"; // Import ZopSmart logo
+import krogerLogo from "../assets/logos/kroger-logo.png";
+import tcubeLogo from "../assets/logos/tcube-logo.png";
+import uconnLogo from "../assets/logos/uconn-health-logo.png";
+import cumiLogo from "../assets/logos/cumi-logo.png";
+import anandaLogo from "../assets/logos/ananda-logo.png";
+import jerseystemLogo from "../assets/logos/jerseystem-logo.png";
+import uconnDiningLogo from "../assets/logos/uconn-dining-logo.png";
+import zopSmartLogo from "../assets/logos/zopsmart-logo1.png"; // Import ZopSmart logo
 
 const experience = [
   {

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import profileImage from "../assets/IMG-20241206-WA0012.jpg";
+import profileImage from "../assets/images/IMG-20241206-WA0012.jpg";
 import SectionBackground from "./SectionBackground";
-import waveLineBg from "../assets/WaveLine.svg";
+import waveLineBg from "../assets/backgrounds/WaveLine.svg";
 import ExperienceModal from "./ExperienceModal";
 import SkillsModal from "./SkillsModal";
 import KnowMoreModal from "./KnowMoreModal";
 import { FiChevronDown } from "react-icons/fi";
-import tcubeLogo from "../assets/tcube-logo.png";
-import krogerLogo from "../assets/kroger-logo.png";
+import tcubeLogo from "../assets/logos/tcube-logo.png";
+import krogerLogo from "../assets/logos/kroger-logo.png";
 import { FiBriefcase, FiSliders, FiInfo } from "react-icons/fi"; // Import icons
 
 const About = () => {

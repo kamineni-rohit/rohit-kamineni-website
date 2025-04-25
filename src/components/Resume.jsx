@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { FiEye, FiDownload } from "react-icons/fi";
 import SectionBackground from "./SectionBackground";
-import circuitBg from "../assets/CircuitPrimary.svg";
+import circuitBg from "../assets/backgrounds/CircuitPrimary.svg";
 
 const Resume = () => {
   const [showPreview, setShowPreview] = useState(false);

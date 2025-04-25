@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 // eslint-disable-next-line no-unused-vars
 import { useTransition, animated } from "@react-spring/web";
-import udemyLogo from "../assets/udemy.png";
-import courseraLogo from "../assets/coursera.png";
+import udemyLogo from "../assets/logos/udemy.png";
+import courseraLogo from "../assets/logos/coursera.png";
 
 const CertificationsModal = ({ onClose }) => {
   const modalRef = useRef();

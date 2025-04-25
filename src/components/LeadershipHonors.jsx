@@ -1,8 +1,8 @@
 import { FaPeopleCarry, FaTrophy, FaLightbulb, FaChalkboardTeacher } from "react-icons/fa";
-import zopsmartLogo from "../assets/zopsmart-logo1.png";
-import bitsLogo from "../assets/bits-logo.png";
+import zopsmartLogo from "../assets/logos/zopsmart-logo1.png";
+import bitsLogo from "../assets/logos/bits-logo.png";
 import SectionBackground from "./SectionBackground";
-import massCirclesBg from "../assets/MassCircles.svg";
+import massCirclesBg from "../assets/backgrounds/MassCircles.svg";
 
 const LeadershipHonors = () => {
   return (
