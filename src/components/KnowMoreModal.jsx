@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 // eslint-disable-next-line no-unused-vars
 import { useTransition, animated } from "@react-spring/web";
 import {
@@ -16,12 +16,15 @@ import {
   FaCode,
   FaUsers,
   FaCar,
-  FaBaseballBatBall
+  FaBaseballBatBall,
+  FaCamera,
+  FaMotorcycle,
+  FaMugSaucer
 } from "react-icons/fa6";
 import { MdHiking } from "react-icons/md";
 import { RiRunFill } from 'react-icons/ri';
-import nirmaanLogo from "../assets/nirmaan-logo.png"; // Ensure this path is correct
-import snookerImg from "../assets/snooker.png"; // Import the snooker image
+import nirmaanLogo from "../assets/nirmaan-logo.png";
+import snookerImg from "../assets/snooker.png";
 
 const KnowMoreModal = ({ onClose }) => {
   const modalRef = useRef();
@@ -29,32 +32,20 @@ const KnowMoreModal = ({ onClose }) => {
     from: { opacity: 0, transform: "scale(0.95)" },
     enter: { opacity: 1, transform: "scale(1)" },
     leave: { opacity: 0, transform: "scale(0.95)" },
-    config: { duration: 200 }, // Consistent with ExperienceModal.jsx
+    config: { duration: 200 }
   });
 
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (modalRef.current && !modalRef.current.contains(e.target)) {
-        onClose();
-      }
-    };
-    document.body.style.overflow = "hidden";
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.body.style.overflow = "unset";
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [onClose]);
-
   const professionalSummary = `
-Hey, I'm Rohit Kamineni, a Data Engineer passionate about building data solutions.
-I architect scalable data and machine learning systems with a focus on automation and real-time analytics.
-My goal is to empower decision-making and drive positive change.
-I'm driven by turning complex information into compelling stories and building impactful solutions.
+Hey! I'm Rohit Kamineni — part data engineer, part problem-solver, part “how-can-we-make-this-better” kind of guy.  
+I’m the kind of person who gets excited about clean architecture and clean code (equally). Beyond code, I’m a mentor, an educator, and a huge believer in tech for good. Whether I’m building, presenting, or mentoring, my goal stays the same: make an impact, and make it easy for others to do the same. Oh, and I’m always down for a deep dive into market structure or a quick round of chess in between SQL queries 😄
+
+Over the past 4+ years, I’ve led data engineering efforts at Kroger, architecting production-grade data lakes on GCP, deploying MLOps frameworks on Vertex AI, and building real-time analytics pipelines using Airflow, Kafka, BigQuery, and dbt. My work has driven wins in personalization, scalability, and decision intelligence — from automated loyalty model retraining to empowering 50+ managers with dashboards they actually use.
+
+I’ve thrived in cloud-native enterprise environments and love bridging the technical with the strategic. Whether it’s optimizing a pipeline or mentoring interns through their first build, I’m here for work that matters and people who care.
 `;
 
   const highlights = [
-    "Data Engineer with 4+ years of experience",
+    "Data Profesional with 4+ years of experience",
     "Data enthusiast & lifelong learner",
     "Passionate about building scalable data and machine learning solutions",
     "Experienced in cloud-native enterprise environments (GCP, Databricks, Airflow, Vertex AI)",
@@ -63,7 +54,7 @@ I'm driven by turning complex information into compelling stories and building i
     "Loves collaborating with diverse teams on challenging projects",
     "Dedicated to making education and technology accessible to everyone",
     "Enjoys hackathons and building with friends",
-    "Always up for a good coffee chat",
+    "Always up for a good coffee chat"
   ];
 
   const moreInfo = {
@@ -80,8 +71,8 @@ I'm driven by turning complex information into compelling stories and building i
           alt="Nirmaan Logo"
           className="inline w-12 h-12 mr-4 align-middle"
         />
-        From 2010 to 2012, I led STEM programs for students in orphanages through the Nirmaan Organization.  This involved designing and delivering interactive sessions aimed at sparking curiosity, building confidence, and making science fun and accessible.
-      </>,
+        From 2010 to 2012, I led STEM programs for students in orphanages through the Nirmaan Organization. This involved designing and delivering interactive sessions aimed at sparking curiosity, building confidence, and making science fun and accessible.
+      </>
     ],
     "What Drives Me": [
       "I believe everyone deserves a fair shot at education and tech opportunities.",
@@ -94,6 +85,10 @@ I'm driven by turning complex information into compelling stories and building i
     { label: "Formula 1", icon: <FaCar />, color: "#1d6fba" },
     { label: "Cue Sports", icon: <img src={snookerImg} alt="Snooker" style={{ width: '24px', height: '24px' }} />, color: "#1d6fba" },
     { label: "Cricket", icon: <FaBaseballBatBall />, color: "#1d6fba" },
+    { label: "Photography", icon: <FaCamera />, color: "#1d6fba" },
+    { label: "Bikes & Cars", icon: <FaMotorcycle />, color: "#1d6fba" },
+    { label: "Coffee", icon: <FaMugSaucer />, color: "#1d6fba" },
+    { label: "Cafes", icon: <FaMugSaucer />, color: "#1d6fba" },
     { label: "Chess", icon: <FaChessKnight />, color: "#1d6fba" },
     { label: "Cooking", icon: <FaUtensils />, color: "#1d6fba" },
     { label: "Travel", icon: <FaPlane />, color: "#1d6fba" },
@@ -105,7 +100,7 @@ I'm driven by turning complex information into compelling stories and building i
     { label: "Tech", icon: <FaCode />, color: "#1d6fba" },
     { label: "Board Games", icon: <FaDice />, color: "#1d6fba" },
     { label: "Fitness", icon: <RiRunFill />, color: "#1d6fba" },
-    { label: "Learning", icon: <FaUsers />, color: "#1d6fba" },
+    { label: "Learning", icon: <FaUsers />, color: "#1d6fba" }
   ];
 
   const socials = [
@@ -136,7 +131,7 @@ I'm driven by turning complex information into compelling stories and building i
           <animated.div
             style={style}
             ref={modalRef}
-            className="bg-white w-full max-w-3xl rounded-xl p-6 shadow-xl max-h-[90vh] overflow-y-auto relative"
+            className="bg-white w-full max-w-4xl rounded-xl p-6 shadow-xl max-h-[90vh] overflow-y-auto relative"
           >
             <button
               onClick={onClose}
@@ -150,7 +145,7 @@ I'm driven by turning complex information into compelling stories and building i
             </h3>
 
             {/* Professional Summary */}
-            <section className="mb-6">
+            <section className="mb-6 whitespace-pre-line">
               <h4 className="font-semibold text-gray-800 mb-2 text-lg">
                 Professional Summary
               </h4>
@@ -237,33 +232,29 @@ I'm driven by turning complex information into compelling stories and building i
             </section>
 
             {/* Social Icons */}
-            <div className="text-center mt-10 flex justify-center gap-6">
+            <div className="text-center mt-10 flex flex-col items-center gap-4">
               <p className="text-gray-700 italic">
                 Connect with me on my socials!
               </p>
-              {socials.map(({ icon, url, label, brand }, idx) => (
-                <a
-                  key={idx}
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="transition transform hover:scale-110"
-                  style={{
-                    color: "#b0b0b0",
-                    transition: "color 0.2s",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = brand;
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "#b0b0b0";
-                  }}
-                >
-                  <span className="text-3xl">{icon}</span>
-                </a>
-              ))}
+              <div className="flex justify-center gap-6">
+                {socials.map(({ icon, url, label, brand }, idx) => (
+                  <a
+                    key={idx}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="transition transform hover:scale-110"
+                    style={{ color: "#b0b0b0", transition: "color 0.2s" }}
+                    onMouseEnter={(e) => { e.currentTarget.style.color = brand; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.color = "#b0b0b0"; }}
+                  >
+                    <span className="text-3xl">{icon}</span>
+                  </a>
+                ))}
+              </div>
             </div>
+
             <div className="text-center mt-8">
               <button
                 onClick={onClose}

@@ -8,6 +8,7 @@ import cumiLogo from "../assets/cumi-logo.png";
 import anandaLogo from "../assets/ananda-logo.png";
 import jerseystemLogo from "../assets/jerseystem-logo.png";
 import uconnDiningLogo from "../assets/uconn-dining-logo.png";
+import zopSmartLogo from "../assets/zopsmart-logo1.png"; // Import ZopSmart logo
 
 const experience = [
   {
@@ -70,7 +71,12 @@ const experience = [
     skills: ["Customer Service", "Multitasking", "Operations", "Hygiene Standards"]
   },
   {
-    org: "Kroger Technology & Digital",
+    org: (
+      <>
+        Kroger Technology & Digital
+      </>
+    ),
+    consultingOrg: "ZopSmart", // Add a new field for the consulting org
     link: "https://www.linkedin.com/company/kroger-technology-and-digital/",
     title: "Data Engineer",
     date: "Aug 2019 – Jun 2023",
@@ -87,9 +93,14 @@ const experience = [
     skills: ["Python", "SQL", "PySpark", "Databricks", "Airflow", "Kafka", "Vertex AI", "BigQuery", "dbt", "Tableau", "GCP", "AWS", "PowerBI", "Looker", "GitHub", "Git", "JIRA", "Agile"]
   },
   {
-    org: "Kroger Technology & Digital",
+    org: (
+      <>
+        Kroger Technology & Digital
+      </>
+    ),
+    consultingOrg: "ZopSmart", // Add a new field for the consulting org
     link: "https://www.linkedin.com/company/kroger-technology-and-digital/",
-    title: "SDE",
+    title: "Software Development Engineer",
     date: "Aug 2019 – Dec 2019",
     location: "Bangalore, India",
     logo: krogerLogo,
@@ -99,7 +110,7 @@ const experience = [
       "Led framework development for Kafka and annotation processing in Java.",
       "Documented system design and onboarded new developers."
     ],
-    skills: ["Java", "SpringBoot", "Kubernetes", "Kafka", "Documentation", "Postman", "Swagger", "log4j", "JUnit", "Mockito", "GitHub", "Git", "JIRA", "Agile", "Docker"] 
+    skills: ["Java", "SpringBoot", "Kubernetes", "Kafka", "Documentation", "Postman", "Swagger", "log4j", "JUnit", "Mockito", "GitHub", "Git", "JIRA", "Agile", "Docker"]
   },
   {
     org: "Tcube",
@@ -175,13 +186,22 @@ const ExperienceModal = ({ onClose }) => {
             <div className="space-y-6">
               {experience.map((exp, idx) => (
                 <div key={idx} className="flex items-start gap-4 border-l-4 border-accent pl-4 relative">
-                  <a href={exp.link} target="_blank" rel="noreferrer">
-                    <img src={exp.logo} alt={exp.org} className="w-10 h-10 object-contain mt-1 bg-white rounded" />
-                  </a>
+                  <div>
+                    <a href={exp.link} target="_blank" rel="noreferrer" className="block">
+                      <img src={exp.logo} alt={exp.org} className="w-10 h-10 object-contain bg-white rounded" />
+                    </a>
+                    {exp.consultingOrg && (
+                      <img
+                        src={zopSmartLogo}
+                        alt={exp.consultingOrg}
+                        className="w-8 h-8 object-contain mt-1 bg-white rounded"
+                      />
+                    )}
+                  </div>
                   <div className="space-y-1">
                     <h4 className="text-lg font-semibold">{exp.title}</h4>
                     <p className="text-gray-600 italic text-sm">
-                      {exp.org} | {exp.location}
+                      {exp.org} {exp.consultingOrg && `| Consulting through ${exp.consultingOrg}`} | {exp.location}
                     </p>
                     <p className="text-sm text-gray-500 mb-1">{exp.date}</p>
                     <ul className="list-disc pl-5 text-gray-800 text-sm space-y-1">
