@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FiMail, FiMapPin } from "react-icons/fi";
+import { FiMail, FiMapPin, FiEdit } from "react-icons/fi"; // Import FiEdit for the edit/contact icon
 import { FaLinkedin } from "react-icons/fa";
 import ContactFormModal from "./ContactFormModal";
 import SectionBackground from "./SectionBackground";
@@ -41,7 +41,8 @@ const Contact = () => {
           onClick={() => setShowModal(true)}
           className="bg-accent text-white font-medium px-6 py-3 rounded-md hover:opacity-90 transition text-lg flex items-center gap-2 mx-auto"
         >
-          📩 Leave Your Info
+          <FiEdit size={20} />  {/* Added FiEdit icon */}
+          Leave Your Info
         </button>
 
         {showModal && <ContactFormModal onClose={() => setShowModal(false)} />}

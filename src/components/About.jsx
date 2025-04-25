@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import profileImage from "../assets/IMG-20241206-WA0012.jpg";
 import SectionBackground from "./SectionBackground";
 import waveLineBg from "../assets/WaveLine.svg";
@@ -8,6 +8,7 @@ import KnowMoreModal from "./KnowMoreModal";
 import { FiChevronDown } from "react-icons/fi";
 import tcubeLogo from "../assets/tcube-logo.png";
 import krogerLogo from "../assets/kroger-logo.png";
+import { FiBriefcase, FiSliders, FiInfo } from "react-icons/fi"; // Import icons
 
 const About = () => {
   const [showExperience, setShowExperience] = useState(false);
@@ -122,20 +123,23 @@ const About = () => {
           />
           <button
             onClick={() => setShowExperience(true)}
-            className="bg-accent text-white px-6 py-2 rounded-md hover:opacity-90 transition"
+            className="bg-accent text-white px-6 py-2 rounded-md hover:opacity-90 transition flex items-center" // Added flex and items-center
           >
+            <FiBriefcase className="mr-2" /> {/* Added icon */}
             View Detailed Experience
           </button>
           <button
             onClick={() => setShowSkills(true)}
-            className="bg-accent text-white px-6 py-2 rounded-md hover:opacity-90 transition"
+            className="bg-accent text-white px-6 py-2 rounded-md hover:opacity-90 transition flex items-center" // Added flex and items-center
           >
+            <FiSliders className="mr-2" />  {/* Added icon */}
             Full Skillset
           </button>
           <button
             onClick={() => setShowMore(true)}
-            className="bg-accent text-white px-6 py-2 rounded-md hover:opacity-90 transition"
+            className="bg-accent text-white px-6 py-2 rounded-md hover:opacity-90 transition flex items-center" // Added flex and items-center
           >
+            <FiInfo className="mr-2" />      {/* Added icon */}
             Know More About Me
           </button>
         </div>

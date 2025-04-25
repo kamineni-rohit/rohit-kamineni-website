@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { FiX, FiBookOpen } from "react-icons/fi";  // Import the icon
 import CertificationsModal from "./CertificationsModal";
 import udemyLogo from "../assets/udemy.png";
 import courseraLogo from "../assets/coursera.png";
@@ -103,11 +104,12 @@ const Certifications = () => {
         </div>
 
         {/* Modal Trigger */}
-        <div className="mt-11">
+        <div className="mt-11 flex justify-center">  {/* Added justify-center */}
           <button
             onClick={() => setShowModal(true)}
-            className="bg-accent text-white px-6 py-2 rounded hover:opacity-90 transition"
+            className="bg-accent text-white px-6 py-2 rounded hover:opacity-90 transition flex items-center"
           >
+            <FiBookOpen className="mr-2" />
             View Other Certifications
           </button>
         </div>
