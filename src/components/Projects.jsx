@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
 import SectionBackground from "./SectionBackground";
-import iconGridBg from "../assets/backgrounds/Hexagon.svg";
+import hexagonBg from "../assets/backgrounds/Hexagon.svg";
 
 const projectCategories = [
   "All Projects",
@@ -66,7 +66,7 @@ const Projects = () => {
       id="projects"
       className="min-h-screen bg-white py-24 px-6 md:px-24 relative flex flex-col items-center overflow-hidden"
     >
-      <SectionBackground imageSrc={iconGridBg} opacity={0.09} />
+      <SectionBackground imageSrc={hexagonBg} opacity={0.09} />
 
       <h2 className="text-3xl font-bold text-accent mb-2 text-center">
         Projects Portfolio
