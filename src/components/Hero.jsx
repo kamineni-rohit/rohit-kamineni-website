@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaFolder, FaEnvelope } from "react-icons/fa"; // Import icons
 import { SiKaggle, SiMedium } from "react-icons/si";
 import { FiChevronDown } from "react-icons/fi";
 import ContactFormModal from "./ContactFormModal";
@@ -78,14 +78,16 @@ const Hero = () => {
         <div className="flex flex-col sm:flex-row sm:space-x-4 mt-10 space-y-4 sm:space-y-0">
           <button
             onClick={scrollToProjects}
-            className="px-6 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-white transition rounded"
+            className="px-6 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-white transition rounded flex items-center" // Added flex and items-center
           >
+            <FaFolder className="mr-2" /> {/* Add icon here, margin-right for spacing */}
             Portfolio
           </button>
           <button
             onClick={() => setShowModal(true)}
-            className="px-6 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-white transition rounded"
+            className="px-6 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-white transition rounded flex items-center" // Added flex and items-center
           >
+            <FaEnvelope className="mr-2" />
             Reach Out to Me
           </button>
         </div>
