@@ -1,7 +1,8 @@
-import zopsmartLogo from "../assets/zopsmart-logo1.png";
-import bitsLogo from "../assets/bits-logo.png";
+import { FaPeopleCarry, FaTrophy, FaLightbulb, FaChalkboardTeacher } from "react-icons/fa";
+import zopsmartLogo from "../assets/logos/zopsmart-logo1.png";
+import bitsLogo from "../assets/logos/bits-logo.png";
 import SectionBackground from "./SectionBackground";
-import massCirclesBg from "../assets/MassCircles.svg";
+import massCirclesBg from "../assets/backgrounds/MassCircles.svg";
 
 const LeadershipHonors = () => {
   return (
@@ -22,17 +23,19 @@ const LeadershipHonors = () => {
               <h3 className="font-semibold text-lg">BITS Pilani, Hyderabad Campus</h3>
             </div>
             <ul className="space-y-4 pl-2">
-              <li>
+              <li className="flex items-start gap-3">
+                <FaPeopleCarry className="text-gray-700 mt-1" />
                 <div>
                   <h4 className="font-semibold">
-                    Coordinator – Student Aid Fund (BITS Pilani)
+                    Coordinator – Student Aid Fund
                   </h4>
                   <p>
                     Led a student committee that helped 120 students access financial aid.
                   </p>
                 </div>
               </li>
-              <li>
+              <li className="flex items-start gap-3">
+                <FaTrophy className="text-gray-700 mt-1" />
                 <div>
                   <h4 className="font-semibold">Captain – College Snooker Team</h4>
                   <p>
@@ -50,17 +53,19 @@ const LeadershipHonors = () => {
               <h3 className="font-semibold text-lg">ZopSmart</h3>
             </div>
             <ul className="space-y-4 pl-2">
-              <li>
+              <li className="flex items-start gap-3">
+                <FaLightbulb className="text-gray-700 mt-1" />
                 <div>
-                  <h4 className="font-semibold">Pivot Polaris – ZopSmart</h4>
+                  <h4 className="font-semibold">Pivot Polaris</h4>
                   <p>
-                    Recognized by clients for high-impact engineering solutions delivered.
+                    Recognized by clients (Kroger) for high-impact engineering solutions delivered.
                   </p>
                 </div>
               </li>
-              <li>
+              <li className="flex items-start gap-3">
+                <FaChalkboardTeacher className="text-gray-700 mt-1" />
                 <div>
-                  <h4 className="font-semibold">Internship Mentor – ZopSmart</h4>
+                  <h4 className="font-semibold">Internship Mentor</h4>
                   <p>
                     Guided 20+ interns across two cohorts, with over an 80% conversion rate.
                   </p>
