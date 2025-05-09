@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import profileImage from "../assets/images/IMG-20241206-WA0012.jpg";
+import profileImage from "../assets/images/Image-Rohit-Kamineni.jpg";
 import SectionBackground from "./SectionBackground";
 import waveLineBg from "../assets/backgrounds/WaveLine.svg";
 import ExperienceModal from "./ExperienceModal";
