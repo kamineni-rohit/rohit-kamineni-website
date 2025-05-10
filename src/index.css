@@ -4,4 +4,33 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 100%; /* Default: 16px */
+}
+
+/* ✅ Mobile First: Lock mobile font size */
+@media screen and (max-width: 639px) {
+  html {
+    font-size: 100%; /* Stick to base size on mobile */
+  }
+}
+
+/* Medium Monitors (e.g. 1440px) */
+@media screen and (min-width: 1440px) {
+  html {
+    font-size: 100%;
+  }
+}
+
+/* Large Monitors (1920px / 2K) */
+@media screen and (min-width: 1920px) {
+  html {
+    font-size: 110%;
+  }
+}
+
+/* Ultra-wide or 4K Screens */
+@media screen and (min-width: 2560px) {
+  html {
+    font-size: 150%;
+  }
 }
