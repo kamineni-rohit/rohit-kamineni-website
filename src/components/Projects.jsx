@@ -15,13 +15,17 @@ import {
   FiDollarSign,   // For Crypto, Finance
   FiGrid,         // Icon for "All Projects" category
   FiPieChart,     // Icon for "Data Visualizations" category
-  FiNavigation2,  // For Uber (navigation, transport)
+  FiNavigation2,  // Fallback for Uber if FaUber isn't used
   FiMapPin,       // For Travelogy (location, mapping)
   FiShoppingCart, // For Superstore (retail, sales)
-  FiMessageSquare,// For StackOverflow (Q&A, forums)
-  FiEdit3,        // For McDigest (reviews, analysis)
+  FiMessageSquare,// Fallback for StackOverflow if FaStackOverflow isn't used
+  FiEdit3,        // Fallback for McDigest if TbBrandMcdonalds isn't used
   FiZap           // For Market Jump Predictor (sudden change, jump)
 } from "react-icons/fi";
+
+// Import brand-specific icons
+import { FaUber, FaStackOverflow } from "react-icons/fa"; // For Uber and Stack Overflow
+import { TbBrandMcdonalds } from "react-icons/tb";       // For McDonald's
 
 // Assuming SectionBackground and hexagonBg imports are correct
 import SectionBackground from "./SectionBackground"; // Ensure this path is correct
@@ -53,7 +57,7 @@ const projectsData = [
     title: "Uber Data Analytics Pipeline",
     desc: "End-to-end pipeline on GCP using Mage, BigQuery, and Looker for demand/supply insights.",
     categories: ["All Projects", "Data Engineering", "Analytics"],
-    icon: FiNavigation2, // Represents Uber's navigation/transport nature
+    icon: FaUber, // Specific Uber icon
   },
   {
     title: "Cryptocurrency Price Prediction",
@@ -65,7 +69,7 @@ const projectsData = [
     title: "StackOverflow Developer Trends",
     desc: "Analyzed GitHub repos via BigQuery to uncover dev patterns. Engineered SQL dashboards.",
     categories: ["All Projects", "Data Visualizations", "Analytics"],
-    icon: FiMessageSquare, // Represents StackOverflow's Q&A nature
+    icon: FaStackOverflow, // Specific Stack Overflow icon
   },
   {
     title: "CommonCrawl Inflation Tracker",
@@ -83,7 +87,7 @@ const projectsData = [
     title: "McDigest – McDonald's Reviews Analysis",
     desc: "Used SAS Miner to uncover insights from 33K+ reviews. Boosted satisfaction metrics by 20%.",
     categories: ["All Projects", "Data Science", "Analytics"],
-    icon: FiEdit3, // Represents reviews/analysis
+    icon: TbBrandMcdonalds, // Specific McDonald's icon
   },
   {
     title: "Travelogy – SQL Travel Engine",
@@ -119,7 +123,6 @@ const projectsData = [
 
 // --- Helper Function to Get Icon ---
 // This function serves as a fallback if a project.icon is not explicitly defined.
-// With the current setup, all projects in projectsData have an icon defined.
 const getProjectIcon = (project) => {
   if (project.icon) {
     return project.icon; // Return assigned icon
@@ -254,7 +257,7 @@ const Projects = () => {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-6 w-full pb-2 flex-grow"
         >
           {projectsToDisplay.map((project, index) => {
-            const IconComponent = getProjectIcon(project); // This will now primarily use the specific icons from projectsData
+            const IconComponent = getProjectIcon(project); // This will now use the specific icons from projectsData
             return (
               <div
                 key={index}
