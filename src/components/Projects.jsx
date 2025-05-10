@@ -1,41 +1,37 @@
 import { useState, useEffect, useRef } from "react";
 import {
   FiChevronDown,
-  FiDatabase,     // For Data Engineering, Databricks
-  FiBarChart2,    // For Analytics
-  FiCpu,          // For Data Science
-  FiTrendingUp,   // For Prediction, Trends, Trading, Inflation
-  FiCode,         // Generic code
-  FiUsers,        // Generic user-related
-  FiPackage,      // For Supply Chain
-  FiHeart,        // For Healthcare
-  FiClipboard,    // Default fallback
-  FiTool,         // For In Progress, general tools
-  FiGithub,       // For GitHub related projects
-  FiDollarSign,   // For Crypto, Finance
-  FiGrid,         // Icon for "All Projects" category
-  FiPieChart,     // Icon for "Data Visualizations" category
-  FiNavigation2,  // Fallback for Uber if FaUber isn't used
-  FiMapPin,       // For Travelogy (location, mapping)
-  FiShoppingCart, // For Superstore (retail, sales)
-  FiMessageSquare,// Fallback for StackOverflow if FaStackOverflow isn't used
-  FiEdit3,        // Fallback for McDigest if TbBrandMcdonalds isn't used
-  FiZap           // For Market Jump Predictor (sudden change, jump)
+  FiDatabase,
+  FiBarChart2,
+  FiCpu,
+  FiTrendingUp,
+  FiCode,
+  FiUsers,
+  FiPackage,
+  FiHeart,
+  FiClipboard,
+  FiTool,
+  FiGithub,
+  FiDollarSign,
+  FiGrid, 
+  FiPieChart, 
+  FiNavigation2,
+  FiMapPin,       
+  FiShoppingCart, 
+  FiMessageSquare,
+  FiEdit3,        
+  FiZap           
 } from "react-icons/fi";
+import { FaUber, FaStackOverflow } from "react-icons/fa"; 
+import { TbBrandMcdonalds } from "react-icons/tb";       
 
-// Import brand-specific icons
-import { FaUber, FaStackOverflow } from "react-icons/fa"; // For Uber and Stack Overflow
-import { TbBrandMcdonalds } from "react-icons/tb";       // For McDonald's
-
-// Assuming SectionBackground and hexagonBg imports are correct
-import SectionBackground from "./SectionBackground"; // Ensure this path is correct
-import hexagonBg from "../assets/backgrounds/Hexagon.svg"; // Ensure this path is correct
+import SectionBackground from "./SectionBackground"; 
+import hexagonBg from "../assets/backgrounds/Hexagon.svg"; 
 
 // --- Constants ---
-const INITIAL_PROJECTS_TO_SHOW = 8; // Number of projects to show by default
+const INITIAL_PROJECTS_TO_SHOW = 8; 
 
 // --- Data ---
-// Updated projectCategories to include icons
 const projectCategories = [
   { name: "All Projects", icon: FiGrid },
   { name: "Data Engineering", icon: FiDatabase },
@@ -45,95 +41,84 @@ const projectCategories = [
   { name: "In Progress", icon: FiTool },
 ];
 
-// Updated projectsData with more specific icons
 const projectsData = [
   {
     title: "Databricks Retail Insights",
     desc: "Built ETL pipelines on Databricks for customer segmentation. Achieved 20% ROI improvement.",
     categories: ["All Projects", "Data Engineering", "Analytics"],
-    icon: FiDatabase, // Databricks is a data platform
+    icon: FiDatabase, 
   },
   {
     title: "Uber Data Analytics Pipeline",
     desc: "End-to-end pipeline on GCP using Mage, BigQuery, and Looker for demand/supply insights.",
     categories: ["All Projects", "Data Engineering", "Analytics"],
-    icon: FaUber, // Specific Uber icon
+    icon: FaUber, 
   },
   {
     title: "Cryptocurrency Price Prediction",
     desc: "ML model with ensemble methods; achieved 76.5% F1 score using engineered features.",
     categories: ["All Projects", "Data Science"],
-    icon: FiDollarSign, // Closest to a currency/Bitcoin symbol in Fi
+    icon: FiDollarSign, 
   },
   {
     title: "StackOverflow Developer Trends",
     desc: "Analyzed GitHub repos via BigQuery to uncover dev patterns. Engineered SQL dashboards.",
     categories: ["All Projects", "Data Visualizations", "Analytics"],
-    icon: FaStackOverflow, // Specific Stack Overflow icon
+    icon: FaStackOverflow, 
   },
   {
     title: "CommonCrawl Inflation Tracker",
     desc: "Built Spark-based ETL using Athena + EMR for category-level inflation metrics.",
     categories: ["All Projects", "Data Engineering", "Analytics"],
-    icon: FiTrendingUp, // Represents tracking trends like inflation
+    icon: FiTrendingUp, 
   },
   {
     title: "Sales Forecasting – Superstore",
     desc: "Used ARIMA + Exponential Smoothing to uncover demand trends across regions.",
     categories: ["All Projects", "Data Science", "Analytics"],
-    icon: FiShoppingCart, // Represents retail/superstore
+    icon: FiShoppingCart, 
   },
   {
     title: "McDigest – McDonald's Reviews Analysis",
     desc: "Used SAS Miner to uncover insights from 33K+ reviews. Boosted satisfaction metrics by 20%.",
     categories: ["All Projects", "Data Science", "Analytics"],
-    icon: TbBrandMcdonalds, // Specific McDonald's icon
+    icon: TbBrandMcdonalds, 
   },
   {
     title: "Travelogy – SQL Travel Engine",
     desc: "Designed normalized schema + ERD for search/feedback; reduced retrieval time by 30%.",
     categories: ["All Projects", "Data Engineering", "Data Visualizations"],
-    icon: FiMapPin, // Represents location/travel
+    icon: FiMapPin, 
   },
   {
     title: "Supply Chain Inventory Optimizer",
     desc: "Optimizing stock levels using ML forecasting models.",
     categories: ["All Projects", "Data Science"],
-    icon: FiPackage, // Good for supply chain/inventory
+    icon: FiPackage, 
   },
   {
     title: "Healthcare Claims Analyzer",
     desc: "Built ETL and dashboard system for insurance fraud detection.",
     categories: ["All Projects", "Analytics"],
-    icon: FiHeart, // Good for healthcare
+    icon: FiHeart, 
   },
   {
     title: "Stochastic Optimization for Trading",
     desc: "15-minute S&P 500 interval strategy using stochastic methods. In progress.",
     categories: ["In Progress", "Data Science"],
-    icon: FiTrendingUp, // Good for trading/prediction
+    icon: FiTrendingUp, 
   },
   {
     title: "Market Jump Predictor",
     desc: "Building classifier models on CRSP tick data. Experimental phase.",
     categories: ["In Progress", "Data Science"],
-    icon: FiZap, // Represents "jump" or sudden change
+    icon: FiZap, 
   },
 ];
 
 // --- Helper Function to Get Icon ---
-// This function serves as a fallback if a project.icon is not explicitly defined.
 const getProjectIcon = (project) => {
-  if (project.icon) {
-    return project.icon; // Return assigned icon
-  }
-  // Fallback logic (less likely to be used now but good for future-proofing)
-  const titleLower = project.title.toLowerCase();
-  if (titleLower.includes("data") || titleLower.includes("sql") || titleLower.includes("etl")) return FiDatabase;
-  if (titleLower.includes("analytic") || titleLower.includes("visual")) return FiBarChart2;
-  if (titleLower.includes("science") || titleLower.includes("ml") || titleLower.includes("model")) return FiCpu;
-  if (titleLower.includes("trad") || titleLower.includes("financ") || titleLower.includes("predict")) return FiTrendingUp;
-  if (project.categories.includes("In Progress")) return FiTool;
+  if (project.icon) return project.icon;
   return FiClipboard; // Default fallback
 };
 
@@ -141,7 +126,7 @@ const getProjectIcon = (project) => {
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState("All Projects");
   const [showAll, setShowAll] = useState(false);
-  const sectionRef = useRef(null); // Ref for the main section element
+  const sectionRef = useRef(null); 
 
   // Filter projects based on the active category
   const filteredProjects = projectsData.filter((project) =>
@@ -150,50 +135,64 @@ const Projects = () => {
       : project.categories.includes(activeCategory)
   );
 
-  // Determine if the "Show More" button should be displayed
   const isExpandable = filteredProjects.length > INITIAL_PROJECTS_TO_SHOW;
-
-  // Determine which projects to display
   const projectsToDisplay = showAll
     ? filteredProjects
     : filteredProjects.slice(0, INITIAL_PROJECTS_TO_SHOW);
 
-  // Effect for Intersection Observer to collapse section when scrolled out of view
+  // Effect for Intersection Observer
   useEffect(() => {
     const currentSectionRef = sectionRef.current;
     if (!currentSectionRef) return;
-
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting && showAll) {
-          setShowAll(false);
-        }
-      },
-      {
-        root: null,
-        threshold: 0, // Callback when element is 0% visible (leaves viewport)
-      }
+      ([entry]) => { if (!entry.isIntersecting && showAll) setShowAll(false); },
+      { root: null, threshold: 0 }
     );
-
     observer.observe(currentSectionRef);
-
-    return () => {
-      if (currentSectionRef) {
-        observer.unobserve(currentSectionRef);
-      }
-    };
+    return () => { if (currentSectionRef) observer.unobserve(currentSectionRef); };
   }, [showAll]);
 
-  const handleShowMore = () => {
-    setShowAll(true);
-  };
+  // Effect for loading vanilla-tilt.js script
+  useEffect(() => {
+    const scriptId = 'vanilla-tilt-script';
+    if (document.getElementById(scriptId) || window.VanillaTilt) { // Check if script or VanillaTilt itself exists
+      // If script is already loaded, ensure VanillaTilt is initialized on current tiles
+      if (window.VanillaTilt) {
+        const elements = document.querySelectorAll('.project-tile-tilt');
+        VanillaTilt.init(elements, { max: 15, speed: 400, glare: true, "max-glare": 0.2 });
+      }
+      return; 
+    }
+    const script = document.createElement('script');
+    script.id = scriptId;
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js';
+    script.async = true;
+    script.onload = () => {
+      window.vanillaTiltLoaded = true; // Flag to indicate script has loaded
+      if (window.VanillaTilt) {
+        const elements = document.querySelectorAll('.project-tile-tilt');
+        VanillaTilt.init(elements, { max: 15, speed: 400, glare: true, "max-glare": 0.2 });
+      }
+    };
+    document.body.appendChild(script);
+    // No cleanup needed for a CDN script that's intended to be global once loaded.
+  }, []); // Load script once on mount
 
-  const scrollToNextSection = () => {
+  // Effect for re-initializing VanillaTilt when projectsToDisplay changes (e.g., after "Show More")
+  useEffect(() => {
+    if (window.VanillaTilt && window.vanillaTiltLoaded) {
+      // Timeout to allow DOM to update with new tiles before initializing
+      setTimeout(() => {
+        const elements = document.querySelectorAll('.project-tile-tilt');
+        VanillaTilt.init(elements, { max: 15, speed: 400, glare: true, "max-glare": 0.2 });
+      }, 100); // Small delay
+    }
+  }, [projectsToDisplay]); // Re-run when the list of displayed projects changes
+
+  const handleShowMore = () => setShowAll(true);
+  const scrollToNextSection = () =>
     document.getElementById("education")?.scrollIntoView({ behavior: "smooth" });
-  };
 
-  // Determine tile height class based on showAll state
-  // h-48 (12rem) when collapsed, h-56 (14rem) when expanded
   const tileHeightClass = showAll ? 'h-56' : 'h-48'; 
 
   return (
@@ -217,7 +216,7 @@ const Projects = () => {
           <div className="mb-8 w-full flex justify-center">
             <div className="flex flex-wrap justify-center gap-2 md:gap-3 px-3 py-2 bg-white border border-accent/20 rounded-full shadow-md backdrop-blur-sm">
               {projectCategories.map((cat) => {
-                const IconComponent = cat.icon; // Get the icon component for the category
+                const IconComponent = cat.icon; 
                 const isActive = activeCategory === cat.name;
                 return (
                   <button
@@ -227,20 +226,18 @@ const Projects = () => {
                       setShowAll(false);
                       sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }}
-                    // Added flex, items-center, and adjusted padding for icon
                     className={`relative flex items-center justify-center px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-semibold rounded-full transition-all duration-300 ease-out group ${
                       isActive
-                        ? "text-white bg-accent shadow-lg pl-2 md:pl-3" // Slightly more padding on left when icon is visible
+                        ? "text-white bg-accent shadow-lg pl-2 md:pl-3" 
                         : "text-accent hover:bg-accent/10 hover:text-accent-dark"
                     }`}
                   >
-                    {/* Icon: Conditionally rendered with animation */}
                     {IconComponent && (
                       <span
                         className={`overflow-hidden transition-all duration-300 ease-out ${
                           isActive ? "w-4 mr-1.5 opacity-100 scale-100" : "w-0 mr-0 opacity-0 scale-50"
                         }`}
-                        style={{ transformOrigin: 'left center' }} // Ensures scale animation originates from the left
+                        style={{ transformOrigin: 'left center' }} 
                       >
                         <IconComponent className="h-3.5 w-3.5 md:h-4 md:w-4" />
                       </span>
@@ -257,20 +254,48 @@ const Projects = () => {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-6 w-full pb-2 flex-grow"
         >
           {projectsToDisplay.map((project, index) => {
-            const IconComponent = getProjectIcon(project); // This will now use the specific icons from projectsData
+            const IconComponent = getProjectIcon(project); 
             return (
               <div
                 key={index}
-                className={`group relative bg-white rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300 ease-in-out overflow-hidden p-4 cursor-pointer flex items-center justify-center ${tileHeightClass}`}
+                // Added 'project-tile-tilt' for vanilla-tilt.js
+                // Added 'group-hover:scale-103' and 'group-hover:shadow-xl'
+                // Ensured 'transform-style: preserve-3d' for better tilt rendering if children are transformed
+                className={`project-tile-tilt group relative bg-white rounded-xl shadow-md border border-gray-100 
+                            transition-all duration-300 ease-in-out 
+                            overflow-hidden p-4 cursor-pointer flex items-center justify-center 
+                            ${tileHeightClass} hover:shadow-lg group-hover:scale-103 group-hover:shadow-xl`}
+                style={{ transformStyle: "preserve-3d" }} // Important for some 3D effects in vanilla-tilt
+                // data-tilt attributes can be added here for more control if needed
+                // e.g., data-tilt-glare data-tilt-max-glare="0.5"
               >
-                <div className="text-accent text-6xl md:text-7xl transition-opacity duration-300 ease-in-out group-hover:opacity-20">
+                {/* Icon with its existing hover effect */}
+                <div className="text-accent text-6xl md:text-7xl transition-opacity duration-300 ease-in-out group-hover:opacity-20"
+                     style={{ transform: "translateZ(20px)" }} // Slightly lift icon for 3D effect with tilt
+                >
                   <IconComponent />
                 </div>
-                <div className="absolute inset-0 bg-black bg-opacity-70 p-4 flex flex-col justify-center items-center text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
-                  <h3 className="text-base md:text-md font-semibold mb-1 md:mb-2 text-white">
+                {/* Overlay with its existing hover effect */}
+                <div 
+                  className="absolute inset-0 bg-black bg-opacity-50 p-4 
+                             flex flex-col justify-center items-center text-center 
+                             opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"
+                  style={{ transform: "translateZ(10px)" }} // Lift overlay slightly
+                >
+                  {/* Title with reveal animation */}
+                  <h3 
+                    className="text-base md:text-md font-semibold mb-1 md:mb-2 text-white
+                               opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 
+                               transition-all duration-300 ease-in-out delay-100"
+                  >
                     {project.title}
                   </h3>
-                  <p className="text-xs md:text-sm text-gray-200 line-clamp-3 md:line-clamp-4">
+                  {/* Description with reveal animation */}
+                  <p 
+                    className="text-xs md:text-xs text-gray-200 line-clamp-3 md:line-clamp-4
+                               opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 
+                               transition-all duration-300 ease-in-out delay-200"
+                  >
                     {project.desc}
                   </p>
                 </div>
