@@ -1,21 +1,26 @@
 import { useState, useEffect, useRef } from "react";
 import {
   FiChevronDown,
-  FiDatabase,
-  FiBarChart2,
-  FiCpu,
-  FiTrendingUp,
-  FiCode,
-  FiUsers,
-  FiPackage,
-  FiHeart,
-  FiClipboard,
-  FiTool,
-  FiGithub,
-  FiDollarSign,
-  FiGrid, // Icon for "All Projects"
-  FiPieChart, // Icon for "Data Visualizations"
-  FiFilter // A generic icon if needed, or for active state
+  FiDatabase,     // For Data Engineering, Databricks
+  FiBarChart2,    // For Analytics
+  FiCpu,          // For Data Science
+  FiTrendingUp,   // For Prediction, Trends, Trading, Inflation
+  FiCode,         // Generic code
+  FiUsers,        // Generic user-related
+  FiPackage,      // For Supply Chain
+  FiHeart,        // For Healthcare
+  FiClipboard,    // Default fallback
+  FiTool,         // For In Progress, general tools
+  FiGithub,       // For GitHub related projects
+  FiDollarSign,   // For Crypto, Finance
+  FiGrid,         // Icon for "All Projects" category
+  FiPieChart,     // Icon for "Data Visualizations" category
+  FiNavigation2,  // For Uber (navigation, transport)
+  FiMapPin,       // For Travelogy (location, mapping)
+  FiShoppingCart, // For Superstore (retail, sales)
+  FiMessageSquare,// For StackOverflow (Q&A, forums)
+  FiEdit3,        // For McDigest (reviews, analysis)
+  FiZap           // For Market Jump Predictor (sudden change, jump)
 } from "react-icons/fi";
 
 // Assuming SectionBackground and hexagonBg imports are correct
@@ -36,93 +41,97 @@ const projectCategories = [
   { name: "In Progress", icon: FiTool },
 ];
 
+// Updated projectsData with more specific icons
 const projectsData = [
   {
     title: "Databricks Retail Insights",
     desc: "Built ETL pipelines on Databricks for customer segmentation. Achieved 20% ROI improvement.",
     categories: ["All Projects", "Data Engineering", "Analytics"],
-    icon: FiDatabase,
+    icon: FiDatabase, // Databricks is a data platform
   },
   {
     title: "Uber Data Analytics Pipeline",
     desc: "End-to-end pipeline on GCP using Mage, BigQuery, and Looker for demand/supply insights.",
     categories: ["All Projects", "Data Engineering", "Analytics"],
-    icon: FiBarChart2,
+    icon: FiNavigation2, // Represents Uber's navigation/transport nature
   },
   {
     title: "Cryptocurrency Price Prediction",
     desc: "ML model with ensemble methods; achieved 76.5% F1 score using engineered features.",
     categories: ["All Projects", "Data Science"],
-    icon: FiTrendingUp,
+    icon: FiDollarSign, // Closest to a currency/Bitcoin symbol in Fi
   },
   {
     title: "StackOverflow Developer Trends",
     desc: "Analyzed GitHub repos via BigQuery to uncover dev patterns. Engineered SQL dashboards.",
     categories: ["All Projects", "Data Visualizations", "Analytics"],
-    icon: FiGithub,
+    icon: FiMessageSquare, // Represents StackOverflow's Q&A nature
   },
   {
     title: "CommonCrawl Inflation Tracker",
     desc: "Built Spark-based ETL using Athena + EMR for category-level inflation metrics.",
     categories: ["All Projects", "Data Engineering", "Analytics"],
-    icon: FiDollarSign,
+    icon: FiTrendingUp, // Represents tracking trends like inflation
   },
   {
     title: "Sales Forecasting – Superstore",
     desc: "Used ARIMA + Exponential Smoothing to uncover demand trends across regions.",
     categories: ["All Projects", "Data Science", "Analytics"],
-    icon: FiCpu,
+    icon: FiShoppingCart, // Represents retail/superstore
   },
   {
     title: "McDigest – McDonald's Reviews Analysis",
     desc: "Used SAS Miner to uncover insights from 33K+ reviews. Boosted satisfaction metrics by 20%.",
     categories: ["All Projects", "Data Science", "Analytics"],
-    icon: FiUsers,
+    icon: FiEdit3, // Represents reviews/analysis
   },
   {
     title: "Travelogy – SQL Travel Engine",
     desc: "Designed normalized schema + ERD for search/feedback; reduced retrieval time by 30%.",
     categories: ["All Projects", "Data Engineering", "Data Visualizations"],
-    icon: FiDatabase,
+    icon: FiMapPin, // Represents location/travel
   },
   {
     title: "Supply Chain Inventory Optimizer",
     desc: "Optimizing stock levels using ML forecasting models.",
     categories: ["All Projects", "Data Science"],
-    icon: FiPackage,
+    icon: FiPackage, // Good for supply chain/inventory
   },
   {
     title: "Healthcare Claims Analyzer",
     desc: "Built ETL and dashboard system for insurance fraud detection.",
     categories: ["All Projects", "Analytics"],
-    icon: FiHeart,
+    icon: FiHeart, // Good for healthcare
   },
   {
     title: "Stochastic Optimization for Trading",
     desc: "15-minute S&P 500 interval strategy using stochastic methods. In progress.",
     categories: ["In Progress", "Data Science"],
-    icon: FiTrendingUp,
+    icon: FiTrendingUp, // Good for trading/prediction
   },
   {
     title: "Market Jump Predictor",
     desc: "Building classifier models on CRSP tick data. Experimental phase.",
     categories: ["In Progress", "Data Science"],
-    icon: FiTool,
+    icon: FiZap, // Represents "jump" or sudden change
   },
 ];
 
 // --- Helper Function to Get Icon ---
+// This function serves as a fallback if a project.icon is not explicitly defined.
+// With the current setup, all projects in projectsData have an icon defined.
 const getProjectIcon = (project) => {
   if (project.icon) {
-    return project.icon;
+    return project.icon; // Return assigned icon
   }
+  // Fallback logic (less likely to be used now but good for future-proofing)
   const titleLower = project.title.toLowerCase();
   if (titleLower.includes("data") || titleLower.includes("sql") || titleLower.includes("etl")) return FiDatabase;
   if (titleLower.includes("analytic") || titleLower.includes("visual")) return FiBarChart2;
   if (titleLower.includes("science") || titleLower.includes("ml") || titleLower.includes("model")) return FiCpu;
   if (titleLower.includes("trad") || titleLower.includes("financ") || titleLower.includes("predict")) return FiTrendingUp;
   if (project.categories.includes("In Progress")) return FiTool;
-  return FiClipboard;
+  return FiClipboard; // Default fallback
 };
 
 // --- Component ---
@@ -245,7 +254,7 @@ const Projects = () => {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-6 w-full pb-2 flex-grow"
         >
           {projectsToDisplay.map((project, index) => {
-            const IconComponent = getProjectIcon(project);
+            const IconComponent = getProjectIcon(project); // This will now primarily use the specific icons from projectsData
             return (
               <div
                 key={index}
