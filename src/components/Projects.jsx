@@ -185,12 +185,13 @@ const Projects = () => {
       ref={sectionRef}
       id="projects"
       className={`relative flex flex-col py-20 transition-all duration-500 ease-in-out ${
-        showAll ? 'min-h-screen' : 'min-h-screen max-h-screen overflow-hidden'
+        showAll ? 'min-h-screen' : 'min-h-screen max-h-screen overflow-hidden' // max-h-screen and overflow-hidden are key for collapsed state
       }`}
     >
       <SectionBackground imageSrc={hexagonBg} opacity={0.09} />
 
-      {/* Inner container: 'pb-6' for bottom spacing for content, chevron is now outside this div */}
+      {/* Inner container: 'h-full' allows children with 'flex-grow' to expand within section's height constraints. */}
+      {/* 'pb-6' provides bottom padding for the content block itself. */}
       <div className="relative flex flex-col h-full w-full max-w-7xl mx-auto px-4 md:px-6 z-10 pb-6">
         {/* --- Content Area (Title, Categories) --- */}
         <div className="flex-shrink-0">
@@ -224,9 +225,9 @@ const Projects = () => {
         </div>
         {/* --- End Content Area --- */}
 
-        {/* --- Projects Grid: 'pb-2' for spacing below tiles --- */}
+        {/* --- Projects Grid: Added 'flex-grow' to allow it to take available vertical space. 'pb-2' for spacing below tiles --- */}
         <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-6 w-full pb-2"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-6 w-full pb-2 flex-grow"
         >
           {projectsToDisplay.map((project, index) => {
             const IconComponent = getProjectIcon(project);
@@ -258,8 +259,7 @@ const Projects = () => {
         </div>
         {/* --- End Projects Grid --- */}
 
-        {/* --- Bottom Button Area: 'pb-2' for spacing above chevron area if chevron were inside this div --- */}
-        {/* This padding might need adjustment now that chevron is outside */}
+        {/* --- Bottom Button Area: 'flex-shrink-0' prevents it from shrinking. 'pb-2' for spacing. --- */}
         <div className="flex justify-center items-center pt-4 md:pt-6 pb-2 min-h-[54px] flex-shrink-0">
           {isExpandable && !showAll && (
             <button
@@ -274,10 +274,10 @@ const Projects = () => {
 
       </div> {/* End Inner container */}
 
-      {/* Chevron - Now always rendered, positioned relative to the main section */}
-      {/* Styled like About.jsx chevron, using 'bottom-10' for consistency */}
+      {/* Chevron - Hidden on small screens (mobile), visible as flex on medium screens and up. */}
+      {/* Positioned relative to the main section. Adjusted to 'bottom-6'. */}
       <div 
-        className="absolute bottom-6 left-0 w-full flex justify-center z-20" // Parent handles centering
+        className="absolute bottom-6 left-0 w-full hidden md:flex justify-center z-20" // Added hidden md:flex
         onClick={scrollToNextSection} 
         title="Scroll to next section"  
       >

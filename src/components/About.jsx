@@ -123,30 +123,30 @@ const About = () => {
           />
           <button
             onClick={() => setShowExperience(true)}
-            className="bg-accent text-white px-6 py-2 rounded-md hover:opacity-90 transition flex items-center" // Added flex and items-center
+            className="bg-accent text-white px-6 py-2 rounded-md hover:opacity-90 transition flex items-center" 
           >
-            <FiBriefcase className="mr-2" /> {/* Added icon */}
+            <FiBriefcase className="mr-2" /> 
             View Detailed Experience
           </button>
           <button
             onClick={() => setShowSkills(true)}
-            className="bg-accent text-white px-6 py-2 rounded-md hover:opacity-90 transition flex items-center" // Added flex and items-center
+            className="bg-accent text-white px-6 py-2 rounded-md hover:opacity-90 transition flex items-center" 
           >
-            <FiSliders className="mr-2" />  {/* Added icon */}
+            <FiSliders className="mr-2" />  
             Full Skillset
           </button>
           <button
             onClick={() => setShowMore(true)}
-            className="bg-accent text-white px-6 py-2 rounded-md hover:opacity-90 transition flex items-center" // Added flex and items-center
+            className="bg-accent text-white px-6 py-2 rounded-md hover:opacity-90 transition flex items-center" 
           >
-            <FiInfo className="mr-2" />      {/* Added icon */}
+            <FiInfo className="mr-2" />      
             Know More About Me
           </button>
         </div>
       </div>
 
-      {/* Chevron */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-accent text-4xl cursor-pointer animate-bounce z-20">
+      {/* Chevron - Hidden on small screens (mobile), visible as block on medium screens and up */}
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-accent text-4xl cursor-pointer animate-bounce z-20 hidden md:block">
         <FiChevronDown
           onClick={() =>
             document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
