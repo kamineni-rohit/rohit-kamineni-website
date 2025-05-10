@@ -12,7 +12,10 @@ import {
   FiClipboard,
   FiTool,
   FiGithub,
-  FiDollarSign
+  FiDollarSign,
+  FiGrid, // Icon for "All Projects"
+  FiPieChart, // Icon for "Data Visualizations"
+  FiFilter // A generic icon if needed, or for active state
 } from "react-icons/fi";
 
 // Assuming SectionBackground and hexagonBg imports are correct
@@ -23,13 +26,14 @@ import hexagonBg from "../assets/backgrounds/Hexagon.svg"; // Ensure this path i
 const INITIAL_PROJECTS_TO_SHOW = 8; // Number of projects to show by default
 
 // --- Data ---
+// Updated projectCategories to include icons
 const projectCategories = [
-  "All Projects",
-  "Data Engineering",
-  "Analytics",
-  "Data Science",
-  "Data Visualizations",
-  "In Progress",
+  { name: "All Projects", icon: FiGrid },
+  { name: "Data Engineering", icon: FiDatabase },
+  { name: "Analytics", icon: FiBarChart2 },
+  { name: "Data Science", icon: FiCpu },
+  { name: "Data Visualizations", icon: FiPieChart },
+  { name: "In Progress", icon: FiTool },
 ];
 
 const projectsData = [
@@ -185,15 +189,12 @@ const Projects = () => {
       ref={sectionRef}
       id="projects"
       className={`relative flex flex-col py-20 transition-all duration-500 ease-in-out ${
-        showAll ? 'min-h-screen' : 'min-h-screen max-h-screen overflow-hidden' // max-h-screen and overflow-hidden are key for collapsed state
+        showAll ? 'min-h-screen' : 'min-h-screen max-h-screen overflow-hidden' 
       }`}
     >
       <SectionBackground imageSrc={hexagonBg} opacity={0.09} />
 
-      {/* Inner container: 'h-full' allows children with 'flex-grow' to expand within section's height constraints. */}
-      {/* 'pb-6' provides bottom padding for the content block itself. */}
       <div className="relative flex flex-col h-full w-full max-w-7xl mx-auto px-4 md:px-6 z-10 pb-6">
-        {/* --- Content Area (Title, Categories) --- */}
         <div className="flex-shrink-0">
           <h2 className="text-3xl font-bold text-accent mb-4 text-center">
             Projects Portfolio
@@ -203,29 +204,43 @@ const Projects = () => {
           </p>
           <div className="mb-8 w-full flex justify-center">
             <div className="flex flex-wrap justify-center gap-2 md:gap-3 px-3 py-2 bg-white border border-accent/20 rounded-full shadow-md backdrop-blur-sm">
-              {projectCategories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => {
-                    setActiveCategory(cat);
-                    setShowAll(false);
-                    sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }}
-                  className={`relative px-4 py-1.5 md:px-5 md:py-2 text-xs md:text-sm font-semibold rounded-full transition-all duration-300 ease-out ${
-                    activeCategory === cat
-                      ? "text-white bg-accent shadow-lg"
-                      : "text-accent hover:bg-accent/10 hover:text-accent-dark"
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
+              {projectCategories.map((cat) => {
+                const IconComponent = cat.icon; // Get the icon component for the category
+                const isActive = activeCategory === cat.name;
+                return (
+                  <button
+                    key={cat.name}
+                    onClick={() => {
+                      setActiveCategory(cat.name);
+                      setShowAll(false);
+                      sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }}
+                    // Added flex, items-center, and adjusted padding for icon
+                    className={`relative flex items-center justify-center px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-semibold rounded-full transition-all duration-300 ease-out group ${
+                      isActive
+                        ? "text-white bg-accent shadow-lg pl-2 md:pl-3" // Slightly more padding on left when icon is visible
+                        : "text-accent hover:bg-accent/10 hover:text-accent-dark"
+                    }`}
+                  >
+                    {/* Icon: Conditionally rendered with animation */}
+                    {IconComponent && (
+                      <span
+                        className={`overflow-hidden transition-all duration-300 ease-out ${
+                          isActive ? "w-4 mr-1.5 opacity-100 scale-100" : "w-0 mr-0 opacity-0 scale-50"
+                        }`}
+                        style={{ transformOrigin: 'left center' }} // Ensures scale animation originates from the left
+                      >
+                        <IconComponent className="h-3.5 w-3.5 md:h-4 md:w-4" />
+                      </span>
+                    )}
+                    <span>{cat.name}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>
-        {/* --- End Content Area --- */}
-
-        {/* --- Projects Grid: Added 'flex-grow' to allow it to take available vertical space. 'pb-2' for spacing below tiles --- */}
+        
         <div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-6 w-full pb-2 flex-grow"
         >
@@ -234,7 +249,6 @@ const Projects = () => {
             return (
               <div
                 key={index}
-                // Apply dynamic tile height class
                 className={`group relative bg-white rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300 ease-in-out overflow-hidden p-4 cursor-pointer flex items-center justify-center ${tileHeightClass}`}
               >
                 <div className="text-accent text-6xl md:text-7xl transition-opacity duration-300 ease-in-out group-hover:opacity-20">
@@ -257,9 +271,7 @@ const Projects = () => {
             </div>
           )}
         </div>
-        {/* --- End Projects Grid --- */}
 
-        {/* --- Bottom Button Area: 'flex-shrink-0' prevents it from shrinking. 'pb-2' for spacing. --- */}
         <div className="flex justify-center items-center pt-4 md:pt-6 pb-2 min-h-[54px] flex-shrink-0">
           {isExpandable && !showAll && (
             <button
@@ -270,14 +282,10 @@ const Projects = () => {
             </button>
           )}
         </div>
-        {/* --- End Bottom Button Area --- */}
+      </div>
 
-      </div> {/* End Inner container */}
-
-      {/* Chevron - Hidden on small screens (mobile), visible as flex on medium screens and up. */}
-      {/* Positioned relative to the main section. Adjusted to 'bottom-6'. */}
       <div 
-        className="absolute bottom-6 left-0 w-full hidden md:flex justify-center z-20" // Added hidden md:flex
+        className="absolute bottom-6 left-0 w-full hidden md:flex justify-center z-20"
         onClick={scrollToNextSection} 
         title="Scroll to next section"  
       >
