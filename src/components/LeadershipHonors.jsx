@@ -1,3 +1,4 @@
+import React from "react"; // Added React import for completeness
 import { FaPeopleCarry, FaTrophy, FaLightbulb, FaChalkboardTeacher } from "react-icons/fa";
 import zopsmartLogo from "../assets/logos/zopsmart-logo1.png";
 import bitsLogo from "../assets/logos/bits-logo.png";
@@ -19,26 +20,34 @@ const LeadershipHonors = () => {
           {/* BITS PILANI BLOCK */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <img src={bitsLogo} alt="BITS Pilani" className="h-8 w-auto" />
+              {/* Added <a> tag around the BITS Pilani logo */}
+              <a 
+                href="https://www.bits-pilani.ac.in/academics/integrated-first-degree/b-e-electronics-communication/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="BITS Pilani ECE Program (opens in new tab)" // Accessibility: label for the link
+              >
+                <img src={bitsLogo} alt="BITS Pilani" className="h-8 w-auto" />
+              </a>
               <h3 className="font-semibold text-lg">BITS Pilani, Hyderabad Campus</h3>
             </div>
             <ul className="space-y-4 pl-2">
               <li className="flex items-start gap-3">
-                <FaPeopleCarry className="text-gray-700 mt-1" />
+                <FaPeopleCarry className="text-gray-700 mt-1 flex-shrink-0" /> {/* Added flex-shrink-0 */}
                 <div>
                   <h4 className="font-semibold">
                     Coordinator – Student Aid Fund
                   </h4>
-                  <p>
+                  <p className="text-sm text-gray-600"> {/* Adjusted text size and color for consistency */}
                     Led a student committee that helped 120 students access financial aid.
                   </p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
-                <FaTrophy className="text-gray-700 mt-1" />
+                <FaTrophy className="text-gray-700 mt-1 flex-shrink-0" /> {/* Added flex-shrink-0 */}
                 <div>
                   <h4 className="font-semibold">Captain – College Snooker Team</h4>
-                  <p>
+                  <p className="text-sm text-gray-600"> {/* Adjusted text size and color */}
                     Led the team to 3 national-level wins in inter-collegiate sports festivals.
                   </p>
                 </div>
@@ -49,24 +58,32 @@ const LeadershipHonors = () => {
           {/* ZOPSMART BLOCK */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <img src={zopsmartLogo} alt="ZopSmart" className="h-8 w-auto" />
+              {/* Added <a> tag around the ZopSmart logo */}
+              <a 
+                href="https://www.linkedin.com/company/zopsmart/posts/?feedView=all" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="ZopSmart LinkedIn (opens in new tab)" // Accessibility: label for the link
+              >
+                <img src={zopsmartLogo} alt="ZopSmart" className="h-8 w-auto" />
+              </a>
               <h3 className="font-semibold text-lg">ZopSmart</h3>
             </div>
             <ul className="space-y-4 pl-2">
               <li className="flex items-start gap-3">
-                <FaLightbulb className="text-gray-700 mt-1" />
+                <FaLightbulb className="text-gray-700 mt-1 flex-shrink-0" /> {/* Added flex-shrink-0 */}
                 <div>
                   <h4 className="font-semibold">Pivot Polaris</h4>
-                  <p>
+                  <p className="text-sm text-gray-600"> {/* Adjusted text size and color */}
                     Recognized by clients (Kroger) for high-impact engineering solutions delivered.
                   </p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
-                <FaChalkboardTeacher className="text-gray-700 mt-1" />
+                <FaChalkboardTeacher className="text-gray-700 mt-1 flex-shrink-0" /> {/* Added flex-shrink-0 */}
                 <div>
                   <h4 className="font-semibold">Internship Mentor</h4>
-                  <p>
+                  <p className="text-sm text-gray-600"> {/* Adjusted text size and color */}
                     Guided 20+ interns across two cohorts, with over an 80% conversion rate.
                   </p>
                 </div>
