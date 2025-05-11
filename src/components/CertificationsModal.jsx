@@ -109,7 +109,7 @@ const CertificationsModal = ({ onClose }) => {
 
             <div className="text-center">
               {/* Enhanced "Currently working on" title */}
-              <h4 className={`${sectionSubTitleClasses} justify-center mb-2`}>Certifications I'm currently working on</h4>
+              <h4 className={`${sectionSubTitleClasses} justify-center mb-2`}>Certifications I'm currently working on...</h4>
               <p className="italic text-slate-500">Stay tuned for updates!</p> {/* Adjusted text color */}
             </div>
 

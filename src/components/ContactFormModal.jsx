@@ -235,7 +235,7 @@ const ContactFormModal = ({ onClose }) => {
               <div className="text-center py-10 flex flex-col items-center">
                 <FiCheckCircle className="text-green-500 h-16 w-16 mb-6" />
                 <h3 className="text-3xl font-semibold text-accent mb-3">Thank You!</h3>
-                <p className="text-slate-700 text-lg mb-8">Your message has been sent. I'll get back to you shortly.</p>
+                <p className="text-slate-700 text-lg mb-8">Your message has been sent. I'll get back to you as soon as I can.</p>
                 <button
                   onClick={onClose}
                   className="bg-accent text-white px-8 py-2.5 rounded-lg hover:bg-accent/90 transition-colors duration-150 font-medium shadow hover:shadow-md"
