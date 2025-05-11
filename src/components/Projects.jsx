@@ -159,6 +159,7 @@ const Projects = () => {
       // If script is already loaded, ensure VanillaTilt is initialized on current tiles
       if (window.VanillaTilt) {
         const elements = document.querySelectorAll('.project-tile-tilt');
+        // eslint-disable-next-line no-undef
         VanillaTilt.init(elements, { max: 15, speed: 400, glare: true, "max-glare": 0.2 });
       }
       return; 
@@ -171,6 +172,7 @@ const Projects = () => {
       window.vanillaTiltLoaded = true; // Flag to indicate script has loaded
       if (window.VanillaTilt) {
         const elements = document.querySelectorAll('.project-tile-tilt');
+        // eslint-disable-next-line no-undef
         VanillaTilt.init(elements, { max: 15, speed: 400, glare: true, "max-glare": 0.2 });
       }
     };
@@ -184,6 +186,7 @@ const Projects = () => {
       // Timeout to allow DOM to update with new tiles before initializing
       setTimeout(() => {
         const elements = document.querySelectorAll('.project-tile-tilt');
+        // eslint-disable-next-line no-undef
         VanillaTilt.init(elements, { max: 15, speed: 400, glare: true, "max-glare": 0.2 });
       }, 100); // Small delay
     }
