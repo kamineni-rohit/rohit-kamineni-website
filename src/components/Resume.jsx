@@ -35,11 +35,12 @@ const Resume = () => {
 
           <a
             href={RESUME_PATH}
-            target="_blank"
+            download="Rohit_Kamineni_Resume.pdf" // Added download attribute with a suggested filename
+            target="_blank" // Opens download link in new tab, though download attribute usually triggers download directly
             rel="noopener noreferrer"
-            className="bg-accent text-white font-medium px-6 py-3 rounded-md hover:opacity-90 transition"
+            className="bg-accent text-white font-medium px-6 py-3 rounded-md hover:opacity-90 transition-opacity duration-150 ease-in-out flex items-center gap-2" // Added flex, items-center, gap
           >
-            <FiDownload className="inline-block mr-2" />
+            <FiDownload className="inline-block" /> {/* Removed mr-2 */}
             Download Resume
           </a>
         </div>
