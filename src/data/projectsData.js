@@ -8,7 +8,7 @@ import {
     FiUsers,
     FiPackage,
     FiHeart,
-    FiClipboard,
+    // FiClipboard, // Can be removed if not used as a fallback elsewhere
     FiTool,
     FiDollarSign,
     FiMapPin,
@@ -18,7 +18,8 @@ import {
     FiGrid
   } from "react-icons/fi";
   
-  import { FaUber, FaStackOverflow } from "react-icons/fa";
+  // Updated imports to include new icons
+  import { FaUber, FaStackOverflow, FaAirbnb, FaMeteor, FaBrain } from "react-icons/fa";
   import { TbBrandMcdonalds } from "react-icons/tb";
   
   export const projectCategories = [
@@ -35,14 +36,14 @@ import {
       title: "AI Adoption",
       desc: "A Tableau-based narrative that visualizes the global trends, industry patterns, and challenges in enterprise AI adoption using IBM’s Global AI Index.",
       categories: ["All Projects", "Analytics", "Data Visualizations"],
-      icon: FiBarChart2,
+      icon: FaBrain, // Updated icon for AI Adoption
       github: "https://github.com/kamineni-rohit/ai-adoption-visual-analysis",
     },
     {
       title: "Airbnb Price Prediction",
       desc: "Built a predictive model for Airbnb listing prices using PCA and regression techniques. Included data cleaning, feature engineering, and dimensionality reduction.",
       categories: ["All Projects", "Data Science", "Analytics"],
-      icon: FiCpu,
+      icon: FaAirbnb, // Updated icon for Airbnb
       github: "https://github.com/kamineni-rohit/airbnb-price-prediction-pca",
     },
     {
@@ -70,7 +71,7 @@ import {
       title: "Meteorite Landings",
       desc: "Explored 34,000+ global meteorite landing entries through Tableau visualizations to uncover spatial, temporal, and compositional patterns.",
       categories: ["All Projects", "Analytics", "Data Visualizations"],
-      icon: FiMapPin,
+      icon: FaMeteor, // Updated icon for Meteorite Landings
       github: "https://github.com/kamineni-rohit/meteorite-landings-visual-analysis",
     },
     {
@@ -84,7 +85,7 @@ import {
       title: "Travelogy – SQL Travel Engine",
       desc: "Designed a unified SQL-based travel booking database to streamline transactions and generate personalized multi-service recommendations.",
       categories: ["All Projects", "Data Engineering", "Data Visualizations"],
-      icon: FiMapPin,
+      icon: FiMapPin, // Kept FiMapPin as it's suitable for travel/location
       github: "https://github.com/kamineni-rohit/travelogy-booking-database-design",
     },
     {
@@ -92,28 +93,28 @@ import {
       desc: "Built ETL pipelines on Databricks for customer segmentation. Achieved 20% ROI improvement.",
       categories: ["All Projects", "Data Engineering", "Analytics"],
       icon: FiDatabase,
-      github: null, // Placeholder
+      github: null, 
     },
     {
       title: "Uber Data Analytics Pipeline",
       desc: "End-to-end pipeline on GCP using Mage, BigQuery, and Looker for demand/supply insights.",
       categories: ["All Projects", "Data Engineering", "Analytics"],
       icon: FaUber,
-      github: null, // Placeholder
+      github: null, 
     },
     {
       title: "StackOverflow Developer Trends",
       desc: "Analyzed GitHub repos via BigQuery to uncover dev patterns. Engineered SQL dashboards.",
       categories: ["All Projects", "Data Visualizations", "Analytics"],
       icon: FaStackOverflow,
-      github: null, // Placeholder
+      github: null, 
     },
     {
       title: "CommonCrawl Inflation Tracker",
       desc: "Built Spark-based ETL using Athena + EMR for category-level inflation metrics.",
       categories: ["All Projects", "Data Engineering", "Analytics"],
       icon: FiTrendingUp,
-      github: null, // Placeholder
+      github: null, 
     },
     {
       title: "Supply Chain Inventory Optimizer",
