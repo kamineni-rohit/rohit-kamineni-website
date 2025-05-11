@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 // eslint-disable-next-line no-unused-vars
 import { useTransition, animated } from "@react-spring/web";
+import { FiX } from "react-icons/fi"; // Added for the close button
 
 // Skill categories remain unchanged
 const skillCategories = {
@@ -33,7 +34,7 @@ const getIconUrl = (skill) => {
   const known = {
     python: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
     java: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
-    sql: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+    sql: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg", // Generic SQL
     golang: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg",
     shellscripting: "https://skillicons.dev/icons?i=bash",
     javascript: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
@@ -43,57 +44,57 @@ const getIconUrl = (skill) => {
     aws: "https://skillicons.dev/icons?i=aws",
     azure: "https://skillicons.dev/icons?i=azure",
     gcp: "https://skillicons.dev/icons?i=gcp",
-    googlecloudplatformgcp: "https://skillicons.dev/icons?i=gcp",
+    googlecloudplatformgcp: "https://skillicons.dev/icons?i=gcp", // Alias for GCP
     kubernetes: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg",
-    cicd: "https://skillicons.dev/icons?i=githubactions",
-    apachespark: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg",
+    cicd: "https://skillicons.dev/icons?i=githubactions", // Example for CI/CD
+    apachespark: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachespark/apachespark-original-wordmark.svg", // More specific Spark icon
     hadoop: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hadoop/hadoop-original.svg",
-    databricks: "https://www.databricks.com/wp-content/uploads/2020/04/databricks-logo-small.png", // Updated
-    bigquery: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
+    databricks: "https://www.databricks.com/wp-content/uploads/2020/04/databricks-logo-small.png",
+    bigquery: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg", // GCP icon can represent BigQuery
     airflow: "https://iconduck.com/icons/27002/airflow.svg",
-    gluecatalog: "https://skillicons.dev/icons?i=aws",
-    fivetran: "https://www.fivetran.com/images/fivetran-logo-blue.svg", // Updated
-    integrateio: "https://www.integrate.io/hubfs/website-assets/Integrate.io%20Logo%20Color.svg", // Updated
-    sqlwarehouse: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+    gluecatalog: "https://skillicons.dev/icons?i=aws", // AWS icon for Glue
+    fivetran: "https://www.fivetran.com/images/fivetran-logo-blue.svg",
+    integrateio: "https://www.integrate.io/hubfs/website-assets/Integrate.io%20Logo%20Color.svg",
+    sqlwarehouse: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg", // Example for SQL Warehouse
     mysql: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
     postgresql: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
-    googlecloudstoragegcs: "https://skillicons.dev/icons?i=gcp",
-    amazons3: "https://skillicons.dev/icons?i=aws",
+    googlecloudstoragegcs: "https://skillicons.dev/icons?i=gcp", // GCP icon for GCS
+    amazons3: "https://skillicons.dev/icons?i=aws", // AWS icon for S3
     mongodb: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
     redis: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
     elasticsearch: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/elasticsearch/elasticsearch-original.svg",
-    mysqlworkbench: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
-    vertexai: "https://cloud.google.com/vertex-ai/images/vertex-ai-logo.svg", // Updated
-    scikitlearn: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-    mlpipelines: "https://skillicons.dev/icons?i=python",
-    modeldeployment: "https://skillicons.dev/icons?i=python",
-    anomalydetection: "https://skillicons.dev/icons?i=python",
+    mysqlworkbench: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg", // MySQL for Workbench
+    vertexai: "https://cloud.google.com/vertex-ai/images/vertex-ai-logo.svg",
+    scikitlearn: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Scikit_learn_logo_small.svg/1200px-Scikit_learn_logo_small.svg.png", // Scikit-learn logo
+    mlpipelines: "https://skillicons.dev/icons?i=tensorflow", // Example: TensorFlow for ML Pipelines
+    modeldeployment: "https://skillicons.dev/icons?i=docker", // Example: Docker for Model Deployment
+    anomalydetection: "https://skillicons.dev/icons?i=grafana", // Example: Grafana for Anomaly Detection (visualization)
     tableau: "https://cdn.worldvectorlogo.com/logos/tableau-software.svg",
-    looker: "https://cdn-icons-png.flaticon.com/512/5968/5968333.png",
+    looker: "https://seeklogo.com/images/L/looker-logo-E783A39181-seeklogo.com.png", // Better Looker logo
     powerbi: "https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg",
-    exceladvanced: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Microsoft_Office_Excel_%282019%29.svg/1200px-Microsoft_Office_Excel_%282019%29.svg.png", //Updated
+    exceladvanced: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Microsoft_Office_Excel_%282019%29.svg/1200px-Microsoft_Office_Excel_%282019%29.svg.png",
     sasminer: "https://cdn.worldvectorlogo.com/logos/sas-2.svg",
-    dbt: "https://avatars.githubusercontent.com/u/55843770?s=200&v=4", //Updated
-    googlesheets: "https://skillicons.dev/icons?i=googlecloud",
-    icims: "https://ui-avatars.com/api/?name=iCIMS&background=1d6fba&color=fff&bold=true&format=png&size=32",
+    dbt: "https://avatars.githubusercontent.com/u/55843770?s=200&v=4",
+    googlesheets: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Google_Sheets_logo_%282014-2020%29.svg/1200px-Google_Sheets_logo_%282014-2020%29.svg.png", // Google Sheets logo
+    icims: "https://ui-avatars.com/api/?name=iC&background=1d6fba&color=fff&bold=true&format=png&size=32", // Shorter name for avatar
     salesforce: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/salesforce/salesforce-original.svg",
     slack: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg",
     jira: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg"
   };
 
   if (known[sanitized]) return known[sanitized];
-
-  return `https://ui-avatars.com/api/?name=${encodeURIComponent(skill)}&background=1d6fba&color=fff&bold=true&format=png&size=32`;
+  // Fallback to a simpler avatar if no specific icon is found
+  return `https://ui-avatars.com/api/?name=${encodeURIComponent(skill.substring(0,2))}&background=e0e7ff&color=4f46e5&bold=true&format=svg&size=32`;
 };
 
-// Fallback icon for unknown skills
 const SkillsModal = ({ onClose }) => {
   const modalRef = useRef();
+  // Updated react-spring transition
   const transitions = useTransition(true, {
-    from: { opacity: 0, transform: "scale(0.95)" },
-    enter: { opacity: 1, transform: "scale(1)" },
-    leave: { opacity: 0, transform: "scale(0.95)" },
-    config: { tension: 220, friction: 20 },
+    from: { opacity: 0, transform: "scale(0.95) translateY(-20px)" },
+    enter: { opacity: 1, transform: "scale(1) translateY(0px)" },
+    leave: { opacity: 0, transform: "scale(0.95) translateY(20px)" },
+    config: { tension: 280, friction: 25 }, // Matching config
   });
 
   useEffect(() => {
@@ -111,39 +112,51 @@ const SkillsModal = ({ onClose }) => {
   }, [onClose]);
 
   return (
-    <div className="fixed inset-0 z-50 bg-black bg-opacity-40 flex items-center justify-center px-4">
+    // Updated backdrop overlay
+    <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center px-4 py-8 overflow-y-auto">
       {transitions((style, item) =>
         item ? (
           <animated.div
             style={style}
             ref={modalRef}
-            className="bg-white w-full max-w-4xl rounded-xl p-6 shadow-xl max-h-[90vh] overflow-y-auto"
+            // Enhanced modal container styling
+            className="bg-white w-full max-w-4xl rounded-xl p-8 shadow-2xl max-h-[90vh] overflow-y-auto relative"
           >
+            {/* Enhanced Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-6 text-gray-400 hover:text-gray-700 text-2xl transition"
+              className="absolute top-5 right-5 text-slate-400 hover:text-accent p-1 rounded-full hover:bg-slate-100 transition-colors duration-150 z-10"
+              aria-label="Close"
             >
-              &times;
+              <FiX size={24} />
             </button>
-            <h3 className="text-2xl font-bold text-accent mb-6 text-center">Full Skillset</h3>
+            {/* Enhanced Main Title */}
+            <h3 className="text-3xl font-semibold text-accent mb-8 text-center">
+              Full Skillset
+            </h3>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6"> {/* Adjusted gap */}
               {Object.entries(skillCategories).map(([category, skills], idx) => (
-                <div key={idx} className="bg-gray-50 p-4 rounded-lg shadow-sm border">
-                  <h4 className="font-semibold text-gray-800 mb-3">{category}</h4>
-                  <ul className="space-y-2">
+                // Enhanced category container
+                <div key={idx} className="bg-slate-50/80 p-6 rounded-lg border border-slate-200 shadow-sm">
+                  {/* Enhanced category title */}
+                  <h4 className="text-xl font-semibold text-slate-700 mb-4 pb-2 border-b border-slate-200">
+                    {category}
+                  </h4>
+                  <ul className="space-y-3">
                     {skills.map((skill, i) => (
-                      <li key={i} className="flex items-center gap-3 text-gray-800 hover:scale-[1.02] transition-all duration-200">
+                      // Enhanced skill item
+                      <li key={i} className="flex items-center gap-3 text-slate-700 hover:bg-slate-100/70 p-1.5 rounded-md transition-colors duration-150 ease-in-out">
                         <img
                           src={getIconUrl(skill)}
-                          alt={skill}
-                          className="w-6 h-6 object-contain rounded-sm border"
+                          alt={`${skill} icon`}
+                          // Consistent icon styling
+                          className="w-6 h-6 object-contain rounded-sm flex-shrink-0" 
                           onError={(e) => {
-                            // fallback to avatar if icon fails to load
-                            e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(skill)}&background=1d6fba&color=fff&bold=true&format=png&size=32`;
+                            e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(skill.substring(0,2))}&background=e0e7ff&color=4f46e5&bold=true&format=svg&size=32`;
                           }}
                         />
-                        <span>{skill}</span>
+                        <span className="text-base">{skill}</span>
                       </li>
                     ))}
                   </ul>
@@ -151,10 +164,11 @@ const SkillsModal = ({ onClose }) => {
               ))}
             </div>
 
-            <div className="text-center mt-8">
+            {/* Enhanced Bottom Close Button */}
+            <div className="text-center mt-10 pt-6 border-t border-slate-200">
               <button
                 onClick={onClose}
-                className="bg-accent text-white px-6 py-2 rounded hover:opacity-90 transition"
+                className="bg-accent text-white px-8 py-2.5 rounded-lg hover:bg-accent/90 transition-colors duration-150 font-medium shadow-md hover:shadow-lg transform hover:scale-[1.01]"
               >
                 Close
               </button>
@@ -162,7 +176,7 @@ const SkillsModal = ({ onClose }) => {
           </animated.div>
         ) : null
       )}
-      <div className="fixed inset-0 -z-10 backdrop-blur-sm" onClick={onClose} />
+      {/* Removed redundant backdrop div */}
     </div>
   );
 };

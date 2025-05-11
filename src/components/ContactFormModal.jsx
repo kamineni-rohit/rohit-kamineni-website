@@ -1,18 +1,19 @@
-import { useEffect, useRef, useState } from "react";
-import { Listbox } from "@headlessui/react";
+import { useEffect, useRef, useState, Fragment } from "react";
+import { Listbox, Transition } from "@headlessui/react";
 import { HiChevronDown } from "react-icons/hi";
+import { FiX, FiCheckCircle, FiAlertCircle } from "react-icons/fi";
 // eslint-disable-next-line no-unused-vars
 import { useTransition, animated } from "@react-spring/web";
 import emailjs from "emailjs-com";
 
-const reasons = ["Job Opportunity", "Collaboration", "Just Saying Hi"];
+const reasons = ["Job Opportunity", "Collaboration", "Just Saying Hi", "Project Inquiry", "Other"];
 
 const ContactFormModal = ({ onClose }) => {
   const [formData, setFormData] = useState({
     first: "",
     last: "",
     email: "",
-    reason: "",
+    reason: "", 
     phone: "",
     linkedin: "",
     message: "",
@@ -21,21 +22,20 @@ const ContactFormModal = ({ onClose }) => {
   const [showThankYou, setShowThankYou] = useState(false);
   const modalRef = useRef();
 
-  // Modal mount animation
-  const transitions = useTransition(true, {
-    from: { opacity: 0, transform: "scale(0.95)" },
-    enter: { opacity: 1, transform: "scale(1)" },
-    leave: { opacity: 0, transform: "scale(0.95)" },
-    config: { tension: 250, friction: 20 },
+  const modalTransitions = useTransition(true, {
+    from: { opacity: 0, transform: "scale(0.95) translateY(-20px)" },
+    enter: { opacity: 1, transform: "scale(1) translateY(0px)" },
+    leave: { opacity: 0, transform: "scale(0.95) translateY(20px)" },
+    config: { tension: 280, friction: 25 },
   });
 
   const validate = () => {
     const errs = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!formData.first.trim()) errs.first = true;
-    if (!formData.last.trim()) errs.last = true;
-    if (!emailRegex.test(formData.email)) errs.email = true;
-    if (!formData.reason.trim()) errs.reason = true;
+    if (!formData.first.trim()) errs.first = "First name is required";
+    if (!formData.last.trim()) errs.last = "Last name is required";
+    if (!emailRegex.test(formData.email)) errs.email = "Invalid email address";
+    if (!formData.reason) errs.reason = "Please select a reason";
     return errs;
   };
 
@@ -44,15 +44,23 @@ const ContactFormModal = ({ onClose }) => {
     const errs = validate();
     setErrors(errs);
     if (Object.keys(errs).length === 0) {
+      const emailData = {
+        ...formData,
+        reason: typeof formData.reason === 'object' ? formData.reason.name : formData.reason,
+      };
+
       emailjs
         .send(
           import.meta.env.VITE_EMAILJS_SERVICE_ID,
           import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-          formData,
+          emailData,
           import.meta.env.VITE_EMAILJS_PUBLIC_KEY
         )
         .then(() => setShowThankYou(true))
-        .catch((error) => console.error("EmailJS Error:", error));
+        .catch((error) => {
+            console.error("EmailJS Error:", error);
+            setErrors(prev => ({ ...prev, submit: "Failed to send message. Please try again."}));
+        });
     }
   };
 
@@ -70,131 +78,167 @@ const ContactFormModal = ({ onClose }) => {
     };
   }, [onClose]);
 
+  const inputBaseClasses = "w-full border rounded-lg px-4 py-2.5 bg-slate-50 placeholder-slate-400 text-slate-800 transition-colors duration-150 ease-in-out";
+  const inputBorderClasses = "border-slate-300 focus:border-accent focus:ring-2 focus:ring-accent/50";
+  const inputErrorClasses = "border-red-400 focus:border-red-500 focus:ring-2 focus:ring-red-500/50";
+
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-40 z-50 flex items-center justify-center px-4">
-      {transitions((style, item) =>
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center px-4 py-8 overflow-y-auto">
+      {modalTransitions((style, item) =>
         item ? (
           <animated.div
             style={style}
             ref={modalRef}
-            className="bg-white rounded-xl shadow-lg w-full max-w-xl p-6 relative"
+            className="bg-white rounded-xl shadow-2xl w-full max-w-lg p-8 relative"
           >
             {!showThankYou ? (
               <>
                 <button
                   onClick={onClose}
-                  className="absolute top-4 right-6 text-gray-400 hover:text-gray-700 text-2xl transition"
+                  className="absolute top-5 right-5 text-slate-400 hover:text-accent p-1 rounded-full hover:bg-slate-100 transition-colors duration-150"
                   aria-label="Close modal"
                 >
-                  &times;
+                  <FiX size={24} />
                 </button>
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-accent">Leave Your Info</h3>
+                <div className="text-center mb-8">
+                  <h3 className="text-3xl font-semibold text-accent">Get In Touch</h3>
                 </div>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="flex flex-col sm:flex-row gap-4">
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div className="flex flex-col sm:flex-row gap-5">
+                    <div className="flex-1">
+                      <label htmlFor="first" className="sr-only">First Name</label>
+                      <input
+                        id="first"
+                        type="text"
+                        placeholder="First Name*"
+                        className={`${inputBaseClasses} ${errors.first ? inputErrorClasses : inputBorderClasses}`}
+                        value={formData.first}
+                        onChange={(e) => setFormData({ ...formData, first: e.target.value })}
+                      />
+                      {errors.first && <p className="text-red-500 text-xs mt-1 ml-1">{errors.first}</p>}
+                    </div>
+                    <div className="flex-1">
+                      <label htmlFor="last" className="sr-only">Last Name</label>
+                      <input
+                        id="last"
+                        type="text"
+                        placeholder="Last Name*"
+                        className={`${inputBaseClasses} ${errors.last ? inputErrorClasses : inputBorderClasses}`}
+                        value={formData.last}
+                        onChange={(e) => setFormData({ ...formData, last: e.target.value })}
+                      />
+                      {errors.last && <p className="text-red-500 text-xs mt-1 ml-1">{errors.last}</p>}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="sr-only">Email</label>
                     <input
-                      type="text"
-                      placeholder="First Name*"
-                      className={`flex-1 border rounded-md px-4 py-2 ${
-                        errors.first ? "border-red-500" : "border-gray-300"
-                      }`}
-                      value={formData.first}
-                      onChange={(e) => setFormData({ ...formData, first: e.target.value })}
+                      id="email"
+                      type="email"
+                      placeholder="Email*"
+                      className={`${inputBaseClasses} ${errors.email ? inputErrorClasses : inputBorderClasses}`}
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     />
-                    <input
-                      type="text"
-                      placeholder="Last Name*"
-                      className={`flex-1 border rounded-md px-4 py-2 ${
-                        errors.last ? "border-red-500" : "border-gray-300"
-                      }`}
-                      value={formData.last}
-                      onChange={(e) => setFormData({ ...formData, last: e.target.value })}
-                    />
+                    {errors.email && <p className="text-red-500 text-xs mt-1 ml-1">{errors.email}</p>}
+                  </div>
+                  
+                  <div>
+                    <Listbox
+                      value={formData.reason}
+                      onChange={(val) => setFormData({ ...formData, reason: val })}
+                    >
+                      {({ open }) => (
+                        <div className="relative">
+                          <Listbox.Button
+                            // Updated classes here:
+                            // Removed placeholder-slate-400 from inputBaseClasses and apply it conditionally
+                            className={`w-full border rounded-lg px-4 py-2.5 bg-slate-50 text-left flex justify-between items-center transition-colors duration-150 ease-in-out 
+                            ${formData.reason ? "text-slate-800" : "text-slate-400"} 
+                            ${errors.reason ? inputErrorClasses : inputBorderClasses}`}
+                          >
+                            {formData.reason || "Why are you contacting?*"}
+                            <HiChevronDown
+                              className={`h-5 w-5 text-slate-400 transition-transform duration-200 ease-in-out ${
+                                open ? "transform rotate-180" : ""
+                              }`}
+                            />
+                          </Listbox.Button>
+                          <Transition
+                            as={Fragment}
+                            leave="transition ease-in duration-100"
+                            leaveFrom="opacity-100"
+                            leaveTo="opacity-0"
+                          >
+                            <Listbox.Options className="absolute mt-1 w-full bg-white border border-slate-200 rounded-lg shadow-xl z-20 py-1 overflow-hidden">
+                              {reasons.map((option) => (
+                                <Listbox.Option
+                                  key={option}
+                                  value={option}
+                                  className={({ active, selected }) =>
+                                    `px-4 py-2.5 cursor-pointer text-sm transition-colors duration-100 ease-in-out
+                                    ${active ? "bg-accent/10 text-accent" : "text-slate-700"}
+                                    ${selected ? "font-semibold bg-accent/15 text-accent" : "font-normal"}`
+                                  }
+                                >
+                                  {option}
+                                </Listbox.Option>
+                              ))}
+                            </Listbox.Options>
+                          </Transition>
+                          {errors.reason && <p className="text-red-500 text-xs mt-1 ml-1">{errors.reason}</p>}
+                        </div>
+                      )}
+                    </Listbox>
                   </div>
 
                   <input
-                    type="email"
-                    placeholder="Email*"
-                    className={`w-full border rounded-md px-4 py-2 ${
-                      errors.email ? "border-red-500" : "border-gray-300"
-                    }`}
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  />
-
-                  <Listbox
-                    value={formData.reason}
-                    onChange={(val) => setFormData({ ...formData, reason: val })}
-                  >
-                    <div className="relative">
-                      <Listbox.Button
-                        className={`w-full text-left border rounded-md px-4 py-2 ${
-                          formData.reason ? "text-black" : "text-gray-400"
-                        } ${errors.reason ? "border-red-500" : "border-gray-300"}`}
-                      >
-                        {formData.reason || "Why are you contacting?*"}
-                        <span className="absolute right-4 top-1/2 transform -translate-y-1/2">
-                          <HiChevronDown />
-                        </span>
-                      </Listbox.Button>
-                      <Listbox.Options className="absolute mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg z-10">
-                        {reasons.map((option) => (
-                          <Listbox.Option
-                            key={option}
-                            value={option}
-                            className={({ active }) =>
-                              `px-4 py-2 cursor-pointer ${
-                                active ? "bg-blue-50 text-accent" : "text-gray-800"
-                              }`
-                            }
-                          >
-                            {option}
-                          </Listbox.Option>
-                        ))}
-                      </Listbox.Options>
-                    </div>
-                  </Listbox>
-
-                  <input
-                    type="text"
+                    type="tel"
                     placeholder="Phone (optional)"
-                    className="w-full border border-gray-300 rounded-md px-4 py-2"
+                    className={`${inputBaseClasses} ${inputBorderClasses}`} // Uses placeholder-slate-400 from inputBaseClasses
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   />
 
                   <input
-                    type="text"
-                    placeholder="LinkedIn (optional)"
-                    className="w-full border border-gray-300 rounded-md px-4 py-2"
+                    type="url" 
+                    placeholder="LinkedIn Profile URL (optional)"
+                    className={`${inputBaseClasses} ${inputBorderClasses}`} // Uses placeholder-slate-400 from inputBaseClasses
                     value={formData.linkedin}
                     onChange={(e) => setFormData({ ...formData, linkedin: e.target.value })}
                   />
 
                   <textarea
                     rows="4"
-                    placeholder="Message (optional)"
-                    className="w-full border border-gray-300 rounded-md px-4 py-2"
+                    placeholder="Your Message (optional)"
+                    className={`${inputBaseClasses} ${inputBorderClasses} min-h-[100px]`} // Uses placeholder-slate-400 from inputBaseClasses
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   />
+                  
+                  {errors.submit && 
+                    <div className="flex items-center text-red-600 text-sm p-2 bg-red-50 rounded-md">
+                        <FiAlertCircle className="mr-2 h-5 w-5"/> {errors.submit}
+                    </div>
+                  }
 
                   <button
                     type="submit"
-                    className="w-full bg-accent text-white py-2.5 rounded-md hover:opacity-90 transition font-medium"
+                    className="w-full bg-accent text-white py-3 rounded-lg hover:bg-accent/90 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 transition-all duration-150 ease-in-out font-semibold text-base shadow-md hover:shadow-lg transform hover:scale-[1.01]"
                   >
-                    Submit
+                    Send Message
                   </button>
                 </form>
               </>
             ) : (
-              <div className="text-center py-6">
-                <h3 className="text-2xl font-semibold text-accent mb-2">Thank you!</h3>
-                <p className="text-gray-700 text-lg">I'll get back to you as soon as I can.</p>
+              <div className="text-center py-10 flex flex-col items-center">
+                <FiCheckCircle className="text-green-500 h-16 w-16 mb-6" />
+                <h3 className="text-3xl font-semibold text-accent mb-3">Thank You!</h3>
+                <p className="text-slate-700 text-lg mb-8">Your message has been sent. I'll get back to you shortly.</p>
                 <button
                   onClick={onClose}
-                  className="mt-6 bg-accent text-white px-6 py-2 rounded-md hover:opacity-90 transition"
+                  className="bg-accent text-white px-8 py-2.5 rounded-lg hover:bg-accent/90 transition-colors duration-150 font-medium shadow hover:shadow-md"
                 >
                   Close
                 </button>
@@ -203,7 +247,6 @@ const ContactFormModal = ({ onClose }) => {
           </animated.div>
         ) : null
       )}
-      <div className="fixed inset-0 -z-10 backdrop-blur-sm" onClick={onClose} />
     </div>
   );
 };

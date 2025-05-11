@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 // eslint-disable-next-line no-unused-vars
 import { useTransition, animated } from "@react-spring/web";
+import { FiX } from "react-icons/fi"; // Added for the close button
 import {
   FaInstagram,
   FaFacebook,
@@ -28,11 +29,12 @@ import snookerImg from "../assets/icons/snooker.png";
 
 const KnowMoreModal = ({ onClose }) => {
   const modalRef = useRef();
+  // Updated react-spring transition to match ContactFormModal
   const transitions = useTransition(true, {
-    from: { opacity: 0, transform: "scale(0.95)" },
-    enter: { opacity: 1, transform: "scale(1)" },
-    leave: { opacity: 0, transform: "scale(0.95)" },
-    config: { duration: 200 }
+    from: { opacity: 0, transform: "scale(0.95) translateY(-20px)" },
+    enter: { opacity: 1, transform: "scale(1) translateY(0px)" },
+    leave: { opacity: 0, transform: "scale(0.95) translateY(20px)" },
+    config: { tension: 280, friction: 25 }, // Matching config
   });
 
   useEffect(() => {
@@ -41,7 +43,7 @@ const KnowMoreModal = ({ onClose }) => {
         onClose();
       }
     };
-     document.body.style.overflow = 'hidden'; // Lock scroll
+    document.body.style.overflow = 'hidden'; // Lock scroll
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.body.style.overflow = 'unset'; // Unlock scroll
@@ -77,15 +79,7 @@ I’ve thrived in cloud-native enterprise environments and love bridging the tec
       "Hindi – Full professional",
       "Tamil – Limited working"
     ],
-    "Volunteering & Impact": [
-      <>
-        <img
-          src={nirmaanLogo}
-          alt="Nirmaan Logo"
-          className="inline w-12 h-12 mr-4 align-middle"
-        />
-        From 2010 to 2012, I led STEM programs for students in orphanages through the Nirmaan Organization. This involved designing and delivering interactive sessions aimed at sparking curiosity, building confidence, and making science fun and accessible.
-      </>
+    "Volunteering & Impact": [ // Content is now directly in the JSX for this section
     ],
     "What Drives Me": [
       "I believe everyone deserves a fair shot at education and tech opportunities.",
@@ -95,25 +89,25 @@ I’ve thrived in cloud-native enterprise environments and love bridging the tec
   };
 
   const hobbies = [
-    { label: "Formula 1", icon: <FaCar />, color: "#1d6fba" },
-    { label: "Cue Sports", icon: <img src={snookerImg} alt="Snooker" style={{ width: '24px', height: '24px' }} />, color: "#1d6fba" },
-    { label: "Cricket", icon: <FaBaseballBatBall />, color: "#1d6fba" },
-    { label: "Photography", icon: <FaCamera />, color: "#1d6fba" },
-    { label: "Bikes & Cars", icon: <FaMotorcycle />, color: "#1d6fba" },
-    { label: "Coffee", icon: <FaMugSaucer />, color: "#1d6fba" },
-    { label: "Cafes", icon: <FaMugSaucer />, color: "#1d6fba" },
-    { label: "Chess", icon: <FaChessKnight />, color: "#1d6fba" },
-    { label: "Cooking", icon: <FaUtensils />, color: "#1d6fba" },
-    { label: "Travel", icon: <FaPlane />, color: "#1d6fba" },
-    { label: "Music", icon: <FaMusic />, color: "#1d6fba" },
-    { label: "Movies", icon: <FaFilm />, color: "#1d6fba" },
-    { label: "Hiking", icon: <MdHiking />, color: "#1d6fba" },
-    { label: "Cats", icon: <FaCat />, color: "#1d6fba" },
-    { label: "Dogs", icon: <FaDog />, color: "#1d6fba" },
-    { label: "Tech", icon: <FaCode />, color: "#1d6fba" },
-    { label: "Board Games", icon: <FaDice />, color: "#1d6fba" },
-    { label: "Fitness", icon: <RiRunFill />, color: "#1d6fba" },
-    { label: "Learning", icon: <FaUsers />, color: "#1d6fba" }
+    { label: "Formula 1", icon: <FaCar size="1.1em"/>, color: "text-accent" },
+    { label: "Cue Sports", icon: <img src={snookerImg} alt="Snooker" className="w-[1.1em] h-[1.1em]" />, color: "text-accent" },
+    { label: "Cricket", icon: <FaBaseballBatBall size="1.1em"/>, color: "text-accent" },
+    { label: "Photography", icon: <FaCamera size="1.1em"/>, color: "text-accent" },
+    { label: "Bikes & Cars", icon: <FaMotorcycle size="1.1em"/>, color: "text-accent" },
+    { label: "Coffee", icon: <FaMugSaucer size="1.1em"/>, color: "text-accent" },
+    { label: "Cafes", icon: <FaMugSaucer size="1.1em"/>, color: "text-accent" },
+    { label: "Chess", icon: <FaChessKnight size="1.1em"/>, color: "text-accent" },
+    { label: "Cooking", icon: <FaUtensils size="1.1em"/>, color: "text-accent" },
+    { label: "Travel", icon: <FaPlane size="1.1em"/>, color: "text-accent" },
+    { label: "Music", icon: <FaMusic size="1.1em"/>, color: "text-accent" },
+    { label: "Movies", icon: <FaFilm size="1.1em"/>, color: "text-accent" },
+    { label: "Hiking", icon: <MdHiking size="1.1em"/>, color: "text-accent" },
+    { label: "Cats", icon: <FaCat size="1.1em"/>, color: "text-accent" },
+    { label: "Dogs", icon: <FaDog size="1.1em"/>, color: "text-accent" },
+    { label: "Tech", icon: <FaCode size="1.1em"/>, color: "text-accent" },
+    { label: "Board Games", icon: <FaDice size="1.1em"/>, color: "text-accent" },
+    { label: "Fitness", icon: <RiRunFill size="1.1em"/>, color: "text-accent" },
+    { label: "Learning", icon: <FaUsers size="1.1em"/>, color: "text-accent" }
   ];
 
   const socials = [
@@ -121,94 +115,101 @@ I’ve thrived in cloud-native enterprise environments and love bridging the tec
       icon: <FaInstagram />,
       url: "https://www.instagram.com/rohit_kamineni/",
       label: "Instagram",
-      brand: "#E4405F"
     },
     {
       icon: <FaFacebook />,
       url: "https://www.facebook.com/rohit.kamineni.01/",
       label: "Facebook",
-      brand: "#1877F3"
     },
     {
       icon: <FaXTwitter />,
       url: "https://x.com/rohit_kamineni",
       label: "X",
-      brand: "#000000"
     }
   ];
 
+  // Common section styles
+  const sectionSpacing = "mb-8"; // Increased spacing between sections
+  const sectionTitleClasses = "text-xl font-semibold text-slate-700 mb-4"; // Enhanced section titles
+  const paragraphClasses = "text-slate-600 text-base leading-relaxed";
+  const listClasses = "list-disc pl-5 text-slate-600 text-base space-y-2 leading-relaxed";
+
+
   return (
-    <div className="fixed inset-0 z-50 bg-black bg-opacity-40 flex items-center justify-center px-4">
+    <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center px-4 py-8 overflow-y-auto">
       {transitions((style, item) =>
         item ? (
           <animated.div
             style={style}
             ref={modalRef}
-            className="bg-white w-full max-w-4xl rounded-xl p-6 shadow-xl max-h-[90vh] overflow-y-auto relative"
+            // Increased padding and shadow, consistent max-width
+            className="bg-white w-full max-w-4xl rounded-xl p-8 shadow-2xl max-h-[90vh] overflow-y-auto relative"
           >
+            {/* Enhanced Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-6 text-gray-400 hover:text-gray-700 text-2xl transition"
+              className="absolute top-5 right-5 text-slate-400 hover:text-accent p-1 rounded-full hover:bg-slate-100 transition-colors duration-150 z-10"
               aria-label="Close"
             >
-              &times;
+              <FiX size={24} />
             </button>
-            <h3 className="text-2xl font-bold text-accent mb-6 text-center">
-              Know More About Me
+            {/* Enhanced Main Title */}
+            <h3 className="text-3xl font-semibold text-accent mb-6 text-center"> 
+              A Little More About Me
             </h3>
 
             {/* Professional Summary */}
-            <section className="mb-6">
-              <h4 className="font-semibold text-gray-800 mb-2 text-lg">
-                Professional Summary
+            <section className={sectionSpacing}>
+              <h4 className={sectionTitleClasses}>
+                Professional Snapshot
               </h4>
-              <p className="text-gray-700 text-base whitespace-pre-line leading-relaxed">
+              <p className={`${paragraphClasses} whitespace-pre-line`}>
                 {professionalSummary}
               </p>
             </section>
 
-            {/* Volunteering & Impact */}
-            <section className="mb-6">
-              <h4 className="font-semibold text-gray-800 mb-2 text-lg">
-                Volunteering & Impact
-              </h4>
-              <div className="flex items-start gap-4">
-                <img
-                  src={nirmaanLogo}
-                  alt="Nirmaan Logo"
-                  className="w-16 h-16 mt-1"
-                />
-                <p className="text-gray-700 text-base leading-relaxed">
-                  From 2016 to 2018, I led STEM programs for students in orphanages through the Nirmaan Organization. This involved designing and delivering interactive sessions aimed at sparking curiosity, building confidence, and making science fun and accessible.
-                </p>
-              </div>
-            </section>
-
-            {/* Hobbies and Interests */}
-            <section className="mb-6">
-              <h4 className="font-semibold text-gray-800 mb-2 text-lg">
+            {/* Hobbies and Interests - MOVED HERE */}
+            <section className={sectionSpacing}>
+              <h4 className={sectionTitleClasses}>
                 Hobbies & Interests
               </h4>
-              <ul className="flex flex-wrap gap-3 text-sm">
+              <ul className="flex flex-wrap gap-3">
                 {hobbies.map((hobby, i) => (
                   <li
                     key={i}
-                    className="flex items-center gap-2 px-3 py-1 rounded-full bg-gray-50 hover:bg-gray-100 transition text-gray-700"
-                    style={{ color: hobby.color }}
+                    // Enhanced hobby tags
+                    className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 transition-colors duration-150 text-sm font-medium ${hobby.color || 'text-accent'}`}
                   >
-                    {hobby.icon}
+                    {React.cloneElement(hobby.icon, { className: `h-4 w-4 ${hobby.icon.type === 'img' ? '' : 'mr-0.5'}` })} {/* Ensure icon size consistency */}
                     {hobby.label}
                   </li>
                 ))}
               </ul>
             </section>
 
+            {/* Volunteering & Impact - NOW AFTER HOBBIES */}
+            <section className={sectionSpacing}>
+              <h4 className={sectionTitleClasses}>
+                Volunteering & Impact
+              </h4>
+              <div className="flex items-start gap-4 p-4 bg-slate-50 rounded-lg">
+                <img
+                  src={nirmaanLogo}
+                  alt="Nirmaan Logo"
+                  className="w-12 h-12 mt-1 flex-shrink-0" // Resized logo
+                />
+                <p className={paragraphClasses}>
+                  From 2016 to 2018, I dedicated time to leading STEM education programs for underprivileged students through the Nirmaan Organization. My role involved designing and delivering interactive sessions aimed at sparking curiosity in science and technology, building confidence, and making learning both fun and accessible.
+                </p>
+              </div>
+            </section>
+
             {/* What Drives Me */}
-            <section className="mb-6">
-              <h4 className="font-semibold text-gray-800 mb-2 text-lg">
+            <section className={sectionSpacing}>
+              <h4 className={sectionTitleClasses}>
                 What Drives Me
               </h4>
-              <ul className="list-disc pl-5 text-gray-700 text-sm space-y-2">
+              <ul className={listClasses}>
                 {moreInfo["What Drives Me"].map((item, i) => (
                   <li key={i}>{item}</li>
                 ))}
@@ -216,11 +217,11 @@ I’ve thrived in cloud-native enterprise environments and love bridging the tec
             </section>
 
             {/* Languages I Speak */}
-            <section className="mb-6">
-              <h4 className="font-semibold text-gray-800 mb-2 text-lg">
+            <section className={sectionSpacing}>
+              <h4 className={sectionTitleClasses}>
                 Languages I Speak
               </h4>
-              <ul className="list-disc pl-5 text-gray-700 text-sm space-y-2">
+              <ul className={listClasses}>
                 {moreInfo["Languages I Speak"].map((item, i) => (
                   <li key={i}>{item}</li>
                 ))}
@@ -228,15 +229,16 @@ I’ve thrived in cloud-native enterprise environments and love bridging the tec
             </section>
 
             {/* Highlights */}
-            <section className="mb-6">
-              <h4 className="font-semibold text-gray-800 mb-2 text-lg">
+            <section className={sectionSpacing}>
+              <h4 className={sectionTitleClasses}>
                 Highlights
               </h4>
-              <ul className="flex flex-wrap gap-2">
+              <ul className="flex flex-wrap gap-2.5">
                 {highlights.map((item, i) => (
                   <li
                     key={i}
-                    className="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm"
+                    // Enhanced highlight tags
+                    className="bg-accent/10 text-accent px-3.5 py-1.5 rounded-full text-sm font-medium hover:bg-accent/20 transition-colors duration-150"
                   >
                     {item}
                   </li>
@@ -246,21 +248,19 @@ I’ve thrived in cloud-native enterprise environments and love bridging the tec
 
             {/* Social Icons */}
             <div className="text-center mt-10 flex flex-col items-center gap-4">
-              <p className="text-gray-700 italic">
+              <p className={`${paragraphClasses} italic`}>
                 Connect with me on my socials!
               </p>
               <div className="flex justify-center gap-6">
-                {socials.map(({ icon, url, label, brand }, idx) => (
+                {socials.map(({ icon, url, label }, idx) => (
                   <a
                     key={idx}
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="transition transform hover:scale-110"
-                    style={{ color: "#b0b0b0", transition: "color 0.2s" }}
-                    onMouseEnter={(e) => { e.currentTarget.style.color = brand; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.color = "#b0b0b0"; }}
+                    // Enhanced social icons
+                    className="text-slate-500 hover:text-accent transition-all duration-200 ease-in-out transform hover:scale-110"
                   >
                     <span className="text-3xl">{icon}</span>
                   </a>
@@ -268,10 +268,11 @@ I’ve thrived in cloud-native enterprise environments and love bridging the tec
               </div>
             </div>
 
-            <div className="text-center mt-8">
+            {/* Enhanced Bottom Close Button */}
+            <div className="text-center mt-10 pt-6 border-t border-slate-200">
               <button
                 onClick={onClose}
-                className="bg-accent text-white px-6 py-2 rounded hover:opacity-90 transition"
+                className="bg-accent text-white px-8 py-2.5 rounded-lg hover:bg-accent/90 transition-colors duration-150 font-medium shadow-md hover:shadow-lg transform hover:scale-[1.01]"
               >
                 Close
               </button>
@@ -279,7 +280,6 @@ I’ve thrived in cloud-native enterprise environments and love bridging the tec
           </animated.div>
         ) : null
       )}
-      <div className="fixed inset-0 -z-10 backdrop-blur-sm" onClick={onClose} />
     </div>
   );
 };
