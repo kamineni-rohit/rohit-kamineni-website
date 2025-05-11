@@ -10,7 +10,7 @@ import {
     FiHeart,
     // FiClipboard, // Can be removed if not used as a fallback elsewhere
     FiTool,
-    FiDollarSign,
+    // FiDollarSign, // Replaced by FaBitcoin for crypto, can be removed if not used elsewhere
     FiMapPin,
     FiZap,
     FiShoppingCart,
@@ -19,7 +19,7 @@ import {
   } from "react-icons/fi";
   
   // Updated imports to include new icons
-  import { FaUber, FaStackOverflow, FaAirbnb, FaMeteor, FaBrain } from "react-icons/fa";
+  import { FaUber, FaStackOverflow, FaAirbnb, FaMeteor, FaBrain, FaBitcoin } from "react-icons/fa"; // Added FaBitcoin
   import { TbBrandMcdonalds } from "react-icons/tb";
   
   export const projectCategories = [
@@ -36,14 +36,14 @@ import {
       title: "AI Adoption",
       desc: "A Tableau-based narrative that visualizes the global trends, industry patterns, and challenges in enterprise AI adoption using IBM’s Global AI Index.",
       categories: ["All Projects", "Analytics", "Data Visualizations"],
-      icon: FaBrain, // Updated icon for AI Adoption
+      icon: FaBrain, 
       github: "https://github.com/kamineni-rohit/ai-adoption-visual-analysis",
     },
     {
       title: "Airbnb Price Prediction",
       desc: "Built a predictive model for Airbnb listing prices using PCA and regression techniques. Included data cleaning, feature engineering, and dimensionality reduction.",
       categories: ["All Projects", "Data Science", "Analytics"],
-      icon: FaAirbnb, // Updated icon for Airbnb
+      icon: FaAirbnb, 
       github: "https://github.com/kamineni-rohit/airbnb-price-prediction-pca",
     },
     {
@@ -57,7 +57,7 @@ import {
       title: "Cryptocurrency Price Prediction",
       desc: "Built a machine learning pipeline to predict short-term cryptocurrency price movements using historical data, technical indicators, and classification models.",
       categories: ["All Projects", "Data Science"],
-      icon: FiDollarSign,
+      icon: FaBitcoin, // Updated icon for Cryptocurrency
       github: "https://github.com/kamineni-rohit/crypto-price-movement-prediction",
     },
     {
@@ -71,7 +71,7 @@ import {
       title: "Meteorite Landings",
       desc: "Explored 34,000+ global meteorite landing entries through Tableau visualizations to uncover spatial, temporal, and compositional patterns.",
       categories: ["All Projects", "Analytics", "Data Visualizations"],
-      icon: FaMeteor, // Updated icon for Meteorite Landings
+      icon: FaMeteor, 
       github: "https://github.com/kamineni-rohit/meteorite-landings-visual-analysis",
     },
     {
@@ -85,7 +85,7 @@ import {
       title: "Travelogy – SQL Travel Engine",
       desc: "Designed a unified SQL-based travel booking database to streamline transactions and generate personalized multi-service recommendations.",
       categories: ["All Projects", "Data Engineering", "Data Visualizations"],
-      icon: FiMapPin, // Kept FiMapPin as it's suitable for travel/location
+      icon: FiMapPin, 
       github: "https://github.com/kamineni-rohit/travelogy-booking-database-design",
     },
     {
