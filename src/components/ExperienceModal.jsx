@@ -1,6 +1,7 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 // eslint-disable-next-line no-unused-vars
 import { useTransition, animated } from "@react-spring/web";
+import { FiX } from "react-icons/fi"; // Added for the close button
 import krogerLogo from "../assets/logos/kroger-logo.png";
 import tcubeLogo from "../assets/logos/tcube-logo.png";
 import uconnLogo from "../assets/logos/uconn-health-logo.png";
@@ -8,7 +9,7 @@ import cumiLogo from "../assets/logos/cumi-logo.png";
 import anandaLogo from "../assets/logos/ananda-logo.png";
 import jerseystemLogo from "../assets/logos/jerseystem-logo.png";
 import uconnDiningLogo from "../assets/logos/uconn-dining-logo.png";
-import zopSmartLogo from "../assets/logos/zopsmart-logo1.png"; // Import ZopSmart logo
+import zopSmartLogo from "../assets/logos/zopsmart-logo1.png";
 
 const experience = [
   {
@@ -25,7 +26,7 @@ const experience = [
       "Integrated iCIMS + Salesforce data for recruitment analytics and lifecycle tracking.",
       "Led centralized data engineering strategy using GitHub and agile practices."
     ],
-    skills: ["Integrate.io", "Fivetran", "Looker", "SQL Warehouse", "Excel", "Salesforce", "GitHub"]
+    skills: ["Integrate.io", "Fivetran", "Looker", "SQL Warehouse", "Excel", "Salesforce", "GitHub", "Agile"]
   },
   {
     org: "Ananda",
@@ -71,12 +72,8 @@ const experience = [
     skills: ["Customer Service", "Multitasking", "Operations", "Hygiene Standards"]
   },
   {
-    org: (
-      <>
-        Kroger Technology & Digital
-      </>
-    ),
-    consultingOrg: "ZopSmart", // Add a new field for the consulting org
+    org: "Kroger Technology & Digital",
+    consultingOrg: "ZopSmart", 
     consultingOrgLink: "https://www.linkedin.com/company/zopsmart/posts/?feedView=all",
     link: "https://www.linkedin.com/company/kroger-technology-and-digital/",
     title: "Data Engineer",
@@ -94,12 +91,8 @@ const experience = [
     skills: ["Python", "SQL", "PySpark", "Databricks", "Airflow", "Kafka", "Vertex AI", "BigQuery", "dbt", "Tableau", "GCP", "AWS", "PowerBI", "Looker", "GitHub", "Git", "JIRA", "Agile"]
   },
   {
-    org: (
-      <>
-        Kroger Technology & Digital
-      </>
-    ),
-    consultingOrg: "ZopSmart", // Add a new field for the consulting org
+    org: "Kroger Technology & Digital",
+    consultingOrg: "ZopSmart", 
     link: "https://www.linkedin.com/company/kroger-technology-and-digital/",
     consultingOrgLink: "https://www.linkedin.com/company/zopsmart/posts/?feedView=all",
     title: "Software Development Engineer",
@@ -146,11 +139,12 @@ const experience = [
 
 const ExperienceModal = ({ onClose }) => {
   const modalRef = useRef();
+  // Updated react-spring transition
   const transitions = useTransition(true, {
-    from: { opacity: 0, transform: "scale(0.95)" },
-    enter: { opacity: 1, transform: "scale(1)" },
-    leave: { opacity: 0, transform: "scale(0.95)" },
-    config: { tension: 220, friction: 20 }
+    from: { opacity: 0, transform: "scale(0.95) translateY(-20px)" },
+    enter: { opacity: 1, transform: "scale(1) translateY(0px)" },
+    leave: { opacity: 0, transform: "scale(0.95) translateY(20px)" },
+    config: { tension: 280, friction: 25 }, // Matching config
   });
 
   useEffect(() => {
@@ -168,62 +162,93 @@ const ExperienceModal = ({ onClose }) => {
   }, [onClose]);
 
   return (
-    <div className="fixed inset-0 z-50 bg-black bg-opacity-40 flex items-center justify-center px-4">
+    <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center px-4 py-8 overflow-y-auto">
       {transitions((style, item) =>
         item ? (
           <animated.div
             style={style}
             ref={modalRef}
-            className="bg-white w-full max-w-4xl rounded-xl p-6 shadow-xl max-h-[90vh] overflow-y-scroll"
+            // Enhanced modal container styling
+            className="bg-white w-full max-w-4xl rounded-xl p-8 shadow-2xl max-h-[90vh] overflow-y-auto relative"
           >
+            {/* Enhanced Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-6 text-gray-400 hover:text-gray-700 text-2xl transition"
+              className="absolute top-5 right-5 text-slate-400 hover:text-accent p-1 rounded-full hover:bg-slate-100 transition-colors duration-150 z-10"
+              aria-label="Close"
             >
-              &times;
+              <FiX size={24} />
             </button>
-            <h3 className="text-2xl font-bold text-accent mb-6 text-center">
+            {/* Enhanced Main Title */}
+            <h3 className="text-3xl font-semibold text-accent mb-6 text-center">
               Experience Timeline
             </h3>
-            <div className="space-y-6">
+            <div className="space-y-8"> {/* Increased spacing between experience items */}
               {experience.map((exp, idx) => (
-                <div key={idx} className="flex items-start gap-4 border-l-4 border-accent pl-4 relative">
-                  <div>
-                    <a href={exp.link} target="_blank" rel="noreferrer" className="block">
-                      <img src={exp.logo} alt={exp.org} className="w-10 h-10 object-contain bg-white rounded" />
+                // Enhanced styling for each experience item container
+                <div key={idx} className="flex flex-col sm:flex-row items-start gap-x-6 gap-y-4 p-6 bg-slate-50/70 rounded-lg shadow-sm relative border-l-4 border-accent">
+                  {/* Logo Column */}
+                  <div className="flex-shrink-0 w-16 flex flex-col items-center gap-2">
+                    <a href={exp.link} target="_blank" rel="noreferrer" className="block transition-transform hover:scale-105">
+                      <img 
+                        src={exp.logo} 
+                        alt={`${exp.org} logo`} 
+                        className="w-16 h-16 object-contain bg-white p-1 rounded-md shadow-md" 
+                      />
                     </a>
-                    {exp.consultingOrg && (
-                      <a href={exp.consultingOrgLink} target="_blank" rel="noreferrer" className="block mt-1">
+                    {exp.consultingOrg && exp.consultingOrgLink && (
+                      <a href={exp.consultingOrgLink} target="_blank" rel="noreferrer" className="block transition-transform hover:scale-105">
                         <img
-                          src={zopSmartLogo}
-                          alt={exp.consultingOrg}
-                          className="w-8 h-8 object-contain bg-white rounded"
+                          src={zopSmartLogo} // Assuming zopSmartLogo is correctly imported for consulting org
+                          alt={`${exp.consultingOrg} logo`}
+                          className="w-12 h-12 object-contain bg-white p-1 rounded-md shadow-sm"
                         />
                       </a>
                     )}
                   </div>
-                  <div className="space-y-1">
-                    <h4 className="text-lg font-semibold">{exp.title}</h4>
-                    <p className="text-gray-600 italic text-sm">
-                      {exp.org} {exp.consultingOrg && `| Consulting through ${exp.consultingOrg}`} | {exp.location}
+                  
+                  {/* Details Column */}
+                  <div className="flex-1 space-y-2">
+                    <h4 className="text-xl font-semibold text-slate-800">{exp.title}</h4>
+                    <p className="text-slate-600 text-sm">
+                      <span className="font-medium">{typeof exp.org === 'string' ? exp.org : <>{exp.org}</>}</span>
+                      {exp.consultingOrg && <span className="text-slate-500"> (Consulting via {exp.consultingOrg})</span>}
                     </p>
-                    <p className="text-sm text-gray-500 mb-1">{exp.date}</p>
-                    <ul className="list-disc pl-5 text-gray-800 text-sm space-y-1">
+                    <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-slate-500 items-center">
+                      <span>{exp.date}</span>
+                      <span className="hidden sm:inline">•</span>
+                      <span>{exp.location}</span>
+                    </div>
+                    
+                    <ul className="list-disc pl-5 text-slate-600 text-sm space-y-1.5 pt-1 leading-relaxed">
                       {exp.bullets.map((b, i) => (
                         <li key={i}>{b}</li>
                       ))}
                     </ul>
-                    <div className="pt-2 text-xs text-gray-500">
-                      <strong>Skills:</strong> {exp.skills.join(", ")}
-                    </div>
+                    {exp.skills && exp.skills.length > 0 && (
+                      <div className="pt-3">
+                        <p className="text-xs text-slate-500 font-medium mb-1.5">Key Skills:</p>
+                        <div className="flex flex-wrap gap-2">
+                          {exp.skills.map((skill, i) => (
+                            <span 
+                              key={i} 
+                              className="bg-accent/10 text-accent px-2.5 py-0.5 rounded-full text-xs font-medium"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
             </div>
-            <div className="text-center mt-8">
+            {/* Enhanced Bottom Close Button */}
+            <div className="text-center mt-10 pt-6 border-t border-slate-200">
               <button
                 onClick={onClose}
-                className="bg-accent text-white px-6 py-2 rounded hover:opacity-90 transition"
+                className="bg-accent text-white px-8 py-2.5 rounded-lg hover:bg-accent/90 transition-colors duration-150 font-medium shadow-md hover:shadow-lg transform hover:scale-[1.01]"
               >
                 Close
               </button>
@@ -231,7 +256,7 @@ const ExperienceModal = ({ onClose }) => {
           </animated.div>
         ) : null
       )}
-      <div className="fixed inset-0 -z-10 backdrop-blur-sm" onClick={onClose} />
+      {/* Removed redundant backdrop div as it's handled by the main wrapper */}
     </div>
   );
 };
