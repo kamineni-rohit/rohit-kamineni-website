@@ -27,7 +27,7 @@ const About = () => {
         <div className="flex-1">
           <h2 className="text-3xl font-bold mb-4">Hi, I'm Rohit.</h2>
           <p className="text-gray-700 text-lg mb-10">
-            I’m a versatile <strong>Data Engineer</strong>, <strong>Analyst</strong>, and <strong>Scientist</strong> with a strong track record of building end-to-end data solutions — from <strong>ingestion pipelines</strong> and <strong>transformation workflows</strong> to advanced <strong>ML model deployments</strong> and intuitive <strong>BI dashboards</strong>.
+            I’m a versatile <strong>Data Engineer</strong>, <strong>Analyst</strong>, and <strong>Scientist</strong> with a strong track record of building end-to-end data solutions, from <strong>ingestion pipelines</strong> and <strong>transformation workflows</strong> to advanced <strong>ML model deployments</strong> and intuitive <strong>BI dashboards</strong>.
             <br /><br />
             With experience across <strong>GCP</strong>, <strong>AWS</strong>, and <strong>Kubernetes</strong>, I bridge engineering reliability with analytical depth and statistical rigor to solve business problems at scale.
           </p>

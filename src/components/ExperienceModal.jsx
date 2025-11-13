@@ -10,13 +10,31 @@ import anandaLogo from "../assets/logos/ananda-logo.png";
 import jerseystemLogo from "../assets/logos/jerseystem-logo.png";
 import uconnDiningLogo from "../assets/logos/uconn-dining-logo.png";
 import zopSmartLogo from "../assets/logos/zopsmart-logo1.png";
+import rnInfusionLogo from "../assets/logos/rn-infusion-logo.png";
 
 const experience = [
+  {
+    org: "RN Infusion",
+    link: "https://www.linkedin.com/company/rn-infusion",
+    title: "Data and Business Insights Analyst",
+    date: "Aug 2025 – Present",
+    location: "Malvern, PA",
+    logo: rnInfusionLogo,
+    bullets: [
+      "Designed centralized cloud data platform for EMR, scheduling, and billing systems.",
+      "Digitized historical and active clinical records into secure, compliant, queryable datasets.",
+      "Built real-time BI dashboards for scheduling, patient outcomes, inventory usage, and revenue cycle metrics.",
+      "Automated reporting and implemented data governance workflows, improving accuracy and reducing manual work.",
+      "Ensured HIPAA compliance by maintaining secure access, audit logs, and proper documentation.",
+      "Supported business growth through forecasting, trend analysis, and referral insights across multi-county operations."
+    ],
+    skills: ["Healthcare Analytics", "EMR", "EHR", "HIPAA Compliance", "BI Dashboards", "Data Governance", "Cloud Platforms", "SQL", "Python", "Power BI", "Excel"]
+  },
   {
     org: "JerseySTEM",
     link: "https://www.linkedin.com/company/jerseystem/posts/?feedView=all",
     title: "Data Engineer",
-    date: "Mar 2025 – Present",
+    date: "Mar 2025 – Jul 2025",
     location: "Remote | Hartford, CT",
     logo: jerseystemLogo,
     bullets: [

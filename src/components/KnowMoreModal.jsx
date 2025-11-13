@@ -51,12 +51,13 @@ const KnowMoreModal = ({ onClose }) => {
     };
   }, [onClose]);
 
-  const professionalSummary = `Hey! I'm Rohit Kamineni — part data engineer, part problem-solver, part “how-can-we-make-this-better” kind of guy.  
-I’m the kind of person who gets excited about clean architecture and clean code (equally). Beyond code, I’m a mentor, an educator, and a huge believer in tech for good. Whether I’m building, presenting, or mentoring, my goal stays the same: make an impact, and make it easy for others to do the same. Oh, and I’m always down for a deep dive into market structure or a quick round of chess in between SQL queries 😄
+  const professionalSummary = `Hey there! I'm Rohit, and I love turning messy data into insights that actually help people make better decisions. What gets me excited? When someone says "this dashboard just saved me hours of work" or "I finally understand our customers now."
 
-Over the past 4+ years, I’ve led data engineering efforts at Kroger, architecting production-grade data lakes on GCP, deploying MLOps frameworks on Vertex AI, and building real-time analytics pipelines using Airflow, Kafka, BigQuery, and dbt. My work has driven wins in personalization, scalability, and decision intelligence — from automated loyalty model retraining to empowering 50+ managers with dashboards they actually use.
+I started as a Software Engineer at Kroger building microservices, but realized I loved the data side more. So I pivoted into data engineering and got to build real-time pipelines processing terabytes of data, deploy ML models, and create dashboards marketing teams genuinely wanted to use. Now I'm at RN Infusion working in healthcare analytics, building cloud data platforms for clinical operations while keeping everything HIPAA-compliant. It's a different world from retail tech, but the mission's the same: make data accessible, reliable, and useful.
 
-I’ve thrived in cloud-native enterprise environments and love bridging the technical with the strategic. Whether it’s optimizing a pipeline or mentoring interns through their first build, I’m here for work that matters and people who care.
+I recently finished my Master's in Business Analytics and Project Management at UConn, which taught me to speak both "engineer" and "business stakeholder" fluently. Super helpful when explaining why that cool ML model might not solve the actual problem.
+
+Outside work, I'm passionate about mentoring and making tech accessible to everyone. And when I'm not knee-deep in data? You'll find me analyzing F1 race strategies (yes, like a data problem), playing chess, hunting for the perfect espresso, or geeking out over market trends. Basically, I'm curious about everything, and that curiosity makes me better at what I do 😊
 `;
 
   const highlights = [
@@ -115,16 +116,19 @@ I’ve thrived in cloud-native enterprise environments and love bridging the tec
       icon: <FaInstagram />,
       url: "https://www.instagram.com/rohit_kamineni/",
       label: "Instagram",
+      hoverColor: "hover:text-[#E4405F]", // Instagram pink
     },
     {
       icon: <FaFacebook />,
       url: "https://www.facebook.com/rohit.kamineni.01/",
       label: "Facebook",
+      hoverColor: "hover:text-[#1877F2]", // Facebook blue
     },
     {
       icon: <FaXTwitter />,
       url: "https://x.com/rohit_kamineni",
       label: "X",
+      hoverColor: "hover:text-black", // X/Twitter black
     }
   ];
 
@@ -252,15 +256,14 @@ I’ve thrived in cloud-native enterprise environments and love bridging the tec
                 Connect with me on my socials!
               </p>
               <div className="flex justify-center gap-6">
-                {socials.map(({ icon, url, label }, idx) => (
+                {socials.map(({ icon, url, label, hoverColor }, idx) => (
                   <a
                     key={idx}
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    // Enhanced social icons
-                    className="text-slate-500 hover:text-accent transition-all duration-200 ease-in-out transform hover:scale-110"
+                    className={`text-slate-500 ${hoverColor} transition-all duration-200 ease-in-out transform hover:scale-110`}
                   >
                     <span className="text-3xl">{icon}</span>
                   </a>
