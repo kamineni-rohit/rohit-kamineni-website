@@ -1,10 +1,12 @@
+'use client'
+
 import React, { useState } from "react";
 import { FiX, FiBookOpen } from "react-icons/fi";  // Import the icon
-import CertificationsModal from "./CertificationsModal";
-import udemyLogo from "../assets/logos/udemy.png";
-import courseraLogo from "../assets/logos/coursera.png";
-import SectionBackground from "./SectionBackground";
-import polygonBg from "../assets/backgrounds/PolygonLuminary.svg";
+import CertificationsModal from "@/components/CertificationsModal";
+import udemyLogo from "@/assets/logos/udemy.png";
+import courseraLogo from "@/assets/logos/coursera.png";
+import SectionBackground from "@/components/SectionBackground";
+import polygonBg from "@/assets/backgrounds/PolygonLuminary.svg";
 
 const Certifications = () => {
   const [showModal, setShowModal] = useState(false);

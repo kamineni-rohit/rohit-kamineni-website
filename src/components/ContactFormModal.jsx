@@ -56,10 +56,10 @@ const ContactFormModal = ({ onClose }) => {
 
       emailjs
         .send(
-          import.meta.env.VITE_EMAILJS_SERVICE_ID,
-          import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
           emailData,
-          import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+          process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
         )
         .then(() => {
           setShowThankYou(true);

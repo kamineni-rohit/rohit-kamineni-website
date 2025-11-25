@@ -1,14 +1,17 @@
+'use client'
+
 import React, { useState, useEffect, useRef } from "react";
-import { FiChevronDown, FiClipboard, FiGrid } from "react-icons/fi"; 
-// Other Fi icons are now primarily sourced from projectsData.js, 
+import { FiChevronDown, FiClipboard, FiGrid } from "react-icons/fi";
+import VanillaTilt from "vanilla-tilt";
+// Other Fi icons are now primarily sourced from projectsData.js,
 // but keep them if getProjectIcon has complex fallback logic beyond project.icon
 
 // Import data from your new data file
-import { projectCategories, projectsData } from "../data/projectsData.js"; 
+import { projectCategories, projectsData } from "@/data/projectsData.js"; 
 
-import SectionBackground from "./SectionBackground"; 
-import hexagonBg from "../assets/backgrounds/Hexagon.svg"; 
-import ProjectDetailModal from "./ProjectDetailModal"; // Import the new modal
+import SectionBackground from "@/components/SectionBackground"; 
+import hexagonBg from "@/assets/backgrounds/Hexagon.svg"; 
+import ProjectDetailModal from "@/components/ProjectDetailModal"; // Import the new modal
 
 // --- Constants ---
 const INITIAL_PROJECTS_TO_SHOW = 8; 
@@ -59,47 +62,22 @@ const Projects = () => {
     return () => { if (currentSectionRef) observer.unobserve(currentSectionRef); };
   }, [showAll]);
 
-  // Effect for loading vanilla-tilt.js script
+  // Effect for initializing vanilla-tilt on mount
   useEffect(() => {
-    const scriptId = 'vanilla-tilt-script';
-    if (document.getElementById(scriptId) || window.VanillaTilt) { 
-      if (window.VanillaTilt) {
-        const elements = document.querySelectorAll('.project-tile-tilt');
-        if (elements.length > 0) {
-            // eslint-disable-next-line no-undef
-            VanillaTilt.init(elements, { max: 15, speed: 400, glare: true, "max-glare": 0.2 });
-        }
-      }
-      return; 
+    const elements = document.querySelectorAll('.project-tile-tilt');
+    if (elements.length > 0) {
+      VanillaTilt.init(elements, { max: 15, speed: 400, glare: true, "max-glare": 0.2 });
     }
-    const script = document.createElement('script');
-    script.id = scriptId;
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js';
-    script.async = true;
-    script.onload = () => {
-      window.vanillaTiltLoaded = true; 
-      if (window.VanillaTilt) {
-        const elements = document.querySelectorAll('.project-tile-tilt');
-        if (elements.length > 0) {
-            // eslint-disable-next-line no-undef
-            VanillaTilt.init(elements, { max: 15, speed: 400, glare: true, "max-glare": 0.2 });
-        }
-      }
-    };
-    document.body.appendChild(script);
   }, []); 
 
   // Effect for re-initializing VanillaTilt when projectsToDisplay changes
   useEffect(() => {
-    if (window.VanillaTilt && window.vanillaTiltLoaded) {
-      setTimeout(() => {
-        const elements = document.querySelectorAll('.project-tile-tilt');
-         if (elements.length > 0) {
-            // eslint-disable-next-line no-undef
-            VanillaTilt.init(elements, { max: 15, speed: 400, glare: true, "max-glare": 0.2 });
-        }
-      }, 100); 
-    }
+    setTimeout(() => {
+      const elements = document.querySelectorAll('.project-tile-tilt');
+      if (elements.length > 0) {
+        VanillaTilt.init(elements, { max: 15, speed: 400, glare: true, "max-glare": 0.2 });
+      }
+    }, 100);
   }, [projectsToDisplay]); 
 
   const handleShowMore = () => setShowAll(true);

@@ -1,7 +1,7 @@
-import uconnLogo from "../assets/logos/uconn-logo.png";
-import bitsLogo from "../assets/logos/bits-logo.png";
-import SectionBackground from "./SectionBackground";
-import curveLineBg from "../assets/backgrounds/CurveLine.svg";
+import uconnLogo from "@/assets/logos/uconn-logo.png";
+import bitsLogo from "@/assets/logos/bits-logo.png";
+import SectionBackground from "@/components/SectionBackground";
+import curveLineBg from "@/assets/backgrounds/CurveLine.svg";
 
 const Education = () => {
   return (

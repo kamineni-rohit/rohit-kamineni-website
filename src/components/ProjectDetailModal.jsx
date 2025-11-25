@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect, useRef } from "react";
 import { useTransition, animated } from "@react-spring/web";
 import { FiX, FiGithub, FiExternalLink } from "react-icons/fi"; // Added FiExternalLink for general links

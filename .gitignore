@@ -24,6 +24,9 @@ dist-ssr
 *.sln
 *.sw?
 
+# Documentation folder (all files)
+.docs/
+
 # Markdown files (except README)
 *.md
 !README.md

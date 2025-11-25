@@ -2,15 +2,15 @@ import React, { useEffect, useRef } from "react";
 // eslint-disable-next-line no-unused-vars
 import { useTransition, animated } from "@react-spring/web";
 import { FiX } from "react-icons/fi"; // Added for the close button
-import krogerLogo from "../assets/logos/kroger-logo.png";
-import tcubeLogo from "../assets/logos/tcube-logo.png";
-import uconnLogo from "../assets/logos/uconn-health-logo.png";
-import cumiLogo from "../assets/logos/cumi-logo.png";
-import anandaLogo from "../assets/logos/ananda-logo.png";
-import jerseystemLogo from "../assets/logos/jerseystem-logo.png";
-import uconnDiningLogo from "../assets/logos/uconn-dining-logo.png";
-import zopSmartLogo from "../assets/logos/zopsmart-logo1.png";
-import rnInfusionLogo from "../assets/logos/rn-infusion-logo.png";
+import krogerLogo from "@/assets/logos/kroger-logo.png";
+import tcubeLogo from "@/assets/logos/tcube-logo.png";
+import uconnLogo from "@/assets/logos/uconn-health-logo.png";
+import cumiLogo from "@/assets/logos/cumi-logo.png";
+import anandaLogo from "@/assets/logos/ananda-logo.png";
+import jerseystemLogo from "@/assets/logos/jerseystem-logo.png";
+import uconnDiningLogo from "@/assets/logos/uconn-dining-logo.png";
+import zopSmartLogo from "@/assets/logos/zopsmart-logo1.png";
+import rnInfusionLogo from "@/assets/logos/rn-infusion-logo.png";
 
 const experience = [
   {
