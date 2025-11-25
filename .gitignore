@@ -30,3 +30,9 @@ dist-ssr
 # Markdown files (except README)
 *.md
 !README.md
+
+# Next.js
+.next/
+out/
+next-env.d.ts
+.vercel
