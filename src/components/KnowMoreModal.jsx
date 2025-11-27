@@ -91,7 +91,7 @@ Outside work, I'm passionate about mentoring and making tech accessible to every
 
   const hobbies = [
     { label: "Formula 1", icon: <FaCar size="1.1em"/>, color: "text-accent" },
-    { label: "Cue Sports", icon: <img src={snookerImg} alt="Snooker" className="w-[1.1em] h-[1.1em]" />, color: "text-accent" },
+    { label: "Cue Sports", icon: <img src={snookerImg.src || snookerImg} alt="Snooker" className="w-[1.1em] h-[1.1em]" />, color: "text-accent" },
     { label: "Cricket", icon: <FaBaseballBatBall size="1.1em"/>, color: "text-accent" },
     { label: "Photography", icon: <FaCamera size="1.1em"/>, color: "text-accent" },
     { label: "Bikes & Cars", icon: <FaMotorcycle size="1.1em"/>, color: "text-accent" },
