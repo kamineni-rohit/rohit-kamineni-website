@@ -217,7 +217,7 @@ const ExperienceModal = ({ onClose }) => {
                     {exp.consultingOrg && exp.consultingOrgLink && (
                       <a href={exp.consultingOrgLink} target="_blank" rel="noreferrer" className="block transition-transform hover:scale-105">
                         <img
-                          src={zopSmartLogo} // Assuming zopSmartLogo is correctly imported for consulting org
+                          src={zopSmartLogo.src || zopSmartLogo} // Assuming zopSmartLogo is correctly imported for consulting org
                           alt={`${exp.consultingOrg} logo`}
                           className="w-12 h-12 object-contain bg-white p-1 rounded-md shadow-sm"
                         />

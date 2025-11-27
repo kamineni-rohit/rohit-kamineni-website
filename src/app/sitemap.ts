@@ -2,6 +2,8 @@ import { MetadataRoute } from 'next';
 import { getSortedPosts } from '@/lib/blog';
 import { getEnvironmentConfig } from '@/lib/environment';
 
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const config = getEnvironmentConfig();
   const baseUrl = config.siteUrl;

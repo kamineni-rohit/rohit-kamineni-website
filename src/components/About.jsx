@@ -66,7 +66,7 @@ const About = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <img src={krogerLogo} alt="Kroger" className="h-6 w-auto" />
+                      <img src={krogerLogo.src || krogerLogo} alt="Kroger" className="h-6 w-auto" />
                     </a>
                   </div>
                   <div className="text-lg font-bold">Data Engineer</div>
@@ -84,7 +84,7 @@ const About = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <img src={krogerLogo} alt="Kroger" className="h-6 w-auto" />
+                      <img src={krogerLogo.src || krogerLogo} alt="Kroger" className="h-6 w-auto" />
                     </a>
                   </div>
                   <div className="text-lg font-bold">SDE – CX Web Products & Search</div>
@@ -102,7 +102,7 @@ const About = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <img src={tcubeLogo} alt="Tcube" className="h-6 w-auto" />
+                      <img src={tcubeLogo.src || tcubeLogo} alt="Tcube" className="h-6 w-auto" />
                     </a>
                   </div>
                   <div className="text-lg font-bold">Data Engineer</div>

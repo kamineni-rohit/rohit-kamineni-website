@@ -116,7 +116,7 @@ const Navbar = () => {
         {/* Logo + Home */}
         <a href="#" className="flex items-center gap-2 text-accent font-bold text-xl hover:opacity-80 transition">
           <img
-            src={websiteLogo}
+            src={websiteLogo.src || websiteLogo}
             alt="Website Logo"
             className="h-8 w-8 object-contain"
           />

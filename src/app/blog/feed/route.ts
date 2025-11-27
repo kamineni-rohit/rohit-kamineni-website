@@ -1,6 +1,8 @@
 import { getSortedPosts } from '@/lib/blog';
 import { getEnvironmentConfig } from '@/lib/environment';
 
+export const dynamic = 'force-static';
+
 export async function GET() {
   const config = getEnvironmentConfig();
   const baseUrl = config.siteUrl;

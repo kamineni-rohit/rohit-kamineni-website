@@ -198,7 +198,7 @@ Outside work, I'm passionate about mentoring and making tech accessible to every
               </h4>
               <div className="flex items-start gap-4 p-4 bg-slate-50 rounded-lg">
                 <img
-                  src={nirmaanLogo}
+                  src={nirmaanLogo.src || nirmaanLogo}
                   alt="Nirmaan Logo"
                   className="w-12 h-12 mt-1 flex-shrink-0" // Resized logo
                 />

@@ -75,7 +75,7 @@ const CertificationsModal = ({ onClose }) => {
               {/* UDEMY */}
               <div>
                 <div className={`flex items-center gap-3 ${sectionSubTitleClasses}`}> {/* Applied common subtitle class */}
-                  <img src={udemyLogo} alt="Udemy" className="h-8 w-auto object-contain" /> {/* Kept original logo size */}
+                  <img src={udemyLogo.src || udemyLogo} alt="Udemy" className="h-8 w-auto object-contain" /> {/* Kept original logo size */}
                   <span>Udemy</span>
                 </div>
                 <ul className="list-disc pl-10 text-slate-600 space-y-2.5 text-base"> {/* Adjusted list style */}
@@ -97,7 +97,7 @@ const CertificationsModal = ({ onClose }) => {
               {/* COURSERA */}
               <div>
                 <div className={`flex items-center gap-3 ${sectionSubTitleClasses}`}> {/* Applied common subtitle class */}
-                  <img src={courseraLogo} alt="Coursera" className="h-8 w-auto object-contain" /> {/* Kept original logo size */}
+                  <img src={courseraLogo.src || courseraLogo} alt="Coursera" className="h-8 w-auto object-contain" /> {/* Kept original logo size */}
                   <span>Coursera</span>
                 </div>
                 <p className="pl-10 text-slate-500 italic">More coming soon...</p> {/* Adjusted text color */}
