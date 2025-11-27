@@ -19,7 +19,7 @@ const INITIAL_PROJECTS_TO_SHOW = 8;
 // --- Helper Function to Get Icon ---
 // This function will primarily be used if a project object in projectsData *doesn't* have an 'icon' property.
 // Given your projectsData.js, all projects have an icon, so this is more of a robust fallback.
-// eslint-disable-next-line no-unused-vars
+ 
 const getProjectIcon = (project) => {
   if (project && project.icon) { // Check if project and project.icon exist
     return project.icon; 

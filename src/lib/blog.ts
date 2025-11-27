@@ -53,7 +53,7 @@ export function getSortedPosts(): BlogPostMetadata[] {
       if (!post) return null;
 
       // Return metadata without content
-      const { content, ...metadata } = post;
+      const { content: _content, ...metadata } = post;
       return metadata;
     })
     .filter((post): post is BlogPostMetadata => post !== null);
