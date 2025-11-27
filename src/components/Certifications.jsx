@@ -1,10 +1,12 @@
+'use client'
+
 import React, { useState } from "react";
 import { FiX, FiBookOpen } from "react-icons/fi";  // Import the icon
-import CertificationsModal from "./CertificationsModal";
-import udemyLogo from "../assets/logos/udemy.png";
-import courseraLogo from "../assets/logos/coursera.png";
-import SectionBackground from "./SectionBackground";
-import polygonBg from "../assets/backgrounds/PolygonLuminary.svg";
+import CertificationsModal from "@/components/CertificationsModal";
+import udemyLogo from "@/assets/logos/udemy.png";
+import courseraLogo from "@/assets/logos/coursera.png";
+import SectionBackground from "@/components/SectionBackground";
+import polygonBg from "@/assets/backgrounds/PolygonLuminary.svg";
 
 const Certifications = () => {
   const [showModal, setShowModal] = useState(false);
@@ -48,7 +50,7 @@ const Certifications = () => {
               rel="noreferrer"
               className="flex items-center gap-3 mb-3 hover:opacity-80 transition"
             >
-              <img src={udemyLogo} alt="Udemy" className="h-8 w-auto" />
+              <img src={udemyLogo.src || udemyLogo} alt="Udemy" className="h-8 w-auto" />
               <span className="font-semibold text-gray-800 text-lg">Udemy</span>
             </a>
             <ul className="list-disc pl-10 text-black space-y-2 mt-4">
@@ -79,7 +81,7 @@ const Certifications = () => {
               rel="noreferrer"
               className="flex items-center gap-3 mb-3 hover:opacity-80 transition"
             >
-              <img src={courseraLogo} alt="Coursera" className="h-8 w-auto" />
+              <img src={courseraLogo.src || courseraLogo} alt="Coursera" className="h-8 w-auto" />
               <span className="font-semibold text-gray-800 text-lg">Coursera</span>
             </a>
             <ul className="list-disc pl-7 text-black space-y-2 mt-4">

@@ -1,9 +1,11 @@
+'use client'
+
 import { useState } from "react";
 import { FiMail, FiMapPin, FiEdit } from "react-icons/fi"; // Import FiEdit for the edit/contact icon
 import { FaLinkedin } from "react-icons/fa";
-import ContactFormModal from "./ContactFormModal";
-import SectionBackground from "./SectionBackground";
-import hexagonBg from "../assets/backgrounds/IconGrid.svg";
+import ContactFormModal from "@/components/ContactFormModal";
+import SectionBackground from "@/components/SectionBackground";
+import hexagonBg from "@/assets/backgrounds/IconGrid.svg";
 
 const Contact = () => {
   const [showModal, setShowModal] = useState(false);

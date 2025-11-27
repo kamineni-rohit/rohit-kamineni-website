@@ -1,13 +1,15 @@
+'use client'
+
 import React, { useState } from "react";
-import profileImage from "../assets/images/Image-Rohit-Kamineni.jpg";
-import SectionBackground from "./SectionBackground";
-import waveLineBg from "../assets/backgrounds/WaveLine.svg";
-import ExperienceModal from "./ExperienceModal";
-import SkillsModal from "./SkillsModal";
-import KnowMoreModal from "./KnowMoreModal";
+import profileImage from "@/assets/images/Image-Rohit-Kamineni.jpg";
+import SectionBackground from "@/components/SectionBackground";
+import waveLineBg from "@/assets/backgrounds/WaveLine.svg";
+import ExperienceModal from "@/components/ExperienceModal";
+import SkillsModal from "@/components/SkillsModal";
+import KnowMoreModal from "@/components/KnowMoreModal";
 import { FiChevronDown } from "react-icons/fi";
-import tcubeLogo from "../assets/logos/tcube-logo.png";
-import krogerLogo from "../assets/logos/kroger-logo.png";
+import tcubeLogo from "@/assets/logos/tcube-logo.png";
+import krogerLogo from "@/assets/logos/kroger-logo.png";
 import { FiBriefcase, FiSliders, FiInfo } from "react-icons/fi"; // Import icons
 
 const About = () => {
@@ -64,7 +66,7 @@ const About = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <img src={krogerLogo} alt="Kroger" className="h-6 w-auto" />
+                      <img src={krogerLogo.src || krogerLogo} alt="Kroger" className="h-6 w-auto" />
                     </a>
                   </div>
                   <div className="text-lg font-bold">Data Engineer</div>
@@ -82,7 +84,7 @@ const About = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <img src={krogerLogo} alt="Kroger" className="h-6 w-auto" />
+                      <img src={krogerLogo.src || krogerLogo} alt="Kroger" className="h-6 w-auto" />
                     </a>
                   </div>
                   <div className="text-lg font-bold">SDE – CX Web Products & Search</div>
@@ -100,7 +102,7 @@ const About = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <img src={tcubeLogo} alt="Tcube" className="h-6 w-auto" />
+                      <img src={tcubeLogo.src || tcubeLogo} alt="Tcube" className="h-6 w-auto" />
                     </a>
                   </div>
                   <div className="text-lg font-bold">Data Engineer</div>
@@ -117,7 +119,7 @@ const About = () => {
         {/* Right Column */}
         <div className="flex flex-col items-center gap-6 w-full md:w-auto">
           <img
-            src={profileImage}
+            src={profileImage.src || profileImage}
             alt="Rohit Kamineni"
             className="w-80 h-80 md:w-96 md:h-96 object-cover rounded-2xl shadow-lg mb-6"
           />
