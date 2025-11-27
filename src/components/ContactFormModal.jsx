@@ -1,12 +1,17 @@
 import React, { useEffect, useRef, useState, Fragment } from "react";
-import { Listbox, Transition } from "@headlessui/react"; 
-import { HiChevronDown } from "react-icons/hi"; 
+import { Listbox, Transition } from "@headlessui/react";
+import { HiChevronDown } from "react-icons/hi";
 import { FiX, FiCheckCircle, FiAlertCircle, FiLoader } from "react-icons/fi";
- 
+
 import { useTransition, animated } from "@react-spring/web";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 
 const reasons = ["Job Opportunity", "Collaboration", "Just Saying Hi", "Project Inquiry", "Other"];
+
+// Initialize EmailJS with public key
+if (typeof window !== 'undefined') {
+  emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
+}
 
 const ContactFormModal = ({ onClose }) => {
   const [formData, setFormData] = useState({
@@ -54,21 +59,30 @@ const ContactFormModal = ({ onClose }) => {
         reason: typeof formData.reason === 'object' ? formData.reason.name : formData.reason,
       };
 
+      // Debug: Log environment variables (remove after testing)
+      console.log('EmailJS Config:', {
+        serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+        hasPublicKey: !!process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      });
+
+      // Send email using initialized EmailJS
       emailjs
         .send(
           process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
           process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-          emailData,
-          process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+          emailData
         )
-        .then(() => {
+        .then((response) => {
+          console.log('Email sent successfully:', response.status, response.text);
           setShowThankYou(true);
-          setIsSubmitting(false); 
+          setIsSubmitting(false);
         })
         .catch((error) => {
             console.error("EmailJS Error:", error);
-            setErrors(prev => ({ ...prev, submit: "Failed to send message. Please try again later."}));
-            setIsSubmitting(false); 
+            setErrors(prev => ({ ...prev, submit: `Failed to send message: ${error.text || error.message || 'Unknown error'}`}));
+            setIsSubmitting(false);
         });
     }
   };
@@ -103,13 +117,13 @@ const ContactFormModal = ({ onClose }) => {
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center px-4 py-8 overflow-y-auto">
       {modalTransitions((style, item) =>
         item ? (
-          <animated.div
-            style={style}
-            ref={modalRef}
-            className="bg-white rounded-xl shadow-2xl w-full max-w-lg p-8 relative" 
-          >
-            {!showThankYou ? (
-              <>
+          <animated.div style={style}>
+            <div
+              ref={modalRef}
+              className="bg-white rounded-xl shadow-2xl w-full max-w-lg p-8 relative"
+            >
+              {!showThankYou ? (
+                <>
                 <button
                   onClick={onClose}
                   disabled={isSubmitting} 
@@ -272,14 +286,15 @@ const ContactFormModal = ({ onClose }) => {
                 <FiCheckCircle className="text-green-500 h-16 w-16 mb-6" />
                 <h3 className="text-3xl font-semibold text-accent mb-3">Thank You!</h3>
                 <p className="text-slate-700 text-lg mb-8">Your message has been sent. I'll get back to you shortly.</p>
-                <button
-                  onClick={onClose}
-                  className="bg-accent text-white px-8 py-2.5 rounded-lg hover:bg-accent/90 transition-colors duration-150 font-medium shadow hover:shadow-md"
-                >
-                  Close
-                </button>
-              </div>
-            )}
+                  <button
+                    onClick={onClose}
+                    className="bg-accent text-white px-8 py-2.5 rounded-lg hover:bg-accent/90 transition-colors duration-150 font-medium shadow hover:shadow-md"
+                  >
+                    Close
+                  </button>
+                </div>
+              )}
+            </div>
           </animated.div>
         ) : null
       )}

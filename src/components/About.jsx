@@ -119,7 +119,7 @@ const About = () => {
         {/* Right Column */}
         <div className="flex flex-col items-center gap-6 w-full md:w-auto">
           <img
-            src={profileImage}
+            src={profileImage.src || profileImage}
             alt="Rohit Kamineni"
             className="w-80 h-80 md:w-96 md:h-96 object-cover rounded-2xl shadow-lg mb-6"
           />

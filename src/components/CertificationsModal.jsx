@@ -53,15 +53,14 @@ const CertificationsModal = ({ onClose }) => {
     <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center px-4 py-8 overflow-y-auto">
       {transitions((style, item) =>
         item ? (
-          // Enhanced modal container styling: p-8, shadow-2xl
-          <animated.div 
-            style={style} 
-            ref={modalRef} 
-            className="bg-white w-full max-w-3xl rounded-xl p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto"
-          >
-            {/* Enhanced Close Button (already updated in the provided version) */}
-            <button
-              onClick={onClose}
+          <animated.div style={style}>
+            <div
+              ref={modalRef}
+              className="bg-white w-full max-w-3xl rounded-xl p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto"
+            >
+              {/* Enhanced Close Button (already updated in the provided version) */}
+              <button
+                onClick={onClose}
               className="absolute top-5 right-5 text-slate-400 hover:text-accent p-1 rounded-full hover:bg-slate-100 transition-colors duration-150 z-10"
               aria-label="Close"
             >
@@ -113,14 +112,15 @@ const CertificationsModal = ({ onClose }) => {
               <p className="italic text-slate-500">Stay tuned for updates!</p> {/* Adjusted text color */}
             </div>
 
-            {/* Enhanced Bottom Close Button */}
-            <div className="text-center mt-10 pt-6 border-t border-slate-200">
-              <button
-                onClick={onClose}
-                className="bg-accent text-white px-8 py-2.5 rounded-lg hover:bg-accent/90 transition-colors duration-150 font-medium shadow-md hover:shadow-lg transform hover:scale-[1.01]"
-              >
-                Close
-              </button>
+              {/* Enhanced Bottom Close Button */}
+              <div className="text-center mt-10 pt-6 border-t border-slate-200">
+                <button
+                  onClick={onClose}
+                  className="bg-accent text-white px-8 py-2.5 rounded-lg hover:bg-accent/90 transition-colors duration-150 font-medium shadow-md hover:shadow-lg transform hover:scale-[1.01]"
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </animated.div>
         ) : null
