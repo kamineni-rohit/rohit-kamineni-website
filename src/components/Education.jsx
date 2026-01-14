@@ -1,7 +1,7 @@
-import uconnLogo from "../assets/logos/uconn-logo.png";
-import bitsLogo from "../assets/logos/bits-logo.png";
-import SectionBackground from "./SectionBackground";
-import curveLineBg from "../assets/backgrounds/CurveLine.svg";
+import uconnLogo from "@/assets/logos/uconn-logo.png";
+import bitsLogo from "@/assets/logos/bits-logo.png";
+import SectionBackground from "@/components/SectionBackground";
+import curveLineBg from "@/assets/backgrounds/CurveLine.svg";
 
 const Education = () => {
   return (
@@ -14,7 +14,7 @@ const Education = () => {
         <div className="max-w-4xl mx-auto space-y-10 text-left">
           <div className="flex items-start gap-4">
             <a href="https://www.uconn.edu" target="_blank" rel="noreferrer">
-              <img src={uconnLogo} alt="UConn" className="w-12 h-12 object-contain mt-1" />
+              <img src={uconnLogo.src || uconnLogo} alt="UConn" className="w-12 h-12 object-contain mt-1" />
             </a>
             <div>
               <a
@@ -39,7 +39,7 @@ const Education = () => {
 
           <div className="flex items-start gap-4">
             <a href="https://www.bits-pilani.ac.in" target="_blank" rel="noreferrer">
-              <img src={bitsLogo} alt="BITS Pilani" className="w-12 h-12 object-contain mt-1" />
+              <img src={bitsLogo.src || bitsLogo} alt="BITS Pilani" className="w-12 h-12 object-contain mt-1" />
             </a>
             <div>
               <a

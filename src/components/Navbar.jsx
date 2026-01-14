@@ -1,5 +1,9 @@
+'use client'
+
 import { useEffect, useRef, useState } from "react";
-import websiteLogo from "../assets/logos/website-logo.png"; // Adjust path if needed
+import Link from "next/link";
+import websiteLogo from "@/assets/logos/website-logo.png";
+import { isBlogEnabled } from "@/lib/environment";
 
 const sectionIds = [
   "about",
@@ -9,6 +13,9 @@ const sectionIds = [
   "resume",
   "contact",
 ];
+
+// Check if blog should be shown
+const showBlog = isBlogEnabled();
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState("");
@@ -109,7 +116,7 @@ const Navbar = () => {
         {/* Logo + Home */}
         <a href="#" className="flex items-center gap-2 text-accent font-bold text-xl hover:opacity-80 transition">
           <img
-            src={websiteLogo}
+            src={websiteLogo.src || websiteLogo}
             alt="Website Logo"
             className="h-8 w-8 object-contain"
           />
@@ -132,6 +139,17 @@ const Navbar = () => {
               />
             </button>
           ))}
+          {showBlog && (
+            <Link
+              href="/blog"
+              className="relative capitalize transition duration-300 group hover:text-accent"
+            >
+              <span>blog</span>
+              <span
+                className="absolute left-0 -bottom-1 h-0.5 bg-accent transition-all duration-400 ease-in-out group-hover:w-full w-0"
+              />
+            </Link>
+          )}
         </div>
 
         {/* Mobile toggle */}
@@ -160,6 +178,15 @@ const Navbar = () => {
               <span className="relative">{id}</span>
             </button>
           ))}
+          {showBlog && (
+            <Link
+              href="/blog"
+              onClick={() => setIsOpen(false)}
+              className="block w-full text-left capitalize transition duration-300 text-gray-700 hover:text-accent"
+            >
+              <span className="relative">blog</span>
+            </Link>
+          )}
         </div>
       )}
     </nav>

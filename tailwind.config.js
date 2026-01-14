@@ -1,13 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       colors: {
-        accent: "#1d6fba", // your preferred accent color
+        accent: "#1d6fba", // CRITICAL: Primary accent color - do not change
       },
       transitionProperty: {
         width: "width", // animate w-0 to w-full
@@ -23,5 +22,7 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 };

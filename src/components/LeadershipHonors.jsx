@@ -1,9 +1,9 @@
 import React from "react"; // Added React import for completeness
 import { FaPeopleCarry, FaTrophy, FaLightbulb, FaChalkboardTeacher } from "react-icons/fa";
-import zopsmartLogo from "../assets/logos/zopsmart-logo1.png";
-import bitsLogo from "../assets/logos/bits-logo.png";
-import SectionBackground from "./SectionBackground";
-import massCirclesBg from "../assets/backgrounds/MassCircles.svg";
+import zopsmartLogo from "@/assets/logos/zopsmart-logo1.png";
+import bitsLogo from "@/assets/logos/bits-logo.png";
+import SectionBackground from "@/components/SectionBackground";
+import massCirclesBg from "@/assets/backgrounds/MassCircles.svg";
 
 const LeadershipHonors = () => {
   return (
@@ -27,7 +27,7 @@ const LeadershipHonors = () => {
                 rel="noopener noreferrer"
                 aria-label="BITS Pilani ECE Program (opens in new tab)" // Accessibility: label for the link
               >
-                <img src={bitsLogo} alt="BITS Pilani" className="h-8 w-auto" />
+                <img src={bitsLogo.src || bitsLogo} alt="BITS Pilani" className="h-8 w-auto" />
               </a>
               <h3 className="font-semibold text-lg">BITS Pilani, Hyderabad Campus</h3>
             </div>
@@ -65,7 +65,7 @@ const LeadershipHonors = () => {
                 rel="noopener noreferrer"
                 aria-label="ZopSmart LinkedIn (opens in new tab)" // Accessibility: label for the link
               >
-                <img src={zopsmartLogo} alt="ZopSmart" className="h-8 w-auto" />
+                <img src={zopsmartLogo.src || zopsmartLogo} alt="ZopSmart" className="h-8 w-auto" />
               </a>
               <h3 className="font-semibold text-lg">ZopSmart</h3>
             </div>

@@ -1,11 +1,17 @@
+'use client'
+
 import { useState, useEffect } from "react";
 import { FiX, FiEye, FiDownload } from "react-icons/fi";
-import SectionBackground from "./SectionBackground";
-import circuitBg from "../assets/backgrounds/CircuitPrimary.svg";
+import SectionBackground from "@/components/SectionBackground";
+import circuitBg from "@/assets/backgrounds/CircuitPrimary.svg";
 
 const Resume = () => {
   const [showPreview, setShowPreview] = useState(false);
-  const RESUME_PATH = `${import.meta.env.BASE_URL}Rohit_Kamineni_Resume.pdf`;
+  // Determine base path based on deployment environment
+  const basePath = process.env.NEXT_PUBLIC_DEPLOYMENT_ENV === 'github'
+    ? '/rohit-kamineni-website'
+    : '';
+  const RESUME_PATH = `${basePath}/Rohit_Kamineni_Resume.pdf`;
 
   useEffect(() => {
     document.body.style.overflow = showPreview ? "hidden" : "auto";

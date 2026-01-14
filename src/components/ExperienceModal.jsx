@@ -1,16 +1,16 @@
 import React, { useEffect, useRef } from "react";
-// eslint-disable-next-line no-unused-vars
+ 
 import { useTransition, animated } from "@react-spring/web";
 import { FiX } from "react-icons/fi"; // Added for the close button
-import krogerLogo from "../assets/logos/kroger-logo.png";
-import tcubeLogo from "../assets/logos/tcube-logo.png";
-import uconnLogo from "../assets/logos/uconn-health-logo.png";
-import cumiLogo from "../assets/logos/cumi-logo.png";
-import anandaLogo from "../assets/logos/ananda-logo.png";
-import jerseystemLogo from "../assets/logos/jerseystem-logo.png";
-import uconnDiningLogo from "../assets/logos/uconn-dining-logo.png";
-import zopSmartLogo from "../assets/logos/zopsmart-logo1.png";
-import rnInfusionLogo from "../assets/logos/rn-infusion-logo.png";
+import krogerLogo from "@/assets/logos/kroger-logo.png";
+import tcubeLogo from "@/assets/logos/tcube-logo.png";
+import uconnLogo from "@/assets/logos/uconn-health-logo.png";
+import cumiLogo from "@/assets/logos/cumi-logo.png";
+import anandaLogo from "@/assets/logos/ananda-logo.png";
+import jerseystemLogo from "@/assets/logos/jerseystem-logo.png";
+import uconnDiningLogo from "@/assets/logos/uconn-dining-logo.png";
+import zopSmartLogo from "@/assets/logos/zopsmart-logo1.png";
+import rnInfusionLogo from "@/assets/logos/rn-infusion-logo.png";
 
 const experience = [
   {
@@ -183,24 +183,23 @@ const ExperienceModal = ({ onClose }) => {
     <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center px-4 py-8 overflow-y-auto">
       {transitions((style, item) =>
         item ? (
-          <animated.div
-            style={style}
-            ref={modalRef}
-            // Enhanced modal container styling
-            className="bg-white w-full max-w-4xl rounded-xl p-8 shadow-2xl max-h-[90vh] overflow-y-auto relative"
-          >
-            {/* Enhanced Close Button */}
-            <button
-              onClick={onClose}
-              className="absolute top-5 right-5 text-slate-400 hover:text-accent p-1 rounded-full hover:bg-slate-100 transition-colors duration-150 z-10"
-              aria-label="Close"
+          <animated.div style={style}>
+            <div
+              ref={modalRef}
+              className="bg-white w-full max-w-4xl rounded-xl p-8 shadow-2xl max-h-[90vh] overflow-y-auto relative"
             >
-              <FiX size={24} />
-            </button>
-            {/* Enhanced Main Title */}
-            <h3 className="text-3xl font-semibold text-accent mb-6 text-center">
-              Experience Timeline
-            </h3>
+              {/* Enhanced Close Button */}
+              <button
+                onClick={onClose}
+                className="absolute top-5 right-5 text-slate-400 hover:text-accent p-1 rounded-full hover:bg-slate-100 transition-colors duration-150 z-10"
+                aria-label="Close"
+              >
+                <FiX size={24} />
+              </button>
+              {/* Enhanced Main Title */}
+              <h3 className="text-3xl font-semibold text-accent mb-6 text-center">
+                Experience Timeline
+              </h3>
             <div className="space-y-8"> {/* Increased spacing between experience items */}
               {experience.map((exp, idx) => (
                 // Enhanced styling for each experience item container
@@ -208,16 +207,16 @@ const ExperienceModal = ({ onClose }) => {
                   {/* Logo Column */}
                   <div className="flex-shrink-0 w-16 flex flex-col items-center gap-2">
                     <a href={exp.link} target="_blank" rel="noreferrer" className="block transition-transform hover:scale-105">
-                      <img 
-                        src={exp.logo} 
-                        alt={`${exp.org} logo`} 
-                        className="w-16 h-16 object-contain bg-white p-1 rounded-md shadow-md" 
+                      <img
+                        src={exp.logo.src || exp.logo}
+                        alt={`${exp.org} logo`}
+                        className="w-16 h-16 object-contain bg-white p-1 rounded-md shadow-md"
                       />
                     </a>
                     {exp.consultingOrg && exp.consultingOrgLink && (
                       <a href={exp.consultingOrgLink} target="_blank" rel="noreferrer" className="block transition-transform hover:scale-105">
                         <img
-                          src={zopSmartLogo} // Assuming zopSmartLogo is correctly imported for consulting org
+                          src={zopSmartLogo.src || zopSmartLogo} // Assuming zopSmartLogo is correctly imported for consulting org
                           alt={`${exp.consultingOrg} logo`}
                           className="w-12 h-12 object-contain bg-white p-1 rounded-md shadow-sm"
                         />
@@ -262,14 +261,15 @@ const ExperienceModal = ({ onClose }) => {
                 </div>
               ))}
             </div>
-            {/* Enhanced Bottom Close Button */}
-            <div className="text-center mt-10 pt-6 border-t border-slate-200">
-              <button
-                onClick={onClose}
-                className="bg-accent text-white px-8 py-2.5 rounded-lg hover:bg-accent/90 transition-colors duration-150 font-medium shadow-md hover:shadow-lg transform hover:scale-[1.01]"
-              >
-                Close
-              </button>
+              {/* Enhanced Bottom Close Button */}
+              <div className="text-center mt-10 pt-6 border-t border-slate-200">
+                <button
+                  onClick={onClose}
+                  className="bg-accent text-white px-8 py-2.5 rounded-lg hover:bg-accent/90 transition-colors duration-150 font-medium shadow-md hover:shadow-lg transform hover:scale-[1.01]"
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </animated.div>
         ) : null

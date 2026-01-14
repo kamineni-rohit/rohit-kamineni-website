@@ -1,9 +1,11 @@
+'use client'
+
 import React, { useState } from "react";
 import { FaGithub, FaLinkedin, FaFolder, FaEnvelope } from "react-icons/fa"; // Import icons
 import { SiKaggle, SiMedium } from "react-icons/si";
 import { FiChevronDown } from "react-icons/fi";
-import ContactFormModal from "./ContactFormModal";
-import ParticlesBackground from "./ParticlesBackground";
+import ContactFormModal from "@/components/ContactFormModal";
+import ParticlesBackground from "@/components/ParticlesBackground";
 
 const Hero = () => {
   const [showModal, setShowModal] = useState(false);
