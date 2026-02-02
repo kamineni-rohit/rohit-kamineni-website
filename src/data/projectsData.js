@@ -48,7 +48,7 @@ import {
     },
     {
       title: "Bank Customer Churn Prediction",
-      desc: "Built and compared multiple ML models—including neural networks, decision trees, and Naïve Bayes—to predict customer churn on real-world data.",
+      desc: "Built and compared multiple ML models, including neural networks, decision trees, and Naïve Bayes, to predict customer churn on real-world data.",
       categories: ["All Projects", "Data Science"],
       icon: FiUsers,
       github: "https://github.com/kamineni-rohit/bank-customer-churn-prediction",

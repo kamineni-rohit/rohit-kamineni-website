@@ -37,8 +37,8 @@ const Hero = () => {
         </div>
 
         <p className="mt-2 max-w-xl sm:max-w-2xl text-base sm:text-lg text-gray-700 leading-relaxed">
-          👋 Data Engineer | Analyst | Scientist — I specialize in building
-          real-time pipelines, analytical dashboards, and scalable ML systems that
+          Systems Analyst | Data Engineer & Analyst | ML & Cloud Enthusiast. I specialize in building
+          real-time pipelines, analytical dashboards, and scalable data systems that
           drive business transformation.
         </p>
 

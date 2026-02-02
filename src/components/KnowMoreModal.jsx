@@ -84,7 +84,7 @@ Outside work, I'm passionate about mentoring and making tech accessible to every
     ],
     "What Drives Me": [
       "I believe everyone deserves a fair shot at education and tech opportunities.",
-      "I'm all about collaborating with people from all backgrounds—especially when the stakes are high and the mission matters.",
+      "I'm all about collaborating with people from all backgrounds, especially when the stakes are high and the mission matters.",
       "I'm driven by the desire to use technology to solve real-world problems and create positive change."
     ]
   };
