@@ -11,13 +11,43 @@ import jerseystemLogo from "@/assets/logos/jerseystem-logo.png";
 import uconnDiningLogo from "@/assets/logos/uconn-dining-logo.png";
 import zopSmartLogo from "@/assets/logos/zopsmart-logo1.png";
 import rnInfusionLogo from "@/assets/logos/rn-infusion-logo.png";
+import cignaLogo from "@/assets/logos/cigna-logo.png";
+import tcsLogo from "@/assets/logos/tcs-logo.png";
+import realtekLogo from "@/assets/logos/realtek-logo.png";
 
 const experience = [
+  {
+    org: "Cigna Healthcare",
+    consultingOrg: "Tata Consultancy Services",
+    consultingOrgLink: "https://www.linkedin.com/company/tata-consultancy-services/",
+    consultingOrgLogo: tcsLogo,
+    consultingOrg2: "Realtek Consulting LLC",
+    consultingOrg2Link: "https://www.linkedin.com/company/realtek-consulting-llc",
+    consultingOrg2Logo: realtekLogo,
+    link: "https://www.linkedin.com/company/the-cigna-group/",
+    title: "Systems Analyst",
+    date: "Dec 2025 – Present",
+    location: "Bloomfield, CT",
+    logo: cignaLogo,
+    bullets: [
+      "Build and maintain detailed system mapping documents capturing end-to-end data movement across applications, databases, and integration layers.",
+      "Design and develop logical and physical data models; create comprehensive data dictionaries defining data elements, metadata, transformations, and lineage.",
+      "Analyze complex data systems across distributed architectures to ensure smooth, accurate, and performant data flow.",
+      "Document business, functional, and non-functional requirements, translating them into clear technical specifications for development teams.",
+      "Bridge communication between business stakeholders, functional teams, and engineering; lead cross-functional collaboration across data engineering, application, and infrastructure teams.",
+      "Analyze large volumes of data across heterogeneous databases and platforms to identify inconsistencies, gaps, and optimization opportunities.",
+      "Ensure seamless data integration between cloud and on-prem environments, including databases and messaging systems.",
+      "Support database management activities including query optimization, validation, data integrity checks, and issue resolution.",
+      "Ensure adherence to healthcare data governance, security standards, and HIPAA compliance requirements.",
+      "Support Agile delivery processes through backlog refinement, documentation, sprint planning, and stakeholder alignment."
+    ],
+    skills: ["SQL", "Oracle SQL", "Excel", "Informatica", "AWS", "Python", "Agile", "Oracle DB", "DB2", "DBeaver", "Toad", "Data Modeling", "Data Governance", "HIPAA", "JIRA"]
+  },
   {
     org: "RN Infusion",
     link: "https://www.linkedin.com/company/rn-infusion",
     title: "Data and Business Insights Analyst",
-    date: "Aug 2025 – Present",
+    date: "Aug 2025 – Dec 2025",
     location: "Malvern, PA",
     logo: rnInfusionLogo,
     bullets: [
@@ -91,8 +121,9 @@ const experience = [
   },
   {
     org: "Kroger Technology & Digital",
-    consultingOrg: "ZopSmart", 
+    consultingOrg: "ZopSmart",
     consultingOrgLink: "https://www.linkedin.com/company/zopsmart/posts/?feedView=all",
+    consultingOrgLogo: zopSmartLogo,
     link: "https://www.linkedin.com/company/kroger-technology-and-digital/",
     title: "Data Engineer",
     date: "Aug 2019 – Jun 2023",
@@ -110,9 +141,10 @@ const experience = [
   },
   {
     org: "Kroger Technology & Digital",
-    consultingOrg: "ZopSmart", 
-    link: "https://www.linkedin.com/company/kroger-technology-and-digital/",
+    consultingOrg: "ZopSmart",
     consultingOrgLink: "https://www.linkedin.com/company/zopsmart/posts/?feedView=all",
+    consultingOrgLogo: zopSmartLogo,
+    link: "https://www.linkedin.com/company/kroger-technology-and-digital/",
     title: "Software Development Engineer",
     date: "Aug 2019 – Dec 2019",
     location: "Bangalore, India",
@@ -213,12 +245,21 @@ const ExperienceModal = ({ onClose }) => {
                         className="w-16 h-16 object-contain bg-white p-1 rounded-md shadow-md"
                       />
                     </a>
-                    {exp.consultingOrg && exp.consultingOrgLink && (
+                    {exp.consultingOrg && exp.consultingOrgLink && exp.consultingOrgLogo && (
                       <a href={exp.consultingOrgLink} target="_blank" rel="noreferrer" className="block transition-transform hover:scale-105">
                         <img
-                          src={zopSmartLogo.src || zopSmartLogo} // Assuming zopSmartLogo is correctly imported for consulting org
+                          src={exp.consultingOrgLogo.src || exp.consultingOrgLogo}
                           alt={`${exp.consultingOrg} logo`}
                           className="w-12 h-12 object-contain bg-white p-1 rounded-md shadow-sm"
+                        />
+                      </a>
+                    )}
+                    {exp.consultingOrg2 && exp.consultingOrg2Link && exp.consultingOrg2Logo && (
+                      <a href={exp.consultingOrg2Link} target="_blank" rel="noreferrer" className="block transition-transform hover:scale-105">
+                        <img
+                          src={exp.consultingOrg2Logo.src || exp.consultingOrg2Logo}
+                          alt={`${exp.consultingOrg2} logo`}
+                          className="w-10 h-10 object-contain bg-white p-1 rounded-md shadow-sm"
                         />
                       </a>
                     )}
@@ -229,7 +270,8 @@ const ExperienceModal = ({ onClose }) => {
                     <h4 className="text-xl font-semibold text-slate-800">{exp.title}</h4>
                     <p className="text-slate-600 text-sm">
                       <span className="font-medium">{typeof exp.org === 'string' ? exp.org : <>{exp.org}</>}</span>
-                      {exp.consultingOrg && <span className="text-slate-500"> (Consulting via {exp.consultingOrg})</span>}
+                      {exp.consultingOrg && !exp.consultingOrg2 && <span className="text-slate-500"> (Consulting via {exp.consultingOrg})</span>}
+                      {exp.consultingOrg && exp.consultingOrg2 && <span className="text-slate-500"> (Consulting via {exp.consultingOrg} through {exp.consultingOrg2})</span>}
                     </p>
                     <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-slate-500 items-center">
                       <span>{exp.date}</span>
