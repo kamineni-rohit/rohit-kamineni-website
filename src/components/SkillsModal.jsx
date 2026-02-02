@@ -12,22 +12,22 @@ const skillCategories = {
     "Google Cloud Platform (GCP)", "AWS", "Azure", "Kubernetes", "Docker", "CI/CD", "GitHub", "Git"
   ],
   "Big Data & ETL": [
-    "PySpark", "Apache Spark", "Kafka", "Databricks", "Airflow", "Hadoop", "Hive", "dbt", "SparkSQL", "Dataflow", "BigQuery", "Glue Catalog", "Fivetran", "Integrate.io"
+    "PySpark", "Apache Spark", "Kafka", "Databricks", "Airflow", "Informatica", "Hadoop", "Hive", "dbt", "SparkSQL", "Dataflow", "BigQuery", "Glue Catalog", "Fivetran", "Integrate.io"
   ],
   "Databases & Storage": [
-    "PostgreSQL", "Oracle", "MySQL", "MariaDB", "MongoDB", "Snowflake", "Google Cloud Storage (GCS)", "Amazon S3", "Redis", "Elasticsearch"
+    "PostgreSQL", "Oracle", "DB2", "MySQL", "MariaDB", "MongoDB", "Snowflake", "Google Cloud Storage (GCS)", "Amazon S3", "Redis", "Elasticsearch"
   ],
   "Machine Learning & MLOps": [
     "Scikit-learn", "TensorFlow", "PyTorch", "Keras", "Vertex AI", "Pandas", "NumPy", "Matplotlib", "Seaborn", "MLOps"
   ],
   "Visualization & Dashboards": [
-    "Tableau", "Power BI", "Looker"
+    "Tableau", "Power BI", "Looker", "Qlik"
   ],
   "Frameworks & APIs": [
     "SpringBoot", "REST APIs", "Node.js", "Swagger", "Postman", "Microservices"
   ],
   "Analytics & Tools": [
-    "Excel (Advanced)", "SAS", "JMP", "Google Sheets", "iCIMS", "Salesforce", "Slack", "JIRA", "Agile"
+    "Excel (Advanced)", "SAS", "JMP", "Google Sheets", "DBeaver", "Toad", "PyCharm", "iCIMS", "Salesforce", "Slack", "JIRA", "Agile"
   ]
 };
 
@@ -72,6 +72,7 @@ const getIconUrl = (skill) => {
     bigquery: "https://ui-avatars.com/api/?name=BQ&background=4285F4&color=fff&bold=true&format=svg&size=48",
     gluecatalog: "https://skillicons.dev/icons?i=aws",
     fivetran: "https://ui-avatars.com/api/?name=FI&background=0073FF&color=fff&bold=true&format=svg&size=48",
+    informatica: "https://ui-avatars.com/api/?name=IF&background=FF4D00&color=fff&bold=true&format=svg&size=48",
     integrateio: "https://ui-avatars.com/api/?name=IN&background=4f46e5&color=fff&bold=true&format=svg&size=48",
 
     // Databases & Storage
@@ -85,6 +86,7 @@ const getIconUrl = (skill) => {
     gcs: "https://skillicons.dev/icons?i=gcp",
     amazons3: "https://ui-avatars.com/api/?name=S3&background=569A31&color=fff&bold=true&format=svg&size=48",
     redis: "https://skillicons.dev/icons?i=redis",
+    db2: "https://ui-avatars.com/api/?name=D2&background=054ADA&color=fff&bold=true&format=svg&size=48",
     elasticsearch: "https://ui-avatars.com/api/?name=ES&background=FEC514&color=000&bold=true&format=svg&size=48",
 
     // Machine Learning & MLOps
@@ -103,6 +105,7 @@ const getIconUrl = (skill) => {
     tableau: "https://cdn.worldvectorlogo.com/logos/tableau-software.svg",
     powerbi: "https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg",
     looker: "https://ui-avatars.com/api/?name=LO&background=4285F4&color=fff&bold=true&format=svg&size=48",
+    qlik: "https://ui-avatars.com/api/?name=QL&background=009845&color=fff&bold=true&format=svg&size=48",
 
     // Frameworks & APIs
     springboot: "https://skillicons.dev/icons?i=spring",
@@ -118,6 +121,9 @@ const getIconUrl = (skill) => {
     sas: "https://ui-avatars.com/api/?name=SAS&background=1E4C7A&color=fff&bold=true&format=svg&size=48",
     jmp: "https://ui-avatars.com/api/?name=JMP&background=4f46e5&color=fff&bold=true&format=svg&size=48",
     googlesheets: "https://upload.wikimedia.org/wikipedia/commons/a/ae/Google_Sheets_2020_Logo.svg",
+    dbeaver: "https://ui-avatars.com/api/?name=DB&background=382923&color=fff&bold=true&format=svg&size=48",
+    toad: "https://ui-avatars.com/api/?name=TD&background=3C873A&color=fff&bold=true&format=svg&size=48",
+    pycharm: "https://ui-avatars.com/api/?name=PC&background=21D789&color=000&bold=true&format=svg&size=48",
     icims: "https://ui-avatars.com/api/?name=IC&background=1d6fba&color=fff&bold=true&format=svg&size=48",
     salesforce: "https://ui-avatars.com/api/?name=SA&background=00A1E0&color=fff&bold=true&format=svg&size=48",
     slack: "https://ui-avatars.com/api/?name=SL&background=4A154B&color=fff&bold=true&format=svg&size=48",

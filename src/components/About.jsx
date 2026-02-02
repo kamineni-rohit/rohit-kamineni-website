@@ -8,7 +8,8 @@ import ExperienceModal from "@/components/ExperienceModal";
 import SkillsModal from "@/components/SkillsModal";
 import KnowMoreModal from "@/components/KnowMoreModal";
 import { FiChevronDown } from "react-icons/fi";
-import tcubeLogo from "@/assets/logos/tcube-logo.png";
+import cignaLogo from "@/assets/logos/cigna-logo.png";
+import rnInfusionLogo from "@/assets/logos/rn-infusion-logo.png";
 import krogerLogo from "@/assets/logos/kroger-logo.png";
 import { FiBriefcase, FiSliders, FiInfo } from "react-icons/fi"; // Import icons
 
@@ -60,6 +61,42 @@ const About = () => {
                 {/* Entry 1 */}
                 <div className="flex flex-col justify-center min-h-[120px]">
                   <div className="flex items-center gap-2 mb-1">
+                    <span className="text-accent font-semibold text-sm">2025 – Present</span>
+                    <a
+                      href="https://www.linkedin.com/company/the-cigna-group/"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <img src={cignaLogo.src || cignaLogo} alt="Cigna Healthcare" className="h-6 w-auto" />
+                    </a>
+                  </div>
+                  <div className="text-lg font-bold">Systems Analyst</div>
+                  <div className="text-sm italic text-gray-600 mb-1">Cigna Healthcare</div>
+                  <p className="text-sm text-gray-700">
+                    Supporting large-scale healthcare <strong>data and application ecosystems</strong>, building <strong>system mappings</strong>, <strong>data models</strong>, and ensuring <strong>HIPAA-compliant</strong> data flow.
+                  </p>
+                </div>
+                {/* Entry 2 */}
+                <div className="flex flex-col justify-center min-h-[120px]">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-accent font-semibold text-sm">2025</span>
+                    <a
+                      href="https://www.linkedin.com/company/rn-infusion"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <img src={rnInfusionLogo.src || rnInfusionLogo} alt="RN Infusion" className="h-6 w-auto" />
+                    </a>
+                  </div>
+                  <div className="text-lg font-bold">Data and Business Insights Analyst</div>
+                  <div className="text-sm italic text-gray-600 mb-1">RN Infusion</div>
+                  <p className="text-sm text-gray-700">
+                    Designed centralized <strong>cloud data platform</strong> for EMR systems; built <strong>real-time BI dashboards</strong> and automated <strong>data governance</strong> workflows.
+                  </p>
+                </div>
+                {/* Entry 3 */}
+                <div className="flex flex-col justify-center min-h-[120px]">
+                  <div className="flex items-center gap-2 mb-1">
                     <span className="text-accent font-semibold text-sm">2019 – 2023</span>
                     <a
                       href="https://www.linkedin.com/company/kroger-technology-and-digital/"
@@ -73,42 +110,6 @@ const About = () => {
                   <div className="text-sm italic text-gray-600 mb-1">Kroger Technology & Digital</div>
                   <p className="text-sm text-gray-700">
                     Led scalable <strong>ETL pipelines</strong>, built <strong>real-time analytics</strong> on GCP, and implemented <strong>MLOps</strong> on Vertex AI.
-                  </p>
-                </div>
-                {/* Entry 2 */}
-                <div className="flex flex-col justify-center min-h-[120px]">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-accent font-semibold text-sm">2019</span>
-                    <a
-                      href="https://www.linkedin.com/company/kroger-technology-and-digital/"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <img src={krogerLogo.src || krogerLogo} alt="Kroger" className="h-6 w-auto" />
-                    </a>
-                  </div>
-                  <div className="text-lg font-bold">SDE – CX Web Products & Search</div>
-                  <div className="text-sm italic text-gray-600 mb-1">Kroger Technology & Digital</div>
-                  <p className="text-sm text-gray-700">
-                    Built Products BFF for <strong>15M+</strong> daily requests; migrated APIs to a <strong>3-tier Kubernetes</strong> architecture.
-                  </p>
-                </div>
-                {/* Entry 3 */}
-                <div className="flex flex-col justify-center min-h-[120px]">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-accent font-semibold text-sm">2019</span>
-                    <a
-                      href="https://www.linkedin.com/company/tcube360/"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <img src={tcubeLogo.src || tcubeLogo} alt="Tcube" className="h-6 w-auto" />
-                    </a>
-                  </div>
-                  <div className="text-lg font-bold">Data Engineer</div>
-                  <div className="text-sm italic text-gray-600 mb-1">Tcube</div>
-                  <p className="text-sm text-gray-700">
-                    Designed <strong>Python/SQL</strong> pipelines for logistics data and enabled <strong>real-time KPI dashboards</strong>.
                   </p>
                 </div>
               </div>
