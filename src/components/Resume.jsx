@@ -19,11 +19,11 @@ const Resume = () => {
   }, [showPreview]);
 
   return (
-    <section id="resume" className="bg-white py-20 px-6 md:px-24 text-center relative overflow-hidden">
+    <section id="resume" className="bg-white py-24 px-6 md:px-24 text-center relative overflow-hidden">
       <SectionBackground imageSrc={circuitBg} opacity={0.06} />
 
-      <div className="relative z-5">
-        <h2 className="text-3xl font-bold text-accent mb-6">Resume</h2>
+      <div className="relative z-10">
+        <h2 className="text-2xl sm:text-3xl font-bold text-accent mb-6">Resume</h2>
         <p className="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">
           Explore my resume for a detailed overview of my experience in data
           engineering, analytics, and machine learning, with a focus on cloud
@@ -33,9 +33,9 @@ const Resume = () => {
         <div className="flex justify-center gap-6 flex-wrap">
           <button
             onClick={() => setShowPreview(true)}
-            className="bg-white border-2 border-accent text-accent font-medium px-6 py-3 rounded-md hover:bg-accent hover:text-white transition"
+            className="bg-white border-2 border-accent text-accent font-medium px-6 py-2.5 rounded-lg hover:bg-accent hover:text-white transition-colors duration-150 flex items-center gap-2"
           >
-            <FiEye className="inline-block mr-2" />
+            <FiEye />
             View Resume
           </button>
 
@@ -44,9 +44,9 @@ const Resume = () => {
             download="Rohit_Kamineni_Resume.pdf" // Added download attribute with a suggested filename
             target="_blank" // Opens download link in new tab, though download attribute usually triggers download directly
             rel="noopener noreferrer"
-            className="bg-accent text-white font-medium px-6 py-3 rounded-md hover:opacity-90 transition-opacity duration-150 ease-in-out flex items-center gap-2" // Added flex, items-center, gap
+            className="bg-accent text-white font-medium px-6 py-2.5 rounded-lg hover:bg-accent/90 transition-colors duration-150 flex items-center gap-2"
           >
-            <FiDownload className="inline-block" /> {/* Removed mr-2 */}
+            <FiDownload />
             Download Resume
           </a>
         </div>

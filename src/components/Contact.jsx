@@ -11,11 +11,11 @@ const Contact = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <section id="contact" className="bg-gray-50 py-20 px-6 md:px-24 text-center relative overflow-hidden">
+    <section id="contact" className="bg-gray-50 py-24 px-6 md:px-24 text-center relative overflow-hidden">
       <SectionBackground imageSrc={hexagonBg} opacity={0.08} />
 
-      <div className="relative z-5">
-        <h2 className="text-3xl font-bold text-accent mb-6">Contact</h2>
+      <div className="relative z-10">
+        <h2 className="text-2xl sm:text-3xl font-bold text-accent mb-6">Contact</h2>
         <p className="text-lg text-gray-700 mb-6 max-w-2xl mx-auto">
           I'm always open to opportunities, collaborations, or just a friendly chat. Feel free to reach out!
         </p>
@@ -34,16 +34,16 @@ const Contact = () => {
             <FaLinkedin size={24} />
           </a>
           <div className="flex items-center gap-2">
-            <FiMapPin size={22} />
+            <FiMapPin size={24} />
             <span>Hartford, CT</span>
           </div>
         </div>
 
         <button
           onClick={() => setShowModal(true)}
-          className="bg-accent text-white font-medium px-6 py-3 rounded-md hover:opacity-90 transition text-lg flex items-center gap-2 mx-auto"
+          className="bg-accent text-white font-medium px-6 py-2.5 rounded-lg hover:bg-accent/90 transition-colors duration-150 flex items-center gap-2 mx-auto"
         >
-          <FiEdit size={20} />  {/* Added FiEdit icon */}
+          <FiEdit />
           Leave Your Info
         </button>
 

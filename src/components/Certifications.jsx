@@ -35,8 +35,8 @@ const Certifications = () => {
     >
       <SectionBackground imageSrc={polygonBg} opacity={0.08} />
 
-      <div className="relative z-5 max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold text-accent mb-4">Certifications</h2>
+      <div className="relative z-10 max-w-5xl mx-auto">
+        <h2 className="text-2xl sm:text-3xl font-bold text-accent mb-6">Certifications</h2>
         <p className="text-gray-600 italic mb-8">
           These are some of my most relevant certifications.
         </p>
@@ -53,7 +53,7 @@ const Certifications = () => {
               <img src={udemyLogo.src || udemyLogo} alt="Udemy" className="h-8 w-auto" />
               <span className="font-semibold text-gray-800 text-lg">Udemy</span>
             </a>
-            <ul className="list-disc pl-10 text-black space-y-2 mt-4">
+            <ul className="list-disc pl-8 text-gray-700 space-y-2 mt-4">
               {udemyCerts.map((cert, index) => (
                 <li key={index} className="leading-snug">
                   {cert.link ? (
@@ -61,7 +61,7 @@ const Certifications = () => {
                       href={cert.link}
                       target="_blank"
                       rel="noreferrer"
-                      className="hover:text-blue-700 transition"
+                      className="hover:text-accent transition-colors"
                     >
                       {cert.title}
                     </a>
@@ -84,7 +84,7 @@ const Certifications = () => {
               <img src={courseraLogo.src || courseraLogo} alt="Coursera" className="h-8 w-auto" />
               <span className="font-semibold text-gray-800 text-lg">Coursera</span>
             </a>
-            <ul className="list-disc pl-7 text-black space-y-2 mt-4">
+            <ul className="list-disc pl-8 text-gray-700 space-y-2 mt-4">
               {courseraCerts.map((cert, index) => (
                 <li key={index} className="leading-snug">
                   {cert.link ? (
@@ -92,7 +92,7 @@ const Certifications = () => {
                       href={cert.link}
                       target="_blank"
                       rel="noreferrer"
-                      className="hover:text-blue-700 transition"
+                      className="hover:text-accent transition-colors"
                     >
                       {cert.title}
                     </a>
@@ -109,9 +109,9 @@ const Certifications = () => {
         <div className="mt-11 flex justify-center">  {/* Added justify-center */}
           <button
             onClick={() => setShowModal(true)}
-            className="bg-accent text-white px-6 py-2 rounded hover:opacity-90 transition flex items-center"
+            className="bg-accent text-white font-medium px-6 py-2.5 rounded-lg hover:bg-accent/90 transition-colors duration-150 flex items-center gap-2"
           >
-            <FiBookOpen className="mr-2" />
+            <FiBookOpen />
             View Other Certifications
           </button>
         </div>

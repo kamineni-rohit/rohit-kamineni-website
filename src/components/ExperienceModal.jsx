@@ -267,7 +267,7 @@ const ExperienceModal = ({ onClose }) => {
                   
                   {/* Details Column */}
                   <div className="flex-1 space-y-2">
-                    <h4 className="text-xl font-semibold text-slate-800">{exp.title}</h4>
+                    <h4 className="text-xl font-semibold text-slate-700">{exp.title}</h4>
                     <p className="text-slate-600 text-sm">
                       <span className="font-medium">{typeof exp.org === 'string' ? exp.org : <>{exp.org}</>}</span>
                       {exp.consultingOrg && !exp.consultingOrg2 && <span className="text-slate-500"> (Consulting via {exp.consultingOrg})</span>}

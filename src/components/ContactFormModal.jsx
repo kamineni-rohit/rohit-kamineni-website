@@ -120,7 +120,7 @@ const ContactFormModal = ({ onClose }) => {
           <animated.div style={style}>
             <div
               ref={modalRef}
-              className="bg-white rounded-xl shadow-2xl w-full max-w-lg p-8 relative"
+              className="bg-white rounded-xl shadow-2xl w-full max-w-lg p-8 relative max-h-[90vh] overflow-y-auto"
             >
               {!showThankYou ? (
                 <>

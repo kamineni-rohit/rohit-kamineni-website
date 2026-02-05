@@ -106,15 +106,15 @@ const Projects = () => {
       <section
         ref={sectionRef}
         id="projects"
-        className={`relative flex flex-col py-20 transition-all duration-500 ease-in-out ${
+        className={`relative flex flex-col py-24 transition-all duration-500 ease-in-out ${
           showAll ? 'min-h-screen' : 'min-h-screen max-h-screen overflow-hidden' 
         }`}
       >
         <SectionBackground imageSrc={hexagonBg} opacity={0.09} />
 
-        <div className="relative flex flex-col h-full w-full max-w-7xl mx-auto px-4 md:px-6 z-10 pb-6">
+        <div className="relative flex flex-col h-full w-full max-w-7xl mx-auto px-6 md:px-12 z-10 pb-6">
           <div className="flex-shrink-0">
-            <h2 className="text-3xl font-bold text-accent mb-4 text-center">
+            <h2 className="text-2xl sm:text-3xl font-bold text-accent mb-6 text-center">
               Projects Portfolio
             </h2>
             <p className="text-gray-700 text-center mb-6 italic">
@@ -213,7 +213,7 @@ const Projects = () => {
             {isExpandable && !showAll && (
               <button
                 onClick={handleShowMore}
-                className="px-5 py-2 text-sm bg-accent text-white rounded-full shadow hover:opacity-90 transition"
+                className="bg-accent text-white font-medium px-6 py-2.5 rounded-full hover:bg-accent/90 transition-colors duration-150"
               >
                 Show More
               </button>

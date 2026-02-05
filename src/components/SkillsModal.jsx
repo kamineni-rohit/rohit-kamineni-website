@@ -175,7 +175,7 @@ const SkillsModal = ({ onClose }) => {
             >
               <FiX size={24} />
             </button>
-            <h3 className="text-3xl font-semibold text-accent mb-8 text-center">
+            <h3 className="text-3xl font-semibold text-accent mb-6 text-center">
               Full Skillset
             </h3>
 

@@ -21,14 +21,14 @@ const About = () => {
   return (
     <section
       id="about"
-      className="min-h-screen bg-gray-50 py-24 px-4 md:px-20 flex justify-center items-center relative overflow-hidden"
+      className="min-h-screen bg-gray-50 py-24 px-6 md:px-24 flex justify-center items-center relative overflow-hidden"
     >
       <SectionBackground imageSrc={waveLineBg} opacity={0.08} />
 
       <div className="relative z-10 w-full max-w-6xl flex flex-col md:flex-row items-start gap-10">
         {/* Left Column */}
         <div className="flex-1">
-          <h2 className="text-3xl font-bold mb-4">Hi, I'm Rohit.</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-accent mb-6">Hi, I'm Rohit.</h2>
           <p className="text-gray-700 text-lg mb-10">
             I’m a versatile <strong>Data Engineer</strong>, <strong>Analyst</strong>, and <strong>Scientist</strong> with a strong track record of building end-to-end data solutions, from <strong>ingestion pipelines</strong> and <strong>transformation workflows</strong> to advanced <strong>ML model deployments</strong> and intuitive <strong>BI dashboards</strong>.
             <br /><br />
@@ -126,23 +126,23 @@ const About = () => {
           />
           <button
             onClick={() => setShowExperience(true)}
-            className="bg-accent text-white px-6 py-2 rounded-md hover:opacity-90 transition flex items-center" 
+            className="bg-accent text-white font-medium px-6 py-2.5 rounded-lg hover:bg-accent/90 transition-colors duration-150 flex items-center gap-2"
           >
-            <FiBriefcase className="mr-2" /> 
+            <FiBriefcase />
             View Detailed Experience
           </button>
           <button
             onClick={() => setShowSkills(true)}
-            className="bg-accent text-white px-6 py-2 rounded-md hover:opacity-90 transition flex items-center" 
+            className="bg-accent text-white font-medium px-6 py-2.5 rounded-lg hover:bg-accent/90 transition-colors duration-150 flex items-center gap-2"
           >
-            <FiSliders className="mr-2" />  
+            <FiSliders />
             Full Skillset
           </button>
           <button
             onClick={() => setShowMore(true)}
-            className="bg-accent text-white px-6 py-2 rounded-md hover:opacity-90 transition flex items-center" 
+            className="bg-accent text-white font-medium px-6 py-2.5 rounded-lg hover:bg-accent/90 transition-colors duration-150 flex items-center gap-2"
           >
-            <FiInfo className="mr-2" />      
+            <FiInfo />
             Know More About Me
           </button>
         </div>

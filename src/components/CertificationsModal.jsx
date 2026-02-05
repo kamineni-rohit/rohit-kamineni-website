@@ -68,7 +68,7 @@ const CertificationsModal = ({ onClose }) => {
             </button>
             
             {/* Enhanced Main Title */}
-            <h3 className="text-3xl font-semibold text-accent mb-8 text-center">Other Certifications</h3>
+            <h3 className="text-3xl font-semibold text-accent mb-6 text-center">Other Certifications</h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 text-left"> {/* Adjusted gap */}
               {/* UDEMY */}

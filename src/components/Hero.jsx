@@ -80,16 +80,16 @@ const Hero = () => {
         <div className="flex flex-col sm:flex-row sm:space-x-4 mt-10 space-y-4 sm:space-y-0">
           <button
             onClick={scrollToProjects}
-            className="px-6 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-white transition rounded flex items-center" // Added flex and items-center
+            className="bg-white border-2 border-accent text-accent font-medium px-6 py-2.5 rounded-lg hover:bg-accent hover:text-white transition-colors duration-150 flex items-center gap-2"
           >
-            <FaFolder className="mr-2" /> {/* Add icon here, margin-right for spacing */}
+            <FaFolder />
             Portfolio
           </button>
           <button
             onClick={() => setShowModal(true)}
-            className="px-6 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-white transition rounded flex items-center" // Added flex and items-center
+            className="bg-white border-2 border-accent text-accent font-medium px-6 py-2.5 rounded-lg hover:bg-accent hover:text-white transition-colors duration-150 flex items-center gap-2"
           >
-            <FaEnvelope className="mr-2" />
+            <FaEnvelope />
             Reach Out to Me
           </button>
         </div>
