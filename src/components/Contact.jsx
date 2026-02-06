@@ -46,9 +46,9 @@ const Contact = () => {
           <FiEdit />
           Leave Your Info
         </button>
-
-        {showModal && <ContactFormModal onClose={() => setShowModal(false)} />}
       </div>
+
+      {showModal && <ContactFormModal onClose={() => setShowModal(false)} />}
     </section>
   );
 };

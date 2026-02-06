@@ -115,9 +115,9 @@ const Certifications = () => {
             View Other Certifications
           </button>
         </div>
-
-        {showModal && <CertificationsModal onClose={() => setShowModal(false)} />}
       </div>
+
+      {showModal && <CertificationsModal onClose={() => setShowModal(false)} />}
     </section>
   );
 };
