@@ -2,10 +2,10 @@ import './globals.css'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Rohit Kamineni | Data Engineer & Analyst',
+  title: 'Rohit Kamineni',
   description: 'Professional portfolio showcasing data engineering, analytics, and machine learning projects.',
   openGraph: {
-    title: 'Rohit Kamineni | Data Engineer & Analyst',
+    title: 'Rohit Kamineni',
     description: 'Professional portfolio showcasing data engineering, analytics, and machine learning projects.',
     type: 'website',
   },
