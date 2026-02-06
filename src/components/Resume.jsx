@@ -53,27 +53,32 @@ const Resume = () => {
 
         {showPreview && (
           <div
-            className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black bg-opacity-70"
             onClick={() => setShowPreview(false)}
           >
             <button
-              className="fixed top-6 right-6 z-[70] text-slate-400 hover:text-accent bg-white p-2 rounded-full hover:bg-slate-100 transition-colors duration-150 shadow-lg"
+              className="fixed top-6 right-6 z-[110] text-white bg-gray-800 p-2 rounded-full hover:bg-red-600 transition"
               onClick={() => setShowPreview(false)}
               title="Close"
             >
-              <FiX size={24} />
+              <FiX size={20} />
             </button>
 
             <div
-              className="relative max-w-5xl w-full h-[85vh] rounded-xl overflow-hidden shadow-2xl bg-white"
+              className="relative max-w-6xl w-full h-[90vh] rounded-lg overflow-hidden shadow-xl bg-white"
               onClick={(e) => e.stopPropagation()}
             >
-              <iframe
-                src={RESUME_PATH}
-                title="Resume Preview"
-                className="w-full h-full"
-                style={{ backgroundColor: "white" }}
-              />
+              <div
+                className="w-full h-full overflow-y-scroll snap-y snap-mandatory"
+                style={{ scrollBehavior: "smooth" }}
+              >
+                <iframe
+                  src={RESUME_PATH}
+                  title="Resume Preview"
+                  className="w-full h-full snap-start"
+                  style={{ backgroundColor: "white" }}
+                />
+              </div>
             </div>
           </div>
         )}

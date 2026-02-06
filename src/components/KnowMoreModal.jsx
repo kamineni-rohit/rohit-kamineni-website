@@ -140,7 +140,7 @@ Outside work, I'm passionate about mentoring and making tech accessible to every
 
 
   return (
-    <div className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm flex items-center justify-center px-4 py-8 overflow-y-auto">
+    <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center px-4 py-8 overflow-y-auto">
       {transitions((style, item) =>
         item ? (
           <animated.div style={style}>
