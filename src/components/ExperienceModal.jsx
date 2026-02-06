@@ -212,7 +212,7 @@ const ExperienceModal = ({ onClose }) => {
   }, [onClose]);
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center px-4 py-8 overflow-y-auto">
+    <div className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm flex items-center justify-center px-4 py-8 overflow-y-auto">
       {transitions((style, item) =>
         item ? (
           <animated.div style={style}>

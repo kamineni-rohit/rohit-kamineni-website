@@ -114,7 +114,7 @@ const ContactFormModal = ({ onClose }) => {
   const inputErrorClasses = "border-red-400 focus:border-red-500 focus:ring-2 focus:ring-red-500/50";
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center px-4 py-8 overflow-y-auto">
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] flex items-center justify-center px-4 py-8 overflow-y-auto">
       {modalTransitions((style, item) =>
         item ? (
           <animated.div style={style}>
